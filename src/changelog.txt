@@ -1,0 +1,145 @@
+v1.2.8
+BugFix: Exp multipliers were off for routes with lots of ports.
+BugFix: Hardpoints were not displayed properly on ship list.
+Enhancement: Translate the restrictions values into Good/Evil.
+Enhancement: Some performance improvements and probably some potentially significant memory savings (depending on max routes to be generated).
+
+v1.2.7
+BugFix: It was still possible in rare circumstances for a warp to be ignored if it was the very last sector reached.
+BugFix: When closing the smr file it will remember there is no smr file selected on the next load.
+Enhancement: You can now plot to any bank/bar/good/etc in the nearest x list.
+Enhancement: You can now plot to another sector in the nearest x list.
+Enhancement: It now automatically replots when you change the sector to plot from.
+Enhancement: When choosing a new smr file all the panels will be reloaded with the new information.
+Enhancement: You can now generate routes for a specific port.
+Enhancement: More accurate money formula.
+Enhancement: Now asks for a smr file on startup and when trying to access one of the options (if there isn't already one selected) as none of the options will work properly without an smr file. 
+
+v1.2.6
+BugFix: It was possible for plotting to skip a warp when plotting from a sector that would reach a warp near the end of checking the galaxy.
+
+v1.2.5
+Enhancement: Add goods to the Nearest X List.
+
+v1.2.4
+BugFix: Routes were not being generated correctly due to good "Nothing" not being created.
+BugFix: Nearest X List had not been updated to work with the latest .smr format.
+Enhancement: Ships in Nearest X List are now sorted by name and categorised by race.
+Enhancement: In Nearest X List ships and weapons can be selected via All Ships/Weapons.
+
+v1.2.3
+DataUpdate: Use the latest 1.6 sectors file format.
+
+v1.2.2
+Enhancement: Some more optimisations.
+BugFix: Fixed a problem with intra-galaxy warps when it was shorter to walk to the other side than to warp there.
+DataUpdate: Updated turns cost for 1.6
+
+v1.2.1
+BugFix: Distance index wasn't taking warp into account as extra distance.
+DataUpdate: Updated warp/sector turn costs to reflect game changes.
+
+v1.2.0
+BugFix: If a port only sold or only bought goods then an error would occur while loading sectors.
+DataUpdate: Random Bank and Random Bar added to database, these are for those specific locations at the moment.
+
+v1.1.9
+BugFix: Warps were not being traversed properly due to an optimisation.
+
+v1.1.8
+Enhancement: You can now select not to have Nothing appear in part of a route.
+Enhancement: Money formula can now take into account race relations, making it pretty much 100% accurate (although it is not quite equal to money per SC as supply/demand is ignored).  Default setting is ON as people default to 0 relations with every race it will make no difference unless they change
+Enhancement: The program now asks the user for how much memory to use.
+
+
+v1.1.7
+DataUpdate: Shadow had wrong repair rate. Not sure if there's other problems where it's been changed and I haven't noticed.
+Enhancement: Changed the formula for money routes to take into account price to buy goods, and be more accurate overall.
+Enhancement: Optimised the multi port method of finding routes so it's just as fast (if not faster) than using the two way method for same settings. Therefore have switched to using multi port code always so less chance of missing a change.
+Enhancement: Lots of other optimisations.
+Enhancement: The program will automatically rerun itself with increased max memory, hopefully this won't cause any problems.
+Enhancement: The program now remembers the last open sectors file and will reload it.
+
+v1.1.6
+Workaround: Certain locations in sectors.smr contain commas, this means that "Image Systems, Inc" is counted as two shops, "Image Systems" and "Inc". So I have had to add them as seperate shops. Have told Azool of this error.
+
+v1.1.5
+BugFix: Excluding races when find routes didn't always work.
+BugFix: Route generating wouldn't work if you opened the .smr file before opening route generator.
+Enhancement: Added locations to Find Nearest, also sorted locations by type, and weapons by level.
+Enhancement: Now shows path in Find Nearest when you select a path.
+Enhancement: Added distance of route to Find Nearest.
+
+v1.1.4
+Feature: Added find nearest. Still work needed though.
+
+v1.1.3
+DataUpdate: Updated some weapon/ship data that Azool changed.
+Enhancement: Made the interface tabbed to reduce number of windows in taskbar.
+
+v1.1.2
+BugFix: Made the method for finding number of processors work across platforms.
+Enhancement: Renamed Open/Close to include SMR File, and add a Close for closing a particular window.
+Enhancement: Reduced memory needed for generating 3+ port routes by only storing the top 100 routes for each of exp and money. This value will be allowed to be set in later versions.
+
+v1.1.1
+RegressionFix: Whilst testing I temporarily commented out cross-warp distance index generating, and forgot to uncomment.
+Enhancement: Introduced multithreading which on my dual core 2.4GHz machine represented a 40% performance increase in generating routes, for single cores it will make no difference, however more cores you have the more improvement you will notice.
+			Multi-Threaded, Time taken: 25.357380844
+			Single-Threaded, Time taken: 42.153719392
+Enhancement: Other optimisations to route generating code.
+Enhancement: Stopped GUI freezing whilst generating routes.
+Enhancement: Added a progress bar to route generating.
+Enhancement: Generating routes is cancelled if you start generating a new set (Note: Wait till it finishes if you want to change from money to exp routes as it will use the cached routes if it manages to finish)
+
+v1.1.0
+RegressionFix: Sorting integer columns didn't sort correctly.
+BugFix: Border Cruiser maneuverability and repair rate were the wrong way round.
+Enhancement: Added about text.
+
+v1.0.9
+BugFix: Made parser more resilient to unused whitespace.
+Enhancement: Made restrictions on weapon list comma seperated.
+
+v1.0.8
+Enhancement: Added power to ship list.
+Feature: Added weapon list.
+
+v1.0.7
+Bugfix: Some ships weren't shown on ship list.
+Enhancement: Added abilities to ship list.
+Enhancement: Added restrictions to ship list.
+
+v1.0.6
+BugFix: When showing routes, one way routes were twice as good as they should have been.
+BugFix: When showing routes, routes with return routes of Nothing were slightly worse than they should be.
+BugFix: Improved accuracy on generating best routes up to 3 or higher ports, before some possibly (but unlikely) to be good routes were missed.
+Enhancement: I have now been able to add Maneuverability and Equipment to ship list.
+
+v1.0.5
+RegressionFix: Galaxies were not added to galaxy select box when opening a sectors file.
+BugFix: Galaxies were not removed when closing a sectors file.
+
+v1.0.4
+Feature: Added sortable, filterable, ship list.
+Interface: Renamed to: "The Lazy Trader"
+Interface: Set first screen to be a list of buttons linking to other screens.
+
+v1.0.3
+Bugfix: When selecting galaxy the sectors filled in were not always correct.
+Enhancement: Vastly improved speed of route finding for routes with more than 2 ports, however the further past 3 ports you go the quicker it will slow down.
+Enhancement: Some general optimisations for repeat searches.
+
+v1.0.2
+Bugfix: Changing races/goods to generate still didn't always work correctly.
+Enhancement: Reduced amount of blank space when program is maximised.
+Enhancement: Messages displayed on starting generating routes, and when finishing.
+Feature: Ability to save routes directly to a file.
+
+v1.0.1
+Bugfix: Port races are now correctly displayed for routes.
+Bugfix: Changing races/goods to generate didn't always work correctly.
+Enhancement: If you try to generate routes without a sector file open it displays error then open file prompt.
+
+V1.0.0:
+Feature: You can generate routes for money or exp.

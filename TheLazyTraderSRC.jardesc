@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="TheLazyTrader/TheLazyTraderSRC.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/TheLazyTrader/TheLazyTraderSRC.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" mainClassHandleIdentifier="=TheLazyTrader/src&lt;{ExecuteGUI.java[ExecuteGUI" manifestLocation="/TheLazyTrader/TheLazyTraderSRC" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{BeanTool.java"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src"/>
+        <javaElement handleIdentifier="=Libs/src&lt;loci.visbio.util"/>
+        <javaElement handleIdentifier="=Libs/src&lt;components"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{ServiceFinder.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{MultiMap.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{Ini.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{Options.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{IniFormatter.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{BeanAccess.java"/>
+        <javaElement handleIdentifier="=Page/src&lt;page.utils.gui{JIntegerField.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{EscapeTool.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{IniPreferencesFactory.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{IniPreferences.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{Warnings.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;utils.swing"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j.spi{AbstractBeanInvocationHandler.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{OptionMap.java"/>
+        <javaElement handleIdentifier="=Libs/src&lt;org.ini4j{Config.java"/>
+    </selectedElements>
+</jardesc>

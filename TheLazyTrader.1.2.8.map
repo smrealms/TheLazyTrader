@@ -1,0 +1,756 @@
+ExecuteGUI -> ExecuteGUI:
+    void main(java.lang.String[]) -> main
+controller.RouteHandler -> af:
+    java.text.DecimalFormat df -> a
+    long numberOfRoutes -> a
+    model.Universe universe -> a
+    long startSector -> b
+    long endSector -> c
+    long maxDistance -> d
+    long maxNumberOfPorts -> e
+    long routesForPort -> f
+    java.util.Map races -> a
+    java.util.Map goods -> b
+    int typeOfRoute -> a
+    boolean doSave -> a
+    java.io.File saveFile -> a
+    boolean distancesChangedSinceLastRun -> b
+    boolean routesChangedSinceLastRun -> c
+    java.util.Map distances -> c
+    java.util.NavigableMap[] allRoutes -> a
+    java.lang.String doInBackground(controller.RouteSwingWorker) -> a
+    java.lang.String getTopRoutesString() -> a
+    void saveTopRoutes() -> a
+    void setEndSector(long) -> a
+    void setGoods(java.util.Map) -> a
+    void setMaxDistance(long) -> b
+    void setMaxNumberOfPorts(long) -> c
+    void setNumberOfRoutes(long) -> d
+    void setRaces(java.util.Map) -> b
+    void setTypeOfRoute(int) -> a
+    void setStartSector(long) -> e
+    void setUniverse(model.Universe) -> a
+    void setDoSave(boolean) -> a
+    void setSaveFile(java.io.File) -> a
+    void setRoutesForPort(long) -> f
+    void universeLocated() -> g
+    void universeLost() -> h
+controller.RouteSwingWorker -> X:
+    javax.swing.JTextArea routeDisplay -> a
+    controller.RouteHandler routeHandler -> a
+    javax.swing.JProgressBar progressBar -> a
+    void done() -> done
+    void publishProgress(java.lang.String) -> a
+    void process(java.util.List) -> process
+    java.lang.Object doInBackground() -> doInBackground
+controller.fileaccess.DatabaseIniParser -> ac:
+    org.ini4j.Ini mapFile -> a
+    void run() -> run
+    void parseRaces() -> a
+    void parseGoods() -> b
+    void parseShipEquipment() -> c
+    void parseShipAbilities() -> d
+    void parseShips() -> e
+    void parseWeapons() -> f
+    void parseLocations() -> g
+controller.fileaccess.DatabaseParser -> L:
+controller.fileaccess.SMRIniParser -> V:
+    org.ini4j.Ini mapFile -> a
+    model.Universe storedUni -> a
+    model.Universe getUniverse() -> a
+    java.util.Map getGalaxies() -> a
+    void run() -> run
+    void parseGalaxies() -> a
+    void parseSectors() -> b
+controller.fileaccess.UniverseParser -> v:
+    model.Universe getUniverse() -> a
+    java.util.Map getGalaxies() -> a
+controller.pathfinding.DiCalculator -> i:
+    boolean _allowInclude -> a
+    java.net.URL _base -> a
+    controller.pathfinding.DiCalculator _chain$77d0fb0b -> a
+    java.lang.String _commentChars -> a
+    java.nio.charset.Charset _fileEncoding -> a
+    org.ini4j.spi.HandlerBase _handler -> a
+    java.io.LineNumberReader _reader -> a
+    model.Sector[] generateAllDistanceIndexes(model.Sector[]) -> a
+    int findNearestGoodWithStatus(model.Sector[],int,int,int) -> a
+    int getLineNumber() -> a
+    java.lang.String readLine() -> a
+    void handleComment(java.lang.StringBuilder) -> a
+    java.lang.String handleInclude(java.lang.String) -> a
+controller.pathfinding.Pathfinding -> j:
+    int targetSector -> a
+    java.util.Map findDistanceToX$1fd13cc1(java.lang.Object,model.Sector[],int,long,long,long) -> a
+controller.pathfinding.RouteGenerator -> an:
+    java.util.concurrent.ExecutorService executor -> a
+    java.util.NavigableMap expRoutes -> a
+    java.util.NavigableMap moneyRoutes -> b
+    controller.RouteSwingWorker publishProgressTo -> a
+    double[] dontAddWorseThan -> a
+    int totalTasks -> a
+    int tasksCompleted -> b
+    java.util.NavigableMap[] generateMultiPortRoutes(long,model.Sector[],java.util.Map,java.util.Map,java.util.Map,long,long) -> a
+    java.util.NavigableMap[] findMultiPortRoutes(long,java.util.Map,long) -> a
+    void publishProgress() -> a
+    void startRoutesToContinue(long,int,java.util.ArrayList,java.util.Map) -> a
+    void getContinueRoutes(long,int,model.Route,java.util.ArrayList,java.util.Map,boolean) -> a
+    java.util.NavigableMap[] generateOneWayRoutes(model.Sector[],java.util.Map,java.util.Map,java.util.Map,long) -> a
+    void addExpRoute(model.Route) -> a
+    void addMoneyRoute(model.Route) -> b
+    void setPublishProgressTo(controller.RouteSwingWorker) -> a
+    void trimRoutes(long) -> a
+controller.pathfinding.RouteGenerator$1 -> d:
+    long val$maxNumPorts -> a
+    java.util.Map$Entry val$es -> a
+    java.util.Map val$routeLists -> a
+    java.lang.Object call() -> call
+controller.pathfinding.RouteGenerator$2 -> e:
+    long val$numberOfRoutes -> a
+    java.lang.Object call() -> call
+loci.visbio.util.BrowserLauncher -> g:
+    int jvm -> a
+    java.lang.Object theBrowser -> a
+    boolean loadedWithoutErrors -> a
+    java.lang.Class mrjFileUtilsClass -> a
+    java.lang.Class mrjOSTypeClass -> b
+    java.lang.Class aeDescClass -> c
+    java.lang.reflect.Constructor aeTargetConstructor -> a
+    java.lang.reflect.Constructor appleEventConstructor -> b
+    java.lang.reflect.Constructor aeDescConstructor -> c
+    java.lang.reflect.Method findFolder -> a
+    java.lang.reflect.Method getFileCreator -> b
+    java.lang.reflect.Method getFileType -> c
+    java.lang.reflect.Method openURL -> d
+    java.lang.reflect.Method makeOSType -> e
+    java.lang.reflect.Method putParameter -> f
+    java.lang.reflect.Method sendNoReply -> g
+    java.lang.Object kSystemFolderType -> b
+    java.lang.Integer keyDirectObject -> a
+    java.lang.Integer kAutoGenerateReturnID -> b
+    java.lang.Integer kAnyTransactionID -> c
+    java.lang.String errorMessage -> a
+    boolean loadClasses() -> a
+    java.lang.Object locateBrowser() -> a
+    void openURL(java.lang.String) -> a
+    int ICStart(int[],int) -> a
+    int ICStop(int[]) -> a
+    int ICLaunchURL(int,byte[],byte[],int,int[],int[]) -> a
+model.Distance -> O:
+    int distance -> a
+    int numWarps -> b
+    java.util.ArrayList path -> a
+    model.Distance clone() -> a
+    double getTurns() -> a
+    int getEndSectorId() -> a
+    void addToPath(int) -> a
+    void addWarpToPath(int) -> b
+    java.lang.Object clone() -> clone
+    int compareTo(java.lang.Object) -> compareTo
+model.Galaxy -> F:
+    int galaxyId -> a
+    int width -> b
+    int height -> c
+    int startSectorId -> d
+    int endSectorId -> e
+    java.lang.String name -> a
+    java.lang.String toString() -> toString
+model.Good -> H:
+    java.util.NavigableMap GOOD_NAMES -> a
+    java.util.NavigableMap GOOD_VALUES -> b
+    int state -> a
+    int goodId -> b
+    int distanceIndex -> c
+    void setDistanceIndex(int) -> a
+    int getState() -> a
+    int getDistanceIndex() -> b
+    java.lang.String getName(int) -> a
+    java.util.Map getNames() -> a
+    int getValue(int) -> a
+    void addGood(java.lang.Integer,java.lang.String,java.lang.Integer) -> a
+    int getId(java.lang.String) -> a
+    int getGoodId() -> c
+    boolean matchesState(int) -> a
+    java.lang.String toString() -> toString
+    void clearGoods() -> a
+model.HasRace -> ab:
+    int getRace() -> d
+model.ListTooBigException -> u:
+model.Location -> h:
+    java.util.NavigableMap locationSingletons -> a
+    java.util.NavigableMap locationSingletonsByType -> b
+    java.lang.String locationName -> a
+    java.lang.String type -> b
+    java.util.ArrayList ships -> a
+    java.util.ArrayList weapons -> b
+    java.util.ArrayList shipEquipment -> c
+    model.Location getLocation(java.lang.String) -> a
+    void putLocation(model.Location) -> a
+    java.util.NavigableMap getLocationByType(java.lang.String) -> a
+    java.util.NavigableMap getLocationsByType() -> a
+    void addShipEquipment(model.ship.ShipEquipment) -> a
+    void addShip(model.ship.Ship) -> a
+    void addWeapon(model.Weapon) -> a
+    boolean hasX(java.lang.Object) -> a
+    java.lang.String toString() -> toString
+    java.lang.String getType() -> a
+    void setType(java.lang.String) -> a
+    void clearLocations() -> a
+model.MultiplePortRoute -> t:
+    model.Route forwardRoute -> a
+    model.Route returnRoute -> b
+    model.Route getForwardRoute() -> a
+    model.Route getReturnRoute() -> b
+model.OneWayRoute -> ad:
+    int sellSectorId -> c
+    int buySectorId -> a
+    int sellDi -> d
+    int buyDi -> e
+    model.Distance distance -> a
+    int goodId -> b
+    int sellPortRace -> f
+    int buyPortRace -> g
+    double getOverallExpMultiplier() -> a
+    double getOverallMoneyMultiplier() -> b
+    double getMultiplierSum() -> c
+    double getTurnsForRoute() -> d
+    java.lang.String getRouteString() -> a
+    model.Route getForwardRoute() -> a
+    model.Route getReturnRoute() -> b
+    int compareTo(java.lang.Object) -> compareTo
+model.Port -> ag:
+    int portLevel -> a
+    int portRace -> b
+    java.util.Map goods -> a
+    void setGoodDistance(int,int) -> a
+    int getGoodStatus(int) -> a
+    int getGoodDistance(int) -> b
+model.Race -> N:
+    java.util.NavigableMap RACE_NAMES -> a
+    java.lang.String name -> a
+    int id -> a
+    java.lang.String getName(int) -> a
+    int getId(java.lang.String) -> a
+    void addRace(model.Race) -> a
+    java.util.NavigableMap getRaces() -> a
+    int getNumberOfRaces() -> a
+    int getId() -> b
+    java.lang.String toString() -> toString
+    void clearRaces() -> a
+model.Route -> ae:
+    double getOverallExpMultiplier() -> a
+    double getOverallMoneyMultiplier() -> b
+    double getTurnsForRoute() -> d
+    double getMultiplierSum() -> c
+    model.Route getForwardRoute() -> a
+    model.Route getReturnRoute() -> b
+    java.lang.String getRouteString() -> a
+model.Sector -> a:
+    int sectorId -> a
+    java.util.ArrayList connections -> a
+    java.util.ArrayList warps -> b
+    model.Port port -> a
+    java.util.ArrayList locations -> c
+    void addConnection$505cff1c(int) -> a
+    boolean hasPort() -> a
+    boolean hasLocation() -> b
+    boolean equals(java.lang.Object) -> equals
+    boolean hasX(java.lang.Object) -> a
+model.SectorList -> ai:
+    int size -> a
+    int MAX_SIZE -> b
+    model.Sector[] data -> a
+    void ensureCapacity(int) -> a
+    int size() -> size
+    boolean isEmpty() -> isEmpty
+    model.SectorList clone() -> a
+    boolean add(model.Sector) -> a
+    void clear() -> clear
+    void removeRange(int,int) -> removeRange
+    void checkBoundExclusive(int) -> b
+    java.lang.Object clone() -> clone
+    java.lang.Object get(int) -> get
+    java.lang.Object[] toArray() -> toArray
+    void add(int,java.lang.Object) -> add
+    boolean add(java.lang.Object) -> add
+    java.lang.Object set(int,java.lang.Object) -> set
+    java.lang.Object remove(int) -> remove
+model.Universe -> c:
+    java.util.Map galaxies -> a
+    model.Sector[] sectors -> a
+    model.Galaxy getGalaxy(int) -> a
+model.Weapon -> ax:
+    java.util.NavigableMap WEAPONS -> a
+    java.util.NavigableMap WEAPONS_BY_POWER -> b
+    java.lang.String name -> a
+    int race -> a
+    int cost -> b
+    int shieldDamage -> c
+    int armourDamage -> d
+    int accuracy -> e
+    int powerLevel -> f
+    int empDamage -> g
+    boolean isEmpInPercent -> a
+    java.util.ArrayList restrictions -> a
+    void addWeapon(model.Weapon) -> a
+    model.Weapon getWeapon(java.lang.String) -> a
+    java.util.NavigableMap getWeapons() -> a
+    java.util.NavigableMap getWeaponsByPower(int) -> a
+    java.util.NavigableMap getWeaponsByPower() -> b
+    int getArmourDamage() -> a
+    void setArmourDamage(int) -> a
+    int getCost() -> b
+    void setCost(int) -> b
+    int getEmpDamage() -> c
+    void setEmpDamage(int) -> c
+    boolean isEmpInPercent() -> a
+    void setEmpInPercent(boolean) -> a
+    java.lang.String getName() -> a
+    int getPowerLevel() -> e
+    void setPowerLevel(int) -> d
+    int getRace() -> d
+    void setRace(int) -> e
+    java.util.ArrayList getRestrictions() -> a
+    void addRestriction(model.ship.Restriction) -> a
+    int getShieldDamage() -> f
+    void setShieldDamage(int) -> f
+    int getAccuracy() -> g
+    void setAccuracy(int) -> g
+    java.lang.String toString() -> toString
+    void clearWeapons() -> a
+model.preferences.GeneralPreferences -> ar:
+    boolean askForMemory -> a
+    int memoryToAllocate -> a
+    boolean askForMemory() -> a
+    void setAskForMemory(boolean) -> a
+    int getMemoryToAllocate() -> a
+    void setMemoryToAllocate(int) -> a
+model.preferences.ParsingPreferences -> w:
+    java.lang.String SMRFileParserPath -> a
+    java.lang.String getSMRFileParserPath() -> a
+    void setSMRFileParserPath(java.lang.String) -> a
+model.preferences.PlayerPreferences -> M:
+    java.util.NavigableMap relations -> a
+    void setRelation(int,int) -> a
+    java.lang.Integer getRelationsForRace(int) -> a
+model.preferences.RoutePreferences -> aB:
+    boolean useRelationsFactor -> a
+    boolean useRelationsFactor() -> a
+model.ship.Restriction -> E:
+    java.lang.String name -> a
+    int compareTo(java.lang.Object) -> compareTo
+    java.lang.String toString() -> toString
+model.ship.Ship -> x:
+    java.util.NavigableMap SHIPS -> a
+    java.util.NavigableMap SHIPS_BY_RACE -> b
+    java.lang.String name -> a
+    int race -> a
+    int cost -> b
+    int turnRate -> c
+    int power -> d
+    int hardpoints -> e
+    java.util.Map equipment -> a
+    java.util.ArrayList abilities -> a
+    model.ship.Restriction restriction -> a
+    void addShip(model.ship.Ship) -> a
+    model.ship.Ship getShip(java.lang.String) -> a
+    java.util.NavigableMap getShips() -> a
+    java.util.NavigableMap getShipsByRace(java.lang.String) -> a
+    java.util.NavigableMap getShipsByRace() -> b
+    int getCost() -> a
+    void setCost(int) -> a
+    void setPower(int) -> b
+    int getPower() -> b
+    int getHardpoints() -> c
+    void setHardpoints(int) -> c
+    java.lang.String getName() -> a
+    int getRace() -> d
+    java.lang.String getRaceName() -> b
+    void setRace(int) -> d
+    int getTurnRate() -> e
+    void setTurnRate(int) -> e
+    void addEquipment(model.ship.ShipEquipment,int) -> a
+    java.util.Map getEquipments() -> a
+    void addAbility(model.ship.ShipAbility) -> a
+    model.ship.Restriction getRestriction() -> a
+    void setRestriction(model.ship.Restriction) -> a
+    java.lang.String toString() -> toString
+    void clearShips() -> a
+model.ship.ShipAbility -> aj:
+    java.lang.String name -> a
+    java.util.NavigableMap SHIP_ABILITIES -> a
+    void addShipAbility(model.ship.ShipAbility) -> a
+    model.ship.ShipAbility getShipAbility(java.lang.String) -> a
+model.ship.ShipEquipment -> l:
+    java.lang.String name -> a
+    java.util.NavigableMap SHIP_EQUIPMENTS -> a
+    void addShipEquipment(model.ship.ShipEquipment) -> a
+    model.ship.ShipEquipment getShipEquipment(java.lang.String) -> a
+    java.util.NavigableMap getShipEquipments() -> a
+    java.lang.String getName() -> a
+    java.lang.String toString() -> toString
+org.ini4j.BasicMultiMap -> q:
+    java.util.Map _impl -> a
+    java.util.List getAll(java.lang.Object) -> a
+    boolean isEmpty() -> isEmpty
+    void add(java.lang.Object,java.lang.Object) -> a
+    void clear() -> clear
+    boolean containsKey(java.lang.Object) -> containsKey
+    boolean containsValue(java.lang.Object) -> containsValue
+    java.util.Set entrySet() -> entrySet
+    java.lang.Object get(java.lang.Object) -> get
+    java.util.Set keySet() -> keySet
+    java.lang.Object put(java.lang.Object,java.lang.Object) -> put
+    void putAll(java.util.Map) -> putAll
+    java.lang.Object remove(java.lang.Object) -> remove
+    int size() -> size
+    java.lang.String toString() -> toString
+    java.util.Collection values() -> values
+    java.util.List getList(java.lang.Object,boolean) -> a
+org.ini4j.BasicMultiMap$ShadowEntry -> f:
+    java.lang.Object _key -> a
+    org.ini4j.BasicMultiMap this$0 -> a
+    java.lang.Object getKey() -> getKey
+    java.lang.Object getValue() -> getValue
+    java.lang.Object setValue(java.lang.Object) -> setValue
+org.ini4j.BasicOptionMap -> R:
+org.ini4j.BasicProfile -> p:
+    org.ini4j.MultiMap add$8d387e6(java.lang.String) -> a
+    boolean isTreeMode() -> a
+    char getPathSeparator() -> a
+org.ini4j.BasicProfileSection -> aa:
+    org.ini4j.BasicProfile _profile -> a
+org.ini4j.CommentedMap -> aC:
+    java.lang.String putComment(java.lang.Object,java.lang.String) -> a
+org.ini4j.CommonMultiMap -> K:
+    java.util.SortedMap _meta -> a
+    void clear() -> clear
+    void putAll(java.util.Map) -> putAll
+    java.lang.String putComment(java.lang.Object,java.lang.String) -> a
+    java.lang.Object remove(java.lang.Object) -> remove
+    java.lang.String makeKey(java.lang.String,java.lang.Object) -> a
+    java.util.Map meta() -> a
+org.ini4j.Config -> W:
+    java.lang.String DEFAULT_LINE_SEPARATOR -> a
+    java.nio.charset.Charset DEFAULT_FILE_ENCODING -> a
+    org.ini4j.Config GLOBAL -> a
+    boolean _emptyOption -> a
+    boolean _escape -> b
+    java.nio.charset.Charset _fileEncoding -> b
+    boolean _globalSection -> c
+    java.lang.String _globalSectionName -> b
+    boolean _include -> d
+    boolean _lowerCaseOption -> e
+    boolean _lowerCaseSection -> f
+    boolean _multiOption -> g
+    boolean _multiSection -> h
+    char _pathSeparator -> a
+    boolean _tree -> i
+    boolean _unnamedSection -> j
+    org.ini4j.Config getGlobal() -> a
+    java.lang.String getSystemProperty(java.lang.String,java.lang.String) -> a
+    boolean isEscape() -> a
+    boolean isInclude() -> b
+    boolean isTree() -> c
+    java.nio.charset.Charset getFileEncoding() -> a
+    java.lang.String getGlobalSectionName() -> a
+    boolean isEmptyOption() -> d
+    boolean isGlobalSection() -> e
+    boolean isLowerCaseOption() -> f
+    boolean isLowerCaseSection() -> g
+    boolean isMultiOption() -> h
+    boolean isMultiSection() -> i
+    boolean isUnnamedSection() -> j
+    char getPathSeparator() -> a
+    org.ini4j.Config clone() -> b
+    boolean getBoolean(java.lang.String,boolean) -> a
+    java.lang.String getString(java.lang.String,java.lang.String) -> b
+    java.lang.Object clone() -> clone
+org.ini4j.Ini -> z:
+    org.ini4j.Config _config -> a
+    boolean isTreeMode() -> a
+    char getPathSeparator() -> a
+org.ini4j.InvalidFileFormatException -> C:
+org.ini4j.MultiMap -> k:
+    java.util.List getAll(java.lang.Object) -> a
+    void add(java.lang.Object,java.lang.Object) -> a
+    org.ini4j.MultiMap add$8d387e6(java.lang.String) -> a
+org.ini4j.spi.AbstractParser -> P:
+    java.lang.String _comments -> a
+    org.ini4j.Config _config -> a
+    java.lang.String _operators -> b
+    void parseError(java.lang.String,int) -> a
+    void parseOptionLine(java.lang.String,org.ini4j.spi.HandlerBase,int) -> a
+    java.lang.String unescapeFilter(java.lang.String) -> a
+org.ini4j.spi.AbstractProfileBuilder -> Y:
+    org.ini4j.MultiMap _currentSection$2ca7077d -> a
+    boolean _header -> a
+    java.lang.String _lastComment -> a
+    void endSection() -> i
+    void handleComment(java.lang.String) -> a
+    void handleOption(java.lang.String,java.lang.String) -> a
+    void startIni() -> j
+    void startSection(java.lang.String) -> b
+    org.ini4j.Config getConfig() -> a
+    org.ini4j.MultiMap getProfile$34f14ddd() -> a
+org.ini4j.spi.EscapeTool -> aA:
+    java.lang.String unescape(java.lang.String) -> a
+    int unescapeBinary(java.lang.StringBuilder,char,java.lang.String,int) -> a
+org.ini4j.spi.HandlerBase -> T:
+    void handleComment(java.lang.String) -> a
+    void handleOption(java.lang.String,java.lang.String) -> a
+    void endSection() -> i
+    void startIni() -> j
+    void startSection(java.lang.String) -> b
+    void universeLocated() -> g
+    void universeLost() -> h
+org.ini4j.spi.IniBuilder -> am:
+    org.ini4j.Ini _ini -> a
+    org.ini4j.Config getConfig() -> a
+    org.ini4j.MultiMap getProfile$34f14ddd() -> a
+org.ini4j.spi.IniParser -> m:
+    void parse$292ac40b(java.io.Reader,org.ini4j.spi.HandlerBase) -> a
+org.ini4j.spi.ServiceFinder -> ah:
+    java.lang.Object findService(java.lang.Class) -> a
+    java.lang.Class findServiceClass(java.lang.Class) -> a
+    java.lang.String findServiceClassName(java.lang.String) -> a
+    java.lang.String loadLine(java.lang.String) -> b
+page.utils.gui.JIntegerField -> y:
+    long maxValue -> a
+    int maxLength -> a
+    javax.swing.text.Document createDefaultModel() -> createDefaultModel
+    boolean hasValue() -> a
+page.utils.gui.JIntegerField$IntegerDocument -> I:
+    page.utils.gui.JIntegerField this$0 -> a
+    void insertString(int,java.lang.String,javax.swing.text.AttributeSet) -> insertString
+settings.Settings -> D:
+    int NUMBER_OF_PROCESSORS -> a
+    int TURNS_WARP_SECTOR_EQUIVALENCE -> b
+utils.swing.CloseTabListener -> ak:
+    javax.swing.JTabbedPane tabbedPane -> a
+    javax.swing.JPopupMenu popup -> a
+    int tabIndex -> a
+    javax.swing.JMenuItem menuItem -> a
+    int checkTabIndex(java.awt.Point) -> a
+    void showPopup(java.awt.event.MouseEvent) -> a
+    void mouseClicked(java.awt.event.MouseEvent) -> mouseClicked
+    void mousePressed(java.awt.event.MouseEvent) -> mousePressed
+    void mouseReleased(java.awt.event.MouseEvent) -> mouseReleased
+    void mouseEntered(java.awt.event.MouseEvent) -> mouseEntered
+    void mouseExited(java.awt.event.MouseEvent) -> mouseExited
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+utils.swing.DnDTabbedPane -> G:
+    utils.swing.GhostGlassPane glassPane -> a
+    java.awt.geom.Rectangle2D lineRect -> a
+    java.awt.Color lineColor -> a
+    java.awt.dnd.DragSource dragSource -> a
+    int dragTabIndex -> a
+    boolean hasGhost -> a
+    void paintComponent(java.awt.Graphics) -> paintComponent
+    int access$0(utils.swing.DnDTabbedPane,java.awt.Point) -> a
+utils.swing.DnDTabbedPane$1 -> at:
+    utils.swing.DnDTabbedPane this$0 -> a
+    void dragEnter(java.awt.dnd.DragSourceDragEvent) -> dragEnter
+    void dragExit(java.awt.dnd.DragSourceEvent) -> dragExit
+    void dragOver(java.awt.dnd.DragSourceDragEvent) -> dragOver
+    void dragDropEnd(java.awt.dnd.DragSourceDropEvent) -> dragDropEnd
+    void dropActionChanged(java.awt.dnd.DragSourceDragEvent) -> dropActionChanged
+utils.swing.DnDTabbedPane$2 -> au:
+    java.awt.datatransfer.DataFlavor FLAVOR -> a
+    utils.swing.DnDTabbedPane this$0 -> a
+    java.lang.Object getTransferData(java.awt.datatransfer.DataFlavor) -> getTransferData
+    java.awt.datatransfer.DataFlavor[] getTransferDataFlavors() -> getTransferDataFlavors
+    boolean isDataFlavorSupported(java.awt.datatransfer.DataFlavor) -> isDataFlavorSupported
+utils.swing.DnDTabbedPane$3 -> aq:
+    utils.swing.DnDTabbedPane this$0 -> a
+    java.awt.datatransfer.Transferable val$t -> a
+    java.awt.dnd.DragSourceListener val$dsl -> a
+    void dragGestureRecognized(java.awt.dnd.DragGestureEvent) -> dragGestureRecognized
+utils.swing.DnDTabbedPane$CDropTargetListener -> A:
+    utils.swing.DnDTabbedPane this$0 -> a
+    void dragEnter(java.awt.dnd.DropTargetDragEvent) -> dragEnter
+    void dragExit(java.awt.dnd.DropTargetEvent) -> dragExit
+    void dropActionChanged(java.awt.dnd.DropTargetDragEvent) -> dropActionChanged
+    void dragOver(java.awt.dnd.DropTargetDragEvent) -> dragOver
+    void drop(java.awt.dnd.DropTargetDropEvent) -> drop
+utils.swing.GhostGlassPane -> Z:
+    java.awt.AlphaComposite composite -> a
+    java.awt.Point location -> a
+    java.awt.image.BufferedImage draggingGhost -> a
+    void paintComponent(java.awt.Graphics) -> paintComponent
+view.AboutFrame -> U:
+    javax.swing.JEditorPane jep -> a
+    javax.swing.JButton jbtnOk -> a
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void hyperlinkUpdate(javax.swing.event.HyperlinkEvent) -> hyperlinkUpdate
+view.FileLocate -> Q:
+    controller.fileaccess.UniverseParser universeParser -> a
+    java.util.ArrayList fileLocateListeners -> a
+    controller.fileaccess.UniverseParser getUniverseParser() -> a
+    boolean hasUniverseParser() -> a
+    boolean openUniverseFile(java.awt.Component) -> a
+    void closeUniverseFile() -> a
+    java.io.File askForSaveRoutesFile(java.awt.Component,java.io.File) -> a
+    void addFileLocateListener$34eb720(org.ini4j.spi.HandlerBase) -> a
+    void fireUniverseFound() -> b
+view.ListPanel -> ao:
+    javax.swing.JTable list -> a
+    view.MyTableRowSorter sorter -> a
+    view.MyTableModel rtm -> a
+    view.MyTableModel ltm -> b
+    void initListTableModel() -> a_
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> a
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void createLTM(int,int) -> a
+view.ListPanelWithRaces -> ay:
+    javax.swing.JTable selectRaces -> b
+    java.util.Map races -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> a
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    boolean checkForStandardTableChanged(javax.swing.event.TableModelEvent) -> a
+    void filterTableByRace() -> d
+view.MainContainer -> n:
+    utils.swing.DnDTabbedPane jtp -> a
+    view.MainPanel mp -> a
+    view.TradeRoutesPanel trc -> a
+    view.ShipListPanel slc -> a
+    view.WeaponListPanel wlc -> a
+    view.NearestXListPanel nxlc -> a
+    view.PlayerListPanel plp -> a
+    boolean checkForUniverseFile() -> a
+    void showShipList() -> a
+    void showWeaponList() -> b
+    void showNearestX() -> c
+    void showPlayer() -> d
+    void showRouteGenerator() -> e
+    void showMainMenu() -> f
+    void switchToTab(view.TheLazyTraderPanel) -> a
+    void stateChanged(javax.swing.event.ChangeEvent) -> stateChanged
+    void universeLocated() -> g
+    void universeLost() -> h
+view.MainPanel -> J:
+    javax.swing.JButton[] jbActionButtons -> a
+    void initActionsFileMenu() -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void itemStateChanged(java.awt.event.ItemEvent) -> itemStateChanged
+view.MyTableModel -> b:
+    java.lang.String[] columnNames -> a
+    java.lang.Object[][] data -> a
+    boolean editable -> a
+    java.text.DecimalFormat dfInt -> a
+    java.text.DecimalFormat dfReal -> b
+    int getColumnCount() -> getColumnCount
+    int getRowCount() -> getRowCount
+    java.lang.String getColumnName(int) -> getColumnName
+    java.lang.Object getValueAt(int,int) -> getValueAt
+    java.lang.Object getRealValueAt(int,int) -> a
+    void setValueAt(java.lang.Object,int,int) -> setValueAt
+    java.lang.Class getColumnClass(int) -> getColumnClass
+    java.lang.Class getRealColumnClass(int) -> a
+    boolean isCellEditable(int,int) -> isCellEditable
+view.MyTableRowSorter -> av:
+    java.util.Comparator COMPARABLE_COMPARATOR -> a
+    view.MyTableModel tableModel -> a
+    java.util.Comparator getComparator(int) -> getComparator
+    java.lang.Class getColumnClass(int) -> a
+    boolean useToString(int) -> useToString
+view.MyTableRowSorter$ComparableComparator -> az:
+    int compare(java.lang.Object,java.lang.Object) -> compare
+view.MyTableRowSorter$TableRowSorterModelWrapper -> as:
+    view.MyTableRowSorter this$0 -> a
+    int getColumnCount() -> getColumnCount
+    int getRowCount() -> getRowCount
+    java.lang.Object getValueAt(int,int) -> getValueAt
+    java.lang.String getStringValueAt(int,int) -> getStringValueAt
+    java.lang.Object getIdentifier(int) -> getIdentifier
+    java.lang.Object getModel() -> getModel
+view.NearestXListPanel -> aw:
+    javax.swing.JTree itemsTree -> a
+    page.utils.gui.JIntegerField sectorBox -> a
+    page.utils.gui.JIntegerField plotToBox -> b
+    view.swing.tree.FilterableTreeNode root -> a
+    view.swing.tree.FilteredTreeModel treeModel -> a
+    javax.swing.JTextArea routeDisplay -> a
+    model.Distance[] storedDistances -> a
+    java.lang.Object lastSearchedObject -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initListTableModel() -> a_
+    void valueChanged(javax.swing.event.TreeSelectionEvent) -> valueChanged
+    void doPlotNearest(java.lang.Object) -> a
+    void createLTM(int) -> a
+    void filterTableByRace() -> d
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    void mouseClicked(java.awt.event.MouseEvent) -> mouseClicked
+    void mouseEntered(java.awt.event.MouseEvent) -> mouseEntered
+    void mouseExited(java.awt.event.MouseEvent) -> mouseExited
+    void mousePressed(java.awt.event.MouseEvent) -> mousePressed
+    void mouseReleased(java.awt.event.MouseEvent) -> mouseReleased
+    void keyPressed(java.awt.event.KeyEvent) -> keyPressed
+    void keyReleased(java.awt.event.KeyEvent) -> keyReleased
+    void keyTyped(java.awt.event.KeyEvent) -> keyTyped
+view.PlayerListPanel -> S:
+    void initListTableModel() -> a_
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+view.ShipListPanel -> s:
+    void initListTableModel() -> a_
+view.TheLazyTraderPanel -> al:
+    javax.swing.JMenuBar jmb -> a
+    javax.swing.JMenu[] fileMenu -> a
+    javax.swing.JMenuItem[] jmiFileOptions -> a
+    javax.swing.JMenuItem[] jmiActionOptions -> b
+    javax.swing.JMenuItem[] jmiViewOptions -> c
+    javax.swing.JMenuItem[] jmiHelpOptions -> d
+    view.AboutFrame aboutFrame -> a
+    java.lang.String title -> a
+    view.MainContainer parent -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    javax.swing.JPanel createLabelJComponentPair(java.lang.String,javax.swing.JComponent) -> a
+    void initActionsFileMenu() -> a
+    void createStandardMenuBar() -> d
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    boolean standardActionChecks(java.awt.event.ActionEvent) -> a
+    boolean checkQuit() -> a
+    boolean checkSectorsFileOpened() -> b
+    java.lang.String getTitle() -> a
+view.TradeRoutesPanel -> ap:
+    javax.swing.JTextArea jta -> a
+    javax.swing.JTable selectGoods -> a
+    javax.swing.JTable selectRaces -> b
+    java.util.Map races -> a
+    java.util.Map goods -> b
+    page.utils.gui.JIntegerField selectStart -> a
+    page.utils.gui.JIntegerField selectEnd -> b
+    page.utils.gui.JIntegerField selectMaxDistance -> c
+    page.utils.gui.JIntegerField selectNumberPorts -> d
+    page.utils.gui.JIntegerField selectNumberOfRoutes -> e
+    page.utils.gui.JIntegerField routesForPort -> f
+    javax.swing.JComboBox selectGalaxy -> a
+    java.io.File saveRoutesFile -> a
+    controller.RouteHandler routeHandler -> a
+    controller.RouteSwingWorker rsw -> a
+    javax.swing.JProgressBar progressBar -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> a
+    boolean askForSaveRoutesFile() -> c
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void doRouteGeneration() -> d
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    void itemStateChanged(java.awt.event.ItemEvent) -> itemStateChanged
+view.WeaponListPanel -> o:
+    void initListTableModel() -> a_
+view.swing.tree.FilterableTreeNode -> B:
+    java.util.Map races -> a
+    void setRaceFilter(java.util.Map) -> a
+    boolean filterAllows() -> a
+view.swing.tree.FilteredTreeModel -> r:
+    java.lang.Object getChild(java.lang.Object,int) -> getChild
+    int getChildCount(java.lang.Object) -> getChildCount

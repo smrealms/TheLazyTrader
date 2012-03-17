@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="TheLazyTrader/TheLazyTrader-PREOBFUS.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/TheLazyTrader/TheLazyTrader.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" mainClassHandleIdentifier="=TheLazyTrader/src&lt;{ExecuteGUI.java[ExecuteGUI" manifestLocation="/TheLazyTrader/TheLazyTrader" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+        <sealing sealJar="true">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Libs/src"/>
+        <file path="/TheLazyTrader/src/changelog.txt"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;controller{RouteHandler.java"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;model.ship"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;controller.fileaccess"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;model"/>
+        <file path="/TheLazyTrader/src/readme.txt"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;controller{RouteSwingWorker.java"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;settings"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;controller.pathfinding"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;view"/>
+        <javaElement handleIdentifier="=Page/src&lt;page.utils.gui{JIntegerField.java"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;model.preferences"/>
+        <javaElement handleIdentifier="=TheLazyTrader/src&lt;view.swing.tree"/>
+    </selectedElements>
+</jardesc>
