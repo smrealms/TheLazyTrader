@@ -199,7 +199,7 @@ public class RouteGenerator
 					addExpRoute(mpr);
 					addMoneyRoute(mpr);
 				}
-				else if (maxNumPorts > 1)
+				else if (maxNumPorts > 1 && !routeToContinue.containsPort(currentStepBuySector))
 				{
 					MultiplePortRoute mpr = new MultiplePortRoute(routeToContinue, currentStepRoute);
 					getContinueRoutes(maxNumPorts - 1, startSectorId, mpr, routeLists.get(currentStepBuySector), routeLists, lastGoodIsNothing);

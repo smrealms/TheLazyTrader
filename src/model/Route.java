@@ -21,6 +21,12 @@ public abstract class Route
 	{
 		return this.getForwardRoute().getMultiplierSum() + this.getReturnRoute().getMultiplierSum();
 	}
+	
+	public boolean containsPort(int sectorID)
+	{
+		Route route = this.getReturnRoute();
+		return (route != null && route.containsPort(sectorID)) || ((route = this.getForwardRoute()) != null && route.containsPort(sectorID));
+	}
 
 	public abstract Route getForwardRoute();
 

@@ -1,3 +1,7 @@
+v1.2.9
+Enhancement: Do not allow multi port routes of >3 ports to loop back on themselves.
+Enhancement: Have less repeat calculations for progress bar.
+
 v1.2.8
 BugFix: Exp multipliers were off for routes with lots of ports.
 BugFix: Hardpoints were not displayed properly on ship list.

@@ -118,9 +118,7 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute>
 		double sellRelFactor = 1;
 		if (RoutePreferences.useRelationsFactor())
 		{
-			int relations = PlayerPreferences.getRelationsForRace(this.buyPortRace);
-			if (relations > Settings.MAX_MONEY_RELATIONS)
-				relations = Settings.MAX_MONEY_RELATIONS;
+			int relations = Math.min(PlayerPreferences.getRelationsForRace(this.buyPortRace), Settings.MAX_MONEY_RELATIONS);
 			buyRelFactor = (relations + 350) / 8415.0;
 
 			sellRelFactor = 2 - (PlayerPreferences.getRelationsForRace(this.sellPortRace) + 50) / 850.0 * ((relations + 350)/1500);
@@ -160,6 +158,12 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute>
 		if (this.getOverallExpMultiplier() > compare.getOverallExpMultiplier())
 			return 1;
 		return -1;
+	}
+	
+	@Override
+	public boolean containsPort(int sectorID)
+	{
+		return this.sellSectorId == sectorID || this.buySectorId == sectorID;
 	}
 
 	@Override

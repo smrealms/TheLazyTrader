@@ -7,12 +7,14 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import controller.pathfinding.RouteGenerator;
+import java.util.Date;
 
 public class RouteSwingWorker extends SwingWorker<String, String>
 {
 	private JTextArea routeDisplay;
 	private RouteHandler routeHandler;
 	private JProgressBar progressBar;
+	private Date startDate;
 
 	public RouteSwingWorker(JTextArea _routeDisplay, RouteHandler _routeHandler, JProgressBar _progressBar)
 	{
@@ -25,6 +27,7 @@ public class RouteSwingWorker extends SwingWorker<String, String>
 	protected String doInBackground() throws Exception
 	{
 		RouteGenerator.setPublishProgressTo(this);
+		this.startDate = new Date();
 		return routeHandler.doInBackground(this);
 	}
 
@@ -34,7 +37,10 @@ public class RouteSwingWorker extends SwingWorker<String, String>
 		try
 		{
 			if (!this.isCancelled())
-				this.routeDisplay.setText(this.get());
+			{
+				long timeDiff = new Date().getTime() - startDate.getTime();
+				this.routeDisplay.setText(this.get() + "\n\nTook: " + timeDiff + "ms");
+			}
 		}
 		catch (Exception e)
 		{
@@ -58,6 +64,8 @@ public class RouteSwingWorker extends SwingWorker<String, String>
 
 	public void publishProgressToBar(int done, int todo)
 	{
-		this.progressBar.setValue((int) (100 * (todo * todo - (todo - done) * (todo - done)) / (double) (todo * todo)));
+		int todoSq = todo * todo;
+		int remaining = todo - done;
+		this.progressBar.setValue((int) (100 * (todoSq - remaining * remaining) / (double) (todoSq)));
 	}
 }
