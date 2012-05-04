@@ -1,6 +1,7 @@
 v1.2.9
 Enhancement: Do not allow multi port routes of >3 ports to loop back on themselves.
 Enhancement: Have less repeat calculations for progress bar.
+BugFix: Fix money multipliers not taking into account the turns required to move between ports.
 
 v1.2.8
 BugFix: Exp multipliers were off for routes with lots of ports.
@@ -17,7 +18,7 @@ Enhancement: It now automatically replots when you change the sector to plot fro
 Enhancement: When choosing a new smr file all the panels will be reloaded with the new information.
 Enhancement: You can now generate routes for a specific port.
 Enhancement: More accurate money formula.
-Enhancement: Now asks for a smr file on startup and when trying to access one of the options (if there isn't already one selected) as none of the options will work properly without an smr file. 
+Enhancement: Now asks for a smr file on startup and when trying to access one of the options (if there isn't already one selected) as none of the options will work properly without an smr file.
 
 v1.2.6
 BugFix: It was possible for plotting to skip a warp when plotting from a sector that would reach a warp near the end of checking the galaxy.

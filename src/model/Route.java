@@ -9,7 +9,7 @@ public abstract class Route
 
 	public double getOverallMoneyMultiplier()
 	{
-		return (this.getForwardRoute().getOverallMoneyMultiplier() + this.getReturnRoute().getOverallMoneyMultiplier()) / 2;
+		return (this.getForwardRoute().getOverallMoneyMultiplier() + this.getReturnRoute().getOverallMoneyMultiplier()) / this.getTurnsForRoute();
 	}
 
 	public double getTurnsForRoute()
@@ -21,7 +21,7 @@ public abstract class Route
 	{
 		return this.getForwardRoute().getMultiplierSum() + this.getReturnRoute().getMultiplierSum();
 	}
-	
+
 	public boolean containsPort(int sectorID)
 	{
 		Route route = this.getReturnRoute();
