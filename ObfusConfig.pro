@@ -1,9 +1,9 @@
 -injars TheLazyTrader.1.2.9-PREOBFUS.jar
 -outjars TheLazyTrader.1.2.9.jar
 
--libraryjars 'D:\Program Files (x64)\Java\jre7\lib\rt.jar'
+-libraryjars 'C:\Program Files\Java\jre7\lib\rt.jar'
 
--target 1.7
+# -target 1.7
 -optimizationpasses 99
 -allowaccessmodification
 -mergeinterfacesaggressively
