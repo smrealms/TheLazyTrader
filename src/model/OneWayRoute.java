@@ -4,8 +4,7 @@ import model.preferences.PlayerPreferences;
 import model.preferences.RoutePreferences;
 import settings.Settings;
 
-public class OneWayRoute extends Route implements Comparable<OneWayRoute>
-{
+public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 	private int sellSectorId, buySectorId;
 	private int sellDi, buyDi;
 	private Distance distance;
@@ -13,8 +12,7 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute>
 	private int sellPortRace;
 	private int buyPortRace;
 
-	public OneWayRoute(int _sellSectorId, int _buySectorId, int _sellPortRace, int _buyPortRace, int _sellDi, int _buyDi, Distance _distance, int _goodId)
-	{
+	public OneWayRoute(int _sellSectorId, int _buySectorId, int _sellPortRace, int _buyPortRace, int _sellDi, int _buyDi, Distance _distance, int _goodId) {
 		this.sellSectorId = _sellSectorId;
 		this.buySectorId = _buySectorId;
 		this.sellDi = _sellDi;
@@ -25,99 +23,76 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute>
 		this.buyPortRace = _buyPortRace;
 	}
 
-	public void setSellSectorId(int value)
-	{
+	public void setSellSectorId(int value) {
 		this.sellSectorId = value;
 	}
 
-	public void setBuySectorId(int value)
-	{
+	public void setBuySectorId(int value) {
 		this.buySectorId = value;
 	}
 
-	public void setSellPortRace(int value)
-	{
+	public void setSellPortRace(int value) {
 		this.sellPortRace = value;
 	}
 
-	public void setBuyPortRace(int value)
-	{
+	public void setBuyPortRace(int value) {
 		this.buyPortRace = value;
 	}
 
-	public void setSellDi(int value)
-	{
+	public void setSellDi(int value) {
 		this.sellDi = value;
 	}
 
-	public void setBuyDi(int value)
-	{
+	public void setBuyDi(int value) {
 		this.buyDi = value;
 	}
 
-	public void setDistance(Distance value)
-	{
+	public void setDistance(Distance value) {
 		this.distance = value;
 	}
 
-	public void setGoodId(int value)
-	{
+	public void setGoodId(int value) {
 		this.goodId = value;
 	}
 
-	public int getSellSectorId()
-	{
+	public int getSellSectorId() {
 		return this.sellSectorId;
 	}
 
-	public int getBuySectorId()
-	{
+	public int getBuySectorId() {
 		return this.buySectorId;
 	}
 
-	public int getSellPortRace()
-	{
+	public int getSellPortRace() {
 		return this.sellPortRace;
 	}
 
-	public int getBuyPortRace()
-	{
+	public int getBuyPortRace() {
 		return this.buyPortRace;
 	}
 
-	public int getSellDi()
-	{
+	public int getSellDi() {
 		return this.sellDi;
 	}
 
-	public int getBuyDi()
-	{
+	public int getBuyDi() {
 		return this.buyDi;
 	}
 
-	public Distance getDistance()
-	{
+	public Distance getDistance() {
 		return this.distance;
 	}
 
-	public int getGoodId()
-	{
+	public int getGoodId() {
 		return this.goodId;
 	}
 
 	@Override
-	public double getOverallExpMultiplier()
-	{
-		return (this.buyDi + this.sellDi) / getTurnsForRoute();
-	}
-
-	@Override
-	public double getOverallMoneyMultiplier()
-	{// TODO sellDi stuff and check accuracy of formula
+	public double getMoneyMultiplierSum() {
+		// TODO sellDi stuff and check accuracy of formula
 		double buyRelFactor = 1;
 		double sellRelFactor = 1;
-		if (RoutePreferences.useRelationsFactor())
-		{
+		if (RoutePreferences.useRelationsFactor()) {
 			int relations = Math.min(PlayerPreferences.getRelationsForRace(this.buyPortRace), Settings.MAX_MONEY_RELATIONS);
 			buyRelFactor = (relations + 350) / 8415.0;
 
@@ -134,14 +109,12 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute>
 	}
 
 	@Override
-	public double getMultiplierSum()
-	{
+	public double getExpMultiplierSum() {
 		return this.buyDi + this.sellDi;
 	}
 
 	@Override
-	public double getTurnsForRoute()
-	{
+	public double getTurnsForRoute() {
 		double tradeTurns;
 		if (this.goodId == Good.NOTHING)
 			tradeTurns = 0;

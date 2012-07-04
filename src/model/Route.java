@@ -1,29 +1,27 @@
 package model;
 
-public abstract class Route
-{
-	public double getOverallExpMultiplier()
-	{
-		return (this.getForwardRoute().getMultiplierSum() + this.getReturnRoute().getMultiplierSum()) / this.getTurnsForRoute();
+public abstract class Route {
+	public double getOverallExpMultiplier() {
+		return this.getExpMultiplierSum() / this.getTurnsForRoute();
 	}
 
-	public double getOverallMoneyMultiplier()
-	{
-		return (this.getForwardRoute().getOverallMoneyMultiplier() + this.getReturnRoute().getOverallMoneyMultiplier()) / this.getTurnsForRoute();
+	public double getOverallMoneyMultiplier() {
+		return this.getForwardRoute().getMoneyMultiplierSum() / this.getTurnsForRoute();
 	}
 
-	public double getTurnsForRoute()
-	{
+	public double getTurnsForRoute() {
 		return this.getForwardRoute().getTurnsForRoute() + this.getReturnRoute().getTurnsForRoute();
 	}
 
-	public double getMultiplierSum()
-	{
-		return this.getForwardRoute().getMultiplierSum() + this.getReturnRoute().getMultiplierSum();
+	public double getExpMultiplierSum() {
+		return this.getForwardRoute().getExpMultiplierSum() + this.getReturnRoute().getExpMultiplierSum();
 	}
 
-	public boolean containsPort(int sectorID)
-	{
+	public double getMoneyMultiplierSum() {
+		return this.getForwardRoute().getMoneyMultiplierSum() + this.getReturnRoute().getMoneyMultiplierSum();
+	}
+
+	public boolean containsPort(int sectorID) {
 		Route route = this.getReturnRoute();
 		return (route != null && route.containsPort(sectorID)) || ((route = this.getForwardRoute()) != null && route.containsPort(sectorID));
 	}
@@ -32,8 +30,7 @@ public abstract class Route
 
 	public abstract Route getReturnRoute();
 
-	public String getRouteString()
-	{
+	public String getRouteString() {
 		return this.getForwardRoute().getRouteString() + "\r\n" + this.getReturnRoute().getRouteString();
 	}
 }
