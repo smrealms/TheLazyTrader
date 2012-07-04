@@ -19,6 +19,7 @@ import controller.pathfinding.RouteGenerator;
 
 import model.Distance;
 import model.Route;
+import model.Route.DisplayType;
 import model.Universe;
 
 public class RouteHandler implements FileLocateListener
@@ -32,7 +33,7 @@ public class RouteHandler implements FileLocateListener
 	private long maxDistance;
 	private long maxNumberOfPorts;
 	private long routesForPort;
-	private long lastGenRoutesForPort;
+	private Route.DisplayType displayType;
 	private Map<Integer, Boolean> races;
 	private Map<Integer, Boolean> goods;
 	private int typeOfRoute;
@@ -45,7 +46,7 @@ public class RouteHandler implements FileLocateListener
 	private NavigableMap<Double, ArrayList<Route>>[] allRoutes;
 
 
-	public RouteHandler(int _typeOfRoute, long _numberOfRoutes, long _startSector, long _endSector, long _maxDistance, long _maxNumberOfPorts, long _routesForPort, Map<Integer, Boolean> _races, Map<Integer, Boolean> _goods)
+	public RouteHandler(int _typeOfRoute, long _numberOfRoutes, long _startSector, long _endSector, long _maxDistance, long _maxNumberOfPorts, long _routesForPort, Route.DisplayType _displayType, Map<Integer, Boolean> _races, Map<Integer, Boolean> _goods)
 	{
 		this.typeOfRoute = _typeOfRoute;
 		this.numberOfRoutes = _numberOfRoutes;
@@ -54,6 +55,7 @@ public class RouteHandler implements FileLocateListener
 		this.maxDistance = _maxDistance;
 		this.maxNumberOfPorts = _maxNumberOfPorts;
 		this.routesForPort = _routesForPort;
+		this.displayType = _displayType;
 
 		this.races = new HashMap<Integer, Boolean>(_races.size());
 		Iterator<Integer> iter = _races.keySet().iterator();
@@ -144,7 +146,7 @@ public class RouteHandler implements FileLocateListener
 			for (int rlIndex = 0; rlIndex < rl.size() && routesSavedForDisplay < this.numberOfRoutes; rlIndex++)
 			{
 				Route r = rl.get(rlIndex);
-				retRoutes += "Exp: " + df.format(r.getOverallExpMultiplier()) + "\tMoney: $" + df.format(r.getOverallMoneyMultiplier()) + "\r\nRoute: " + r.getRouteString() + "\r\n\r\n";
+				retRoutes += "Exp: " + df.format(r.getOverallExpMultiplier()) + "\tMoney: $" + df.format(r.getOverallMoneyMultiplier()) + "\r\nRoute: " + r.getRouteString(this.displayType) + "\r\n\r\n";
 				routesSavedForDisplay++;
 			}
 		}
@@ -165,7 +167,7 @@ public class RouteHandler implements FileLocateListener
 			for (int rlIndex = 0; rlIndex < rl.size() && routesSavedForDisplay < this.numberOfRoutes; rlIndex++)
 			{
 				Route r = rl.get(rlIndex);
-				writeFile.write("Exp: " + df.format(r.getOverallExpMultiplier()) + "\tMoney: $" + df.format(r.getOverallMoneyMultiplier()) + "\r\nRoute: " + r.getRouteString() + "\r\n\r\n");
+				writeFile.write("Exp: " + df.format(r.getOverallExpMultiplier()) + "\tMoney: $" + df.format(r.getOverallMoneyMultiplier()) + "\r\nRoute: " + r.getRouteString(this.displayType) + "\r\n\r\n");
 				routesSavedForDisplay++;
 			}
 			writeFile.flush();
@@ -283,6 +285,10 @@ public class RouteHandler implements FileLocateListener
 	public void setNumberOfRoutes(long _numberOfRoutes)
 	{
 		this.numberOfRoutes = _numberOfRoutes;
+	}
+
+	public void setDisplayType(DisplayType _displayType) {
+		this.displayType = _displayType;
 	}
 
 	/**

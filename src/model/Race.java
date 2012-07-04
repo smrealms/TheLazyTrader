@@ -29,12 +29,15 @@ public class Race
 	// "Salvene",
 	// "Thevian",
 	// "WQ Human"};
-	public static String getName(int raceId)
-	{
+	public static String getName(int raceId) {
 		Race r = RACE_NAMES.get(raceId);
 		if(r==null)
 			return "";
 		return r.getName();
+	}
+
+	public static String getBBCode(int raceId) {
+		return "[race=" + raceId + "]";
 	}
 
 	public static int getId(String raceName)

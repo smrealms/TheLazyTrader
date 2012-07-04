@@ -29,6 +29,7 @@ import model.Race;
 import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
+import model.Route;
 
 public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListener, TableModelListener, ItemListener
 {
@@ -40,7 +41,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 	protected Map<Integer, Boolean> goods;
 	protected JIntegerField selectStart, selectEnd, selectMaxDistance,
 			selectNumberPorts, selectNumberOfRoutes, routesForPort;
-	protected JComboBox selectGalaxy;
+	protected JComboBox selectGalaxy, selectDisplayType;
 	protected File saveRoutesFile;
 
 	private RouteHandler routeHandler;
@@ -64,6 +65,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 			selectGalaxy = new JComboBox(FileLocate.getUniverseParser().getGalaxies().values().toArray(new Galaxy[1]));
 		else
 			selectGalaxy = new JComboBox();
+		selectDisplayType = new JComboBox(Route.DisplayType.values());
 		selectStart = new JIntegerField(0);
 		selectEnd = new JIntegerField(7000);
 		selectMaxDistance = new JIntegerField(100);
@@ -112,8 +114,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 		this.jta.setEditable(false);
 		selectGalaxy.addItemListener(this);
-
-		routeHandler = new RouteHandler(RouteGenerator.EXP_ROUTE, this.selectNumberOfRoutes.getValue(), this.selectStart.getValue(), this.selectEnd.getValue(), this.selectMaxDistance.getValue(), this.selectNumberPorts.getValue(), -1, this.races, this.goods);
+		routeHandler = new RouteHandler(RouteGenerator.EXP_ROUTE, this.selectNumberOfRoutes.getValue(), this.selectStart.getValue(), this.selectEnd.getValue(), this.selectMaxDistance.getValue(), this.selectNumberPorts.getValue(), -1, (Route.DisplayType) this.selectDisplayType.getSelectedItem(), this.races, this.goods);
 	}
 
 	protected void addComponents()
@@ -162,6 +163,8 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 			// Last Column
 			jpOuter.add(createLabelJComponentPair("Routes for port: ", routesForPort));
+
+			jpOuter.add(createLabelJComponentPair("Select Display Type: ", selectDisplayType));
 
 			// After Last
 			jsp = new JScrollPane(jpOuter);
@@ -278,6 +281,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		routeHandler.setMaxNumberOfPorts(this.selectNumberPorts.getValue());
 		routeHandler.setRaces(this.races);
 		routeHandler.setGoods(this.goods);
+		routeHandler.setDisplayType((Route.DisplayType) this.selectDisplayType.getSelectedItem());
 		if (this.rsw != null)
 			this.rsw.cancel(true);
 		this.rsw = new RouteSwingWorker(this.jta, this.routeHandler, this.progressBar);

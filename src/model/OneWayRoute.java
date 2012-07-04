@@ -152,8 +152,14 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 	}
 
 	@Override
-	public String getRouteString()
-	{
-		return this.sellSectorId + " (" + Race.getName(this.sellPortRace) + ") buy " + Good.getName(this.goodId) + " at " + this.sellDi + "x to sell at (Distance: " + this.distance.getDistance() + (this.distance.getNumWarps() > 0 ? " + " + this.distance.getNumWarps() + " warps) " : ") ") + this.buySectorId + " (" + Race.getName(this.buyPortRace) + ") at " + this.buyDi + "x";
+	public String getRouteString(DisplayType displayType) {
+		switch(displayType) {
+			case TheLazyTradeBBCode:
+				return this.sellSectorId + " (" + Race.getBBCode(this.sellPortRace) + ") buy " + Good.getName(this.goodId) + " at " + this.sellDi + "x to sell at (Distance: " + this.distance.getDistance() + (this.distance.getNumWarps() > 0 ? " + " + this.distance.getNumWarps() + " warps) " : ") ") + this.buySectorId + " (" + Race.getBBCode(this.buyPortRace) + ") at " + this.buyDi + "x";
+			case TheLazyTrader:
+			default:
+				return this.sellSectorId + " (" + Race.getName(this.sellPortRace) + ") buy " + Good.getName(this.goodId) + " at " + this.sellDi + "x to sell at (Distance: " + this.distance.getDistance() + (this.distance.getNumWarps() > 0 ? " + " + this.distance.getNumWarps() + " warps) " : ") ") + this.buySectorId + " (" + Race.getName(this.buyPortRace) + ") at " + this.buyDi + "x";
+
+		}
 	}
 }

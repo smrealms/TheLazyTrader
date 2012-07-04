@@ -1,6 +1,11 @@
 package model;
 
 public abstract class Route {
+	public static enum DisplayType {
+		TheLazyTrader,
+		TheLazyTradeBBCode
+	};
+
 	public double getOverallExpMultiplier() {
 		return this.getExpMultiplierSum() / this.getTurnsForRoute();
 	}
@@ -30,7 +35,7 @@ public abstract class Route {
 
 	public abstract Route getReturnRoute();
 
-	public String getRouteString() {
-		return this.getForwardRoute().getRouteString() + "\r\n" + this.getReturnRoute().getRouteString();
+	public String getRouteString(DisplayType displayType) {
+		return this.getForwardRoute().getRouteString(displayType) + "\r\n" + this.getReturnRoute().getRouteString(displayType);
 	}
 }
