@@ -1,3 +1,7 @@
+v1.3.0
+BugFix: Fix money result for 3+ port routes.
+Change: Change default max distance to 100.
+
 v1.2.9
 Enhancement: Do not allow multi port routes of >3 ports to loop back on themselves.
 Enhancement: Have less repeat calculations for progress bar.
