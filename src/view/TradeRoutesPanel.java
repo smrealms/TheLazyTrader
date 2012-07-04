@@ -66,7 +66,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 			selectGalaxy = new JComboBox();
 		selectStart = new JIntegerField(0);
 		selectEnd = new JIntegerField(7000);
-		selectMaxDistance = new JIntegerField(30);
+		selectMaxDistance = new JIntegerField(100);
 		selectNumberPorts = new JIntegerField(2);
 		selectNumberOfRoutes = new JIntegerField(20);
 		routesForPort = new JIntegerField();
