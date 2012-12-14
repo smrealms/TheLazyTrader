@@ -29,6 +29,7 @@ import model.Race;
 import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
+import java.util.ArrayList;
 import model.Route;
 
 public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListener, TableModelListener, ItemListener
@@ -61,8 +62,11 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		races = new HashMap<Integer, Boolean>((int)(Race.getNumberOfRaces()*1.5));
 		goods = new HashMap<Integer, Boolean>();
 		jta = new JTextArea();
-		if (FileLocate.getUniverseParser() != null)
-			selectGalaxy = new JComboBox(FileLocate.getUniverseParser().getGalaxies().values().toArray(new Galaxy[1]));
+		if (FileLocate.getUniverseParser() != null) {
+			ArrayList galaxies = new ArrayList(FileLocate.getUniverseParser().getGalaxies().values());
+			galaxies.add(0, "Entire Universe");
+			selectGalaxy = new JComboBox(galaxies.toArray());
+		}
 		else
 			selectGalaxy = new JComboBox();
 		selectDisplayType = new JComboBox(Route.DisplayType.values());
@@ -297,11 +301,17 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 			this.races.put(Race.getId(this.selectRaces.getColumnName(e.getColumn())), (Boolean) this.selectRaces.getValueAt(e.getFirstRow(), e.getColumn()));
 	}
 
-	public void itemStateChanged(ItemEvent e)
-	{
-		if (e.getItem().getClass().equals(Galaxy.class))
-		{
-			Galaxy g = (Galaxy) e.getItem();
+	public void itemStateChanged(ItemEvent e) {
+		Object item = e.getItem();
+		if (item instanceof String) {
+			String s = (String) item;
+			if(s.equals("Entire Universe")) {
+				this.selectStart.setText("0");
+				this.selectEnd.setText("7000");
+			}
+		}
+		else if (item instanceof Galaxy) {
+			Galaxy g = (Galaxy) item;
 			this.selectStart.setText(Integer.toString(g.getStartSectorId()));
 			this.selectEnd.setText(Integer.toString(g.getEndSectorId()));
 		}
