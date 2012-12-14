@@ -145,21 +145,19 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 		// Third Row
 		{
-			JPanel jpOuter = new JPanel();
-
-			// First Column
-			jpOuter.add(createLabelJComponentPair("Select Galaxy: ", selectGalaxy));
-			jpOuter.add(createLabelJComponentPair("Select Display Type: ", selectDisplayType));
-			jpOuter.add(createLabelJComponentPair("Number of ports: ", selectNumberPorts));
-			jpOuter.add(createLabelJComponentPair("Routes for port: ", routesForPort));
-			jpOuter.add(createLabelJComponentPair("Number of routes: ", selectNumberOfRoutes));
-			jpOuter.add(createLabelJComponentPair("Max Distance: ", selectMaxDistance));
-			jpOuter.add(createLabelJComponentPair("Start Sector: ", selectStart));
-			jpOuter.add(createLabelJComponentPair("End Sector: ", selectEnd));
+			JPanel jpOptions = new JPanel();
+			jpOptions.add(createLabelJComponentPair("Galaxy: ", selectGalaxy, 120));
+			jpOptions.add(createLabelJComponentPair("Display Type: ", selectDisplayType, 135));
+			jpOptions.add(createLabelJComponentPair("Max ports: ", selectNumberPorts, 40));
+			jpOptions.add(createLabelJComponentPair("Routes for port: ", routesForPort, 60));
+			jpOptions.add(createLabelJComponentPair("Number of routes: ", selectNumberOfRoutes, 60));
+			jpOptions.add(createLabelJComponentPair("Max Dist: ", selectMaxDistance, 60));
+			jpOptions.add(createLabelJComponentPair("Start Sector: ", selectStart, 60));
+			jpOptions.add(createLabelJComponentPair("End Sector: ", selectEnd, 60));
 
 
 			// After Last
-			jsp = new JScrollPane(jpOuter);
+			jsp = new JScrollPane(jpOptions);
 			gbl.setConstraints(jsp, c);
 			add(jsp);
 		}
