@@ -149,26 +149,14 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 			// First Column
 			jpOuter.add(createLabelJComponentPair("Select Galaxy: ", selectGalaxy));
-
-			// Second Column
+			jpOuter.add(createLabelJComponentPair("Select Display Type: ", selectDisplayType));
+			jpOuter.add(createLabelJComponentPair("Number of ports: ", selectNumberPorts));
+			jpOuter.add(createLabelJComponentPair("Routes for port: ", routesForPort));
+			jpOuter.add(createLabelJComponentPair("Number of routes: ", selectNumberOfRoutes));
+			jpOuter.add(createLabelJComponentPair("Max Distance: ", selectMaxDistance));
 			jpOuter.add(createLabelJComponentPair("Start Sector: ", selectStart));
-
-			// Third Column
 			jpOuter.add(createLabelJComponentPair("End Sector: ", selectEnd));
 
-			// Fourth Column
-			jpOuter.add(createLabelJComponentPair("Max Distance: ", selectMaxDistance));
-
-			// Fifth Column
-			jpOuter.add(createLabelJComponentPair("Number of ports: ", selectNumberPorts));
-
-			// Sixth Column
-			jpOuter.add(createLabelJComponentPair("Number of routes: ", selectNumberOfRoutes));
-
-			// Last Column
-			jpOuter.add(createLabelJComponentPair("Routes for port: ", routesForPort));
-
-			jpOuter.add(createLabelJComponentPair("Select Display Type: ", selectDisplayType));
 
 			// After Last
 			jsp = new JScrollPane(jpOuter);
