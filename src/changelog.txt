@@ -1,7 +1,7 @@
 v1.3.0
 BugFix: Fix money result for 3+ port routes.
 Change: Change default max distance to 100.
-Enhancement: Allow generating BBCode routes (when posted on message board it will display coloured and linked race names)
+Enhancement: Allow generating BBCode routes (when posted on message board it will display coloured and linked race names and sectors)
 
 v1.2.9
 Enhancement: Do not allow multi port routes of >3 ports to loop back on themselves.

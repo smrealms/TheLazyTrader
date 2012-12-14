@@ -13,6 +13,10 @@ public class Sector
 	private boolean planet;
 	private ArrayList<Location> locations = new ArrayList<Location>();
 
+	public static String getBBCode(int sectorId) {
+		return "[sector=" + sectorId + "]";
+	}
+
 	public Sector(int _sectorId)
 	{
 		this.sectorId = _sectorId;
