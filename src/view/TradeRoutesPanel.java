@@ -30,6 +30,7 @@ import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import model.Route;
 
 public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListener, TableModelListener, ItemListener
@@ -43,6 +44,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 	protected JIntegerField selectStart, selectEnd, selectMaxDistance,
 			selectNumberPorts, selectNumberOfRoutes, routesForPort;
 	protected JComboBox selectGalaxy, selectDisplayType;
+	private JButton[] jbActionButtons;
 	protected File saveRoutesFile;
 
 	private RouteHandler routeHandler;
@@ -162,6 +164,25 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 			add(jsp);
 		}
 
+		jbActionButtons = new JButton[4];
+		jbActionButtons[0] = new JButton("Generate Exp");
+		jbActionButtons[0].setMnemonic('E');
+		jbActionButtons[1] = new JButton("Generate Money");
+		jbActionButtons[1].setMnemonic('M');
+		jbActionButtons[2] = new JButton("Save Exp");
+		jbActionButtons[2].setMnemonic('S');
+		jbActionButtons[3] = new JButton("Save Money");
+		jbActionButtons[3].setMnemonic('Y');
+
+		JPanel jpButtons = new JPanel();
+		for(JButton jbActionButton : jbActionButtons) {
+			jbActionButton.addActionListener(this);
+			jpButtons.add(jbActionButton);
+		}
+		jsp = new JScrollPane(jpButtons);
+		gbl.setConstraints(jsp, c);
+		add(jsp);
+
 		// Last Row
 		c.ipady = 100;
 		c.gridwidth = 0;
@@ -188,7 +209,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		jmiActionOptions[2] = new JMenuItem("Save Exp Routes");
 		jmiActionOptions[2].setMnemonic('S'); // Set S as the shortcut key
 		jmiActionOptions[3] = new JMenuItem("Save Money Routes");
-		jmiActionOptions[3].setMnemonic('A'); // Set A as the shortcut key
+		jmiActionOptions[3].setMnemonic('Y'); // Set A as the shortcut key
 	}
 
 	private boolean askForSaveRoutesFile()
@@ -201,38 +222,27 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if (this.standardActionChecks(e))
+		Object source = e.getSource();
+		if (this.standardActionChecks(e)) {
 			return;
-		else if (e.getSource() == jmiActionOptions[0]) // Checks if user has
-		// chosen to generate
-		// exp routes
-		{
-			if (checkSectorsFileOpened())
-			{
+		}
+		else if (source == jmiActionOptions[0] || source == jbActionButtons[0]) { // Checks if user has chosen to generate exp routes
+			if (checkSectorsFileOpened()) {
 				this.routeHandler.setDoSave(false);
 				this.routeHandler.setTypeOfRoute(RouteGenerator.EXP_ROUTE);
 				this.doRouteGeneration();
 			}
 		}
-		else if (e.getSource() == jmiActionOptions[1]) // Checks if user has
-		// chosen to generate
-		// money routes
-		{
-			if (checkSectorsFileOpened())
-			{
+		else if (e.getSource() == jmiActionOptions[1] || source == jbActionButtons[1]) { // Checks if user has chosen to generate money routes
+			if (checkSectorsFileOpened()) {
 				this.routeHandler.setDoSave(false);
 				this.routeHandler.setTypeOfRoute(RouteGenerator.MONEY_ROUTE);
 				this.doRouteGeneration();
 			}
 		}
-		else if (e.getSource() == jmiActionOptions[2]) // Checks if user has
-		// chosen to save exp
-		// routes
-		{
-			if (checkSectorsFileOpened())
-			{
-				if (askForSaveRoutesFile())
-				{
+		else if (e.getSource() == jmiActionOptions[2] || source == jbActionButtons[2]) { // Checks if user has chosen to save exp routes
+			if (checkSectorsFileOpened()) {
+				if (askForSaveRoutesFile()) {
 					this.routeHandler.setDoSave(true);
 					this.routeHandler.setSaveFile(this.saveRoutesFile);
 					this.routeHandler.setTypeOfRoute(RouteGenerator.EXP_ROUTE);
@@ -240,14 +250,9 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 				}
 			}
 		}
-		else if (e.getSource() == jmiActionOptions[3]) // Checks if user has
-		// chosen to save money
-		// routes
-		{
-			if (checkSectorsFileOpened())
-			{
-				if (askForSaveRoutesFile())
-				{
+		else if (e.getSource() == jmiActionOptions[3] || source == jbActionButtons[3]) { // Checks if user has chosen to save money routes
+			if (checkSectorsFileOpened()) {
+				if (askForSaveRoutesFile()) {
 					this.routeHandler.setDoSave(true);
 					this.routeHandler.setSaveFile(this.saveRoutesFile);
 					this.routeHandler.setTypeOfRoute(RouteGenerator.MONEY_ROUTE);
@@ -255,7 +260,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 				}
 			}
 		}
-	}// end of actionPerformed
+	}
 
 	private void doRouteGeneration()
 	{
