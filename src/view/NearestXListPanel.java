@@ -34,7 +34,7 @@ import view.swing.tree.FilteredTreeModel;
 import controller.pathfinding.Pathfinding;
 import javax.swing.JTree;
 
-import page.utils.gui.JIntegerField;
+import utils.swing.JIntegerField;
 
 public class NearestXListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener, TreeSelectionListener, MouseListener, KeyListener
 {
