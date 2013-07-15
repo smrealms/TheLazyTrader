@@ -1,3 +1,6 @@
+v1.3.1
+BugFix: Fix money result again.
+
 v1.3.0
 BugFix: Fix money result for 3+ port routes.
 Change: Change default max distance to 100.

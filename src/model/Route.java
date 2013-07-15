@@ -11,7 +11,7 @@ public abstract class Route {
 	}
 
 	public double getOverallMoneyMultiplier() {
-		return this.getForwardRoute().getMoneyMultiplierSum() / this.getTurnsForRoute();
+		return this.getMoneyMultiplierSum() / this.getTurnsForRoute();
 	}
 
 	public double getTurnsForRoute() {
