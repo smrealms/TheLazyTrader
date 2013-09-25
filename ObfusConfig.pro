@@ -1,5 +1,5 @@
--injars TheLazyTrader.1.3.1-PREOBFUS.jar
--outjars TheLazyTrader.1.3.1.jar
+-injars TheLazyTrader.1.3.2-PREOBFUS.jar
+-outjars TheLazyTrader.1.3.2.jar
 
 -libraryjars 'C:\Program Files\Java\jre7\lib\rt.jar'
 
@@ -7,7 +7,7 @@
 -optimizationpasses 99
 -allowaccessmodification
 -mergeinterfacesaggressively
--printmapping TheLazyTrader.1.3.1.map
+-printmapping TheLazyTrader.1.3.2.map
 -overloadaggressively
 -flattenpackagehierarchy ''
 -repackageclasses ''
