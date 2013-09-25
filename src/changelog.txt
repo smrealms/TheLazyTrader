@@ -1,3 +1,6 @@
+v1.3.2
+DataUpdate: Updated the money formula.
+
 v1.3.1
 BugFix: Fix money result again.
 
