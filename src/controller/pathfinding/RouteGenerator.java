@@ -256,13 +256,13 @@ public class RouteGenerator
 			currentSectorId = dKeyIter.next();
 			Port currentPort = sectors[currentSectorId].getPort();
 			Boolean raceAllowed = races.get(currentPort.getPortRace());
-			if (raceAllowed==null)
-			{
+			if (raceAllowed == null) {
 				System.err.println("Error with Race ID: "+currentPort.getPortRace());
 				continue;
 			}
-			if(!raceAllowed)
+			if (!raceAllowed) {
 				continue;
+			}
 			Map<Integer, Distance> d = distances.get(currentSectorId);
 			Iterator<Entry<Integer, Distance>> iter = d.entrySet().iterator();
 			ArrayList<OneWayRoute> rl = new ArrayList<OneWayRoute>(15);
@@ -271,8 +271,14 @@ public class RouteGenerator
 				Entry<Integer, Distance> es = iter.next();
 				targetSectorId = es.getKey();
 				Port targetPort = sectors[targetSectorId].getPort();
-				if (!races.get(targetPort.getPortRace()))
+				raceAllowed = races.get(targetPort.getPortRace());
+				if (raceAllowed == null) {
+					System.err.println("Error with Race ID: "+currentPort.getPortRace());
 					continue;
+				}
+				if (!raceAllowed) {
+					continue;
+				}
 				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort)
 					continue;
 				distance = es.getValue();
