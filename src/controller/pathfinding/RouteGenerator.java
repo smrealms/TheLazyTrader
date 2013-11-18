@@ -248,6 +248,7 @@ public class RouteGenerator
 	private static Map<Integer, ArrayList<OneWayRoute>> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		int targetSectorId, currentSectorId;
+		boolean nothingAllowed = goods.get(Good.NOTHING);
 		Distance distance;
 		Map<Integer, ArrayList<OneWayRoute>> routes = new LinkedHashMap<Integer, ArrayList<OneWayRoute>>();
 		Iterator<Integer> dKeyIter = distances.keySet().iterator();
@@ -279,12 +280,14 @@ public class RouteGenerator
 				if (!raceAllowed) {
 					continue;
 				}
-				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort)
+				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort) {
 					continue;
+				}
 				distance = es.getValue();
 
-				if (goods.get(Good.NOTHING))
+				if (nothingAllowed) {
 					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
+				}
 
 				Iterator<Integer> gIter = Good.getNames().keySet().iterator();
 				while (gIter.hasNext())
