@@ -309,46 +309,17 @@ public class RouteGenerator
 
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
 	{
-		int targetSectorId, currentSectorId;
-		Distance distance;
+		Map<Integer, ArrayList<OneWayRoute>> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		Iterator<Integer> dKeyIter = distances.keySet().iterator();
-		while (dKeyIter.hasNext())
-		{
-			currentSectorId = dKeyIter.next();
-			Port currentPort = sectors[currentSectorId].getPort();
-			if (!races.get(currentPort.getPortRace()))
-				continue;
-			Map<Integer, Distance> d = distances.get(currentSectorId);
-			Iterator<Entry<Integer, Distance>> iter = d.entrySet().iterator();
-			while (iter.hasNext())
-			{
-				Entry<Integer, Distance> es = iter.next();
-				targetSectorId = es.getKey();
-				Port targetPort = sectors[targetSectorId].getPort();
-				if (!races.get(targetPort.getPortRace()))
-					continue;
-				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort)
-					continue;
-				distance = es.getValue();
-
-				Iterator<Integer> gIter = Good.getNames().keySet().iterator();
-				while (gIter.hasNext())
-				{
-					int goodId = gIter.next();
-					if (goods.get(goodId))
-					{
-						if (currentPort.getGoodStatus(goodId) == Good.SELLS && targetPort.getGoodStatus(goodId) == Good.BUYS)
-						{
-							Route owr = new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(goodId), targetPort.getGoodDistance(goodId), distance, goodId);
-							Route fakeReturn = new OneWayRoute(targetSectorId, currentSectorId, targetPort.getPortRace(), currentPort.getPortRace(), 0, 0, distance, Good.NOTHING);
-							Route mpr = new MultiplePortRoute(owr, fakeReturn);
-							addExpRoute(mpr);
-							addMoneyRoute(mpr);
-						}
-					}
-				}
+		Iterator<ArrayList<OneWayRoute>> sectorRouteIter = sectorRoutes.values().iterator();
+		while (sectorRouteIter.hasNext()) {
+			ArrayList<OneWayRoute> routes = sectorRouteIter.next();
+			for(OneWayRoute owr : routes) {
+				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
+				Route mpr = new MultiplePortRoute(owr, fakeReturn);
+				addExpRoute(mpr);
+				addMoneyRoute(mpr);
 			}
 		}
 		NavigableMap<Double, ArrayList<Route>>[] allRoutes = new TreeMap[2];
