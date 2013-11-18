@@ -1,7 +1,6 @@
 package model;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Port
@@ -105,10 +104,8 @@ public class Port
 				return !this.getGoods().isEmpty();
 			if(s.equals("BOUGHT")||s.equals("SOLD")||s.equals("EITHER"))
 			{
-				Iterator<Good> iter = this.getGoods().values().iterator();
-				while(iter.hasNext())
-				{
-					int state = iter.next().getState();
+				for (Good g : this.getGoods().values()) {
+					int state = g.getState();
 					return (s.equals("BOUGHT")&&state==Good.BUYS) || (s.equals("SOLD")&&state==Good.SELLS) || (s.equals("EITHER")&&(state==Good.SELLS||state==Good.BUYS));
 				}
 			}

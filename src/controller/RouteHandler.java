@@ -58,18 +58,12 @@ public class RouteHandler implements FileLocateListener
 		this.displayType = _displayType;
 
 		this.races = new HashMap<Integer, Boolean>(_races.size());
-		Iterator<Integer> iter = _races.keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int raceId = iter.next();
+		for (int raceId : _races.keySet()) {
 			this.races.put(raceId, _races.get(raceId));
 		}
 
 		this.goods = new HashMap<Integer, Boolean>(_goods.size());
-		iter = _goods.keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int goodId = iter.next();
+		for (int goodId : _goods.keySet()) {
 			this.goods.put(goodId, _goods.get(goodId));
 		}
 		FileLocate.addFileLocateListener(this);
@@ -218,10 +212,7 @@ public class RouteHandler implements FileLocateListener
 			goods = new HashMap<Integer, Boolean>(goods.size());
 			this.routesChangedSinceLastRun = true;
 		}
-		Iterator<Integer> iter = _goods.keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int goodId = iter.next();
+		for (int goodId : _goods.keySet()) {
 			if (this.goods.get(goodId) != _goods.get(goodId))
 			{
 				goods.put(goodId, _goods.get(goodId));
@@ -312,10 +303,7 @@ public class RouteHandler implements FileLocateListener
 			races = new HashMap<Integer, Boolean>(races.size());
 			this.routesChangedSinceLastRun = true;
 		}
-		Iterator<Integer> iter = _races.keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int raceId = iter.next();
+		for (int raceId : _races.keySet()) {
 			if (this.races.get(raceId) != _races.get(raceId))
 			{
 				races.put(raceId, _races.get(raceId));

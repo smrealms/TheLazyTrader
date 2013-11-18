@@ -2,7 +2,7 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.NavigableMap;
 
 import javax.swing.event.TableModelEvent;
@@ -29,15 +29,12 @@ public class PlayerListPanel extends ListPanel implements ActionListener, TableM
 		ltm.setColumnName("Race", 0);
 		ltm.setColumnName("Relations", 1);
 
-		Iterator<Integer> rIter = races.keySet().iterator();
 		int row = 0;
-		while (rIter.hasNext())
-		{
-			int raceId = rIter.next();
+		for (Entry<Integer, Race> race : races.entrySet()) {
 			int col = 0;
-			ltm.setValueAt(races.get(raceId), row, col);
+			ltm.setValueAt(race.getValue(), row, col);
 			col++;
-			ltm.setValueAt(PlayerPreferences.getRelationsForRace(raceId), row, col);
+			ltm.setValueAt(PlayerPreferences.getRelationsForRace(race.getKey()), row, col);
 			row++;
 		}
 

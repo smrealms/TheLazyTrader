@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -104,11 +103,7 @@ public class Good
 
 	public static int getId(String goodName)
 	{
-		Iterator<Integer> iter = GOOD_NAMES.keySet().iterator();
-
-		while (iter.hasNext())
-		{
-			int key = iter.next();
+		for (int key : GOOD_NAMES.keySet()) {
 			if (GOOD_NAMES.get(key).equals(goodName))
 				return key;
 		}

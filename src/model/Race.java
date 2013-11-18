@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Iterator;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
@@ -42,10 +41,7 @@ public class Race
 
 	public static int getId(String raceName)
 	{
-		Iterator<Integer> iter = RACE_NAMES.keySet().iterator();
-		while (iter.hasNext())
-		{
-			int raceId = iter.next();
+		for (int raceId : RACE_NAMES.keySet()) {
 			if (raceName.equals(getName(raceId)))
 				return raceId;
 		}

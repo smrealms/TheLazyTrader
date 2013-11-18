@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Sector
 {
@@ -189,9 +188,7 @@ public class Sector
 
 		if (this.hasLocation())
 		{
-			for (Iterator<Location> iter = this.locations.iterator(); iter.hasNext();)
-			{
-				Location l = iter.next();
+			for (Location l : this.locations) {
 				if (l.hasX(x))
 					return true;
 			}

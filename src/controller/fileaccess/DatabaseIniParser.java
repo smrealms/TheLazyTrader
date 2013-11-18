@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import model.Good;
@@ -64,10 +63,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Section section;
 		if ((section = mapFile.get("Races")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				Race.addRace(new Race(key, Integer.parseInt(section.get(key))));
 			}
 		}
@@ -79,10 +75,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Scanner sc;
 		if ((section = mapFile.get("Goods")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				sc = new Scanner(section.get(key));
 				sc.useDelimiter(",");
 
@@ -97,10 +90,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Scanner sc;
 		if ((section = mapFile.get("ShipEquipment")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				sc = new Scanner(section.get(key));
 				sc.useDelimiter(",");
 				ShipEquipment se = new ShipEquipment(key);
@@ -118,10 +108,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Section section;
 		if ((section = mapFile.get("ShipAbilities")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				ShipAbility sa = new ShipAbility(key);
 				sa.setDescription(section.get(key));
 
@@ -136,10 +123,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Scanner sc;
 		if ((section = mapFile.get("Ships")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				sc = new Scanner(section.get(key));
 				sc.useDelimiter(",");
 				Ship s = new Ship(key);
@@ -201,10 +185,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		Scanner sc;
 		if ((section = mapFile.get("Weapons")) != null)
 		{
-			Iterator<String> iter = section.keySet().iterator();
-			while (iter.hasNext())
-			{
-				String key = iter.next();
+			for (String key : section.keySet()) {
 				sc = new Scanner(section.get(key));
 				sc.useDelimiter(",");
 				Weapon w = new Weapon(key);
@@ -243,18 +224,12 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 	{
 		Section section;
 		Scanner sc;
-		Iterator<String> sectionsIter = mapFile.keySet().iterator();
-		while (sectionsIter.hasNext())
-		{
-			String sectionName = sectionsIter.next();
+		for (String sectionName : mapFile.keySet()) {
 			if (sectionName.toUpperCase().startsWith("LOCATIONS"))
 			{
 				if ((section = mapFile.get(sectionName)) != null)
 				{
-					Iterator<String> iter = section.keySet().iterator();
-					while (iter.hasNext())
-					{
-						String key = iter.next();
+					for (String key : section.keySet()) {
 						sc = new Scanner(section.get(key));
 						sc.useDelimiter(",");
 						Location l = new Location(key);

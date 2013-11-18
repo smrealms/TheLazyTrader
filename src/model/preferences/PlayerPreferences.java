@@ -1,6 +1,5 @@
 package model.preferences;
 
-import java.util.Iterator;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 import java.util.prefs.Preferences;
@@ -15,11 +14,7 @@ public class PlayerPreferences
 
 	static
 	{
-		NavigableMap<Integer, Race> races = Race.getRaces();
-		Iterator<Integer> rIter = races.keySet().iterator();
-		while (rIter.hasNext())
-		{
-			int raceId = rIter.next();
+		for (int raceId : Race.getRaces().keySet()) {
 			relations.put(raceId, Integer.parseInt(Preferences.userNodeForPackage(PlayerPreferences.class).get(Integer.toString(raceId), Integer.toString(Settings.DEFAULT_RACE_RELATIONS))));
 		}
 	}

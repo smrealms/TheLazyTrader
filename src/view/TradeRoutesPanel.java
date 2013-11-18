@@ -8,7 +8,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JComboBox;
@@ -30,6 +29,7 @@ import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import javax.swing.JButton;
 import model.Route;
 
@@ -89,13 +89,10 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		// Goods Table
 		MyTableModel mtm = new MyTableModel(1, Good.getNames().size());
 		int count = 0;
-		Iterator<Integer> gIter = Good.getNames().keySet().iterator();
-		while (gIter.hasNext())
-		{
-			int goodId = gIter.next();
-			mtm.setColumnName(Good.getName(goodId), count);
+		for (Entry<Integer, String> good : Good.getNames().entrySet()) {
+			mtm.setColumnName(good.getValue(), count);
 			mtm.setValueAt(true, 0, count);
-			goods.put(goodId, true);
+			goods.put(good.getKey(), true);
 			count++;
 		}
 		mtm.addTableModelListener(this);
@@ -104,13 +101,12 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 		// Races table
 		mtm = new MyTableModel(1, Race.getNumberOfRaces());
-		Iterator<Integer> iter = Race.getRaces().keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int raceId = iter.next();
-			mtm.setColumnName(Race.getName(raceId), i);
-			mtm.setValueAt(true, 0, i);
-			races.put(raceId, true);
+		count = 0;
+		for (Entry<Integer, Race> race : Race.getRaces().entrySet()) {
+			mtm.setColumnName(race.getValue().getName(), count);
+			mtm.setValueAt(true, 0, count);
+			races.put(race.getKey(), true);
+			count++;
 		}
 		mtm.addTableModelListener(this);
 		this.selectRaces = new JTable(mtm);

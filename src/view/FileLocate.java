@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -141,19 +140,15 @@ public class FileLocate
 
 	private static void fireUniverseFound()
 	{
-		Iterator<FileLocateListener> iter = fileLocateListeners.iterator();
-		while (iter.hasNext())
-		{
-			iter.next().universeLocated();
+		for (FileLocateListener fll : fileLocateListeners) {
+			fll.universeLocated();
 		}
 	}
 
 	private static void fireUniverseLost()
 	{
-		Iterator<FileLocateListener> iter = fileLocateListeners.iterator();
-		while (iter.hasNext())
-		{
-			iter.next().universeLost();
+		for (FileLocateListener fll : fileLocateListeners) {
+			fll.universeLost();
 		}
 	}
 }

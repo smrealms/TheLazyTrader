@@ -1,14 +1,11 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.event.TableModelListener;
 
 import model.ship.Ship;
-import model.ship.ShipAbility;
 import model.ship.ShipEquipment;
 
 public class ShipListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener
@@ -70,11 +67,8 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 //		col++;
 		ltm.setColumnName("Restrictions", col);
 
-		Iterator<Ship> iter = ships.values().iterator();
 		int row = 0;
-		while (iter.hasNext())
-		{
-			Ship s = iter.next();
+		for (Ship s : ships.values()) {
 			col = 0;
 			ltm.setValueAt(s.getName(), row, col);
 			col++;

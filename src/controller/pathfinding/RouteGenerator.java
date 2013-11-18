@@ -102,12 +102,9 @@ public class RouteGenerator
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
 		Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
-		Iterator<Entry<Integer, ArrayList<OneWayRoute>>> iter = routeLists.entrySet().iterator();
 		totalTasks = 0;
 		// int i=0;
-		while (iter.hasNext())
-		{
-			final Entry<Integer, ArrayList<OneWayRoute>> es = iter.next();
+		for (final Entry<Integer, ArrayList<OneWayRoute>> es : routeLists.entrySet()) {
 			runs.add(new Callable<Object>()
 			{
 				public Object call()
@@ -159,10 +156,7 @@ public class RouteGenerator
 	 */
 	static void startRoutesToContinue(long maxNumPorts, int startSectorId, ArrayList<OneWayRoute> forwardRoutes, Map<Integer, ArrayList<OneWayRoute>> routeLists)
 	{
-		Iterator<OneWayRoute> forwardRouteIter = forwardRoutes.iterator();
-		while (forwardRouteIter.hasNext())
-		{
-			OneWayRoute currentStepRoute = forwardRouteIter.next();
+		for (OneWayRoute currentStepRoute : forwardRoutes) {
 			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (currentStepBuySector > startSectorId) // Not already checked
 			// && currentStepRoute.getGoodId()!=Good.NOTHING) // Don't start with nothing. // We can start with nothing, as long as we don't do 2 nothings in a row.
@@ -186,10 +180,7 @@ public class RouteGenerator
 	{
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
-		Iterator<OneWayRoute> forwardRouteIter = forwardRoutes.iterator();
-		while (forwardRouteIter.hasNext())
-		{
-			OneWayRoute currentStepRoute = forwardRouteIter.next();
+		for (OneWayRoute currentStepRoute : forwardRoutes) {
 			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (lastGoodIsNothing & (lastGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId()))
 				continue; // Don't do two nothings in a row
@@ -248,15 +239,11 @@ public class RouteGenerator
 
 	private static Map<Integer, ArrayList<OneWayRoute>> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
-		int targetSectorId, currentSectorId;
 		boolean nothingAllowed = goods.get(Good.NOTHING);
 		Set<Integer> goodNameKeys = Good.getNames().keySet();
 		Distance distance;
 		Map<Integer, ArrayList<OneWayRoute>> routes = new LinkedHashMap<Integer, ArrayList<OneWayRoute>>();
-		Iterator<Integer> dKeyIter = distances.keySet().iterator();
-		while (dKeyIter.hasNext())
-		{
-			currentSectorId = dKeyIter.next();
+		for (int currentSectorId : distances.keySet()) {
 			Port currentPort = sectors[currentSectorId].getPort();
 			Boolean raceAllowed = races.get(currentPort.getPortRace());
 			if (raceAllowed == null) {
@@ -267,12 +254,9 @@ public class RouteGenerator
 				continue;
 			}
 			Map<Integer, Distance> d = distances.get(currentSectorId);
-			Iterator<Entry<Integer, Distance>> iter = d.entrySet().iterator();
 			ArrayList<OneWayRoute> rl = new ArrayList<OneWayRoute>(15);
-			while (iter.hasNext())
-			{
-				Entry<Integer, Distance> es = iter.next();
-				targetSectorId = es.getKey();
+			for (Entry<Integer, Distance> es : d.entrySet()) {
+				int targetSectorId = es.getKey();
 				Port targetPort = sectors[targetSectorId].getPort();
 				raceAllowed = races.get(targetPort.getPortRace());
 				if (raceAllowed == null) {
@@ -291,10 +275,7 @@ public class RouteGenerator
 					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
 				}
 
-				Iterator<Integer> gIter = goodNameKeys.iterator();
-				while (gIter.hasNext())
-				{
-					int goodId = gIter.next();
+				for (int goodId : goodNameKeys) {
 					if (goods.get(goodId))
 					{
 						if (currentPort.getGoodStatus(goodId) == Good.SELLS && targetPort.getGoodStatus(goodId) == Good.BUYS)
@@ -314,9 +295,7 @@ public class RouteGenerator
 		Map<Integer, ArrayList<OneWayRoute>> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		Iterator<ArrayList<OneWayRoute>> sectorRouteIter = sectorRoutes.values().iterator();
-		while (sectorRouteIter.hasNext()) {
-			ArrayList<OneWayRoute> routes = sectorRouteIter.next();
+		for (ArrayList<OneWayRoute> routes : sectorRoutes.values()) {
 			for(OneWayRoute owr : routes) {
 				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
 				Route mpr = new MultiplePortRoute(owr, fakeReturn);

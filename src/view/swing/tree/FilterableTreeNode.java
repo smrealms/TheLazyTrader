@@ -1,7 +1,7 @@
 package view.swing.tree;
 
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import model.HasRace;
@@ -29,10 +29,8 @@ public class FilterableTreeNode extends DefaultMutableTreeNode
 
 	private void setChildRaceFilters()
 	{
-		Iterator<FilterableTreeNode> iter = this.children.iterator();
-		while (iter.hasNext())
-		{
-			iter.next().setRaceFilter(this.races);
+		for (FilterableTreeNode f : (Vector<FilterableTreeNode>) this.children) {
+			f.setRaceFilter(this.races);
 		}
 	}
 

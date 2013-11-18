@@ -1,12 +1,10 @@
 package controller.pathfinding;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import settings.Settings;
 
-import model.Distance;
 import model.Good;
 import model.Sector;
 
@@ -42,12 +40,8 @@ public class DiCalculator
 
 	public static Sector[] generateDistanceIndexesForPort(Sector[] sectors, int sectorId, int goodIdOnly)
 	{
-		Iterator<Integer> gIter = Good.getNames().keySet().iterator();
-		while (gIter.hasNext())
-		{
-			int goodId = gIter.next();
-			if ((goodIdOnly == -1 || goodIdOnly == goodId))
-			{
+		for (int goodId : Good.getNames().keySet()) {
+			if (goodIdOnly == -1 || goodIdOnly == goodId) {
 				if (sectors[sectorId].getPort().getGoodStatus(goodId) == Good.BUYS)
 					sectors[sectorId].getPort().setGoodDistance(goodId, findNearestGoodWithStatus(sectors, sectorId, goodId, Good.SELLS));
 				else if (sectors[sectorId].getPort().getGoodStatus(goodId) == Good.SELLS)
@@ -95,10 +89,9 @@ public class DiCalculator
 			}
 			maybeWarps=0;
 			
-			Iterator<Integer> iter = q.iterator();
-			while (iter.hasNext())
+			for (int checkSectorId : q)
 			{
-				checkSector = sectors[iter.next()];
+				checkSector = sectors[checkSectorId];
 				visitedSectors[checkSector.getSectorID()] = true; // This is here for warps, because they are delayed visits if we set this before the actual visit we'll get sectors marked as visited long before they are actually visited - causes problems when it's quicker to walk to the warp exit than to warp there.
 //				 We still need to mark walked sectors as visited before we go to each one otherwise we get a huge number of paths being checked twice (up then left, left then up are essentially the same but if we set up-left as visited only when we actually check it then it gets queued up twice - nasty)
 

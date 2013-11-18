@@ -2,7 +2,6 @@ package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JPanel;
@@ -32,6 +30,8 @@ import model.ship.ShipEquipment;
 import view.swing.tree.FilterableTreeNode;
 import view.swing.tree.FilteredTreeModel;
 import controller.pathfinding.Pathfinding;
+import java.util.Map.Entry;
+import java.util.NavigableMap;
 import javax.swing.JTree;
 
 import utils.swing.JIntegerField;
@@ -66,30 +66,21 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		routeDisplay = new JTextArea();
 
 		FilterableTreeNode shipEqs = new FilterableTreeNode("ShipEquipment");
-		Iterator<String> iter = ShipEquipment.getShipEquipments().keySet().iterator();
-		while (iter.hasNext())
-		{
-			shipEqs.add(new FilterableTreeNode(ShipEquipment.getShipEquipment(iter.next()), false));
+		for (ShipEquipment se : ShipEquipment.getShipEquipments().values()) {
+			shipEqs.add(new FilterableTreeNode(se, false));
 		}
 
 
 		FilterableTreeNode shipsByRace = new FilterableTreeNode("Ships");
 		FilterableTreeNode shipRaceNode = new FilterableTreeNode("All Ships");
-		Iterator<Ship> shipsIter = Ship.getShips().values().iterator();
-		while (shipsIter.hasNext())
-		{
-			shipRaceNode.add(new FilterableTreeNode(shipsIter.next(), false));
+		for (Ship s : Ship.getShips().values()) {
+			shipRaceNode.add(new FilterableTreeNode(s, false));
 		}
 		shipsByRace.add(shipRaceNode);
-		iter = Ship.getShipsByRace().keySet().iterator();
-		while (iter.hasNext())
-		{
-			String raceName = iter.next();
-			shipRaceNode = new FilterableTreeNode(raceName);
-			shipsIter = Ship.getShipsByRace(raceName).values().iterator();
-			while (shipsIter.hasNext())
-			{
-				shipRaceNode.add(new FilterableTreeNode(shipsIter.next(), false));
+		for (Entry<String, NavigableMap<String, Ship>> raceShips : Ship.getShipsByRace().entrySet()) {
+			shipRaceNode = new FilterableTreeNode(raceShips.getKey());
+			for (Ship s : raceShips.getValue().values()) {
+				shipRaceNode.add(new FilterableTreeNode(s, false));
 			}
 			shipsByRace.add(shipRaceNode);
 		}
@@ -97,36 +88,25 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 
 		FilterableTreeNode weaponsByPower = new FilterableTreeNode("Weapons");
 		FilterableTreeNode weaponPowerNode = new FilterableTreeNode("All Levels");
-		Iterator<Weapon> weaponsIter = Weapon.getWeapons().values().iterator();
-		while (weaponsIter.hasNext())
-		{
-			weaponPowerNode.add(new FilterableTreeNode(weaponsIter.next(), false));
+		for (Weapon w : Weapon.getWeapons().values()) {
+			weaponPowerNode.add(new FilterableTreeNode(w, false));
 		}
 		weaponsByPower.add(weaponPowerNode);
-		Iterator<Integer> intIter = Weapon.getWeaponsByPower().keySet().iterator();
-		while (intIter.hasNext())
-		{
-			int weaponPowerLevel = intIter.next();
-			weaponPowerNode = new FilterableTreeNode("Level " + weaponPowerLevel);
-			weaponsIter = Weapon.getWeaponsByPower(weaponPowerLevel).values().iterator();
-			while (weaponsIter.hasNext())
-			{
-				weaponPowerNode.add(new FilterableTreeNode(weaponsIter.next(), false));
+		for (Entry<Integer, NavigableMap<String, Weapon>> powerWeapons : Weapon.getWeaponsByPower().entrySet()) {
+			weaponPowerNode = new FilterableTreeNode("Level " + powerWeapons.getKey());
+			for (Weapon w : powerWeapons.getValue().values()) {
+				weaponPowerNode.add(new FilterableTreeNode(w, false));
 			}
 			weaponsByPower.add(weaponPowerNode);
 		}
 
 
 		FilterableTreeNode locationsByType = new FilterableTreeNode("Locations");
-		iter = Location.getLocationsByType().keySet().iterator();
-		while (iter.hasNext())
-		{
-			String locationTypeName = iter.next();
+		for (Entry<String, NavigableMap<String, Location>> typeLocations : Location.getLocationsByType().entrySet()) {
+			String locationTypeName = typeLocations.getKey();
 			FilterableTreeNode locationTypeNode = new FilterableTreeNode(Location.getLocationByType(locationTypeName).firstEntry().getValue().getType());
-			Iterator<String> locationsOfTypeIter = Location.getLocationByType(locationTypeName).keySet().iterator();
-			while (locationsOfTypeIter.hasNext())
-			{
-				locationTypeNode.add(new FilterableTreeNode(Location.getLocation(locationsOfTypeIter.next()), false));
+			for (Location l : typeLocations.getValue().values()) {
+				locationTypeNode.add(new FilterableTreeNode(l, false));
 			}
 			locationsByType.add(locationTypeNode);
 		}
@@ -135,10 +115,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		FilterableTreeNode goodsBought = new FilterableTreeNode("Bought");
 		FilterableTreeNode goodsSold = new FilterableTreeNode("Sold");
 		FilterableTreeNode goodsEither = new FilterableTreeNode("Either");
-		intIter = Good.getNames().keySet().iterator();
-		while (intIter.hasNext())
-		{
-			int goodID = intIter.next();
+		for (int goodID : Good.getNames().keySet()) {
 			goodsBought.add(new FilterableTreeNode(new Good(goodID,Good.BUYS), false));
 			goodsSold.add(new FilterableTreeNode(new Good(goodID,Good.SELLS), false));
 			goodsEither.add(new FilterableTreeNode(new Good(goodID,Good.ADD_BUY_SELL), false));

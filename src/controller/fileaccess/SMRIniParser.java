@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -181,10 +180,7 @@ public class SMRIniParser extends UniverseParser implements Runnable
 		Sector[] sectors = new Sector[sl.size() + 1]; // 0 will not be used as
 		// an index so we need
 		// extra
-		Iterator<Sector> iter = sl.iterator();
-		while (iter.hasNext())
-		{
-			Sector sec = iter.next();
+		for (Sector sec : sl) {
 			sectors[sec.getSectorID()] = sec;
 		}
 		DiCalculator.generateAllDistanceIndexes(sectors);

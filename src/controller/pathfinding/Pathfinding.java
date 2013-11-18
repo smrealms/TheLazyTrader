@@ -2,7 +2,6 @@ package controller.pathfinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -89,10 +88,7 @@ public class Pathfinding
 			}
 			maybeWarps=0;
 			
-			Iterator<Distance> dIter = q.iterator();
-			while (dIter.hasNext())
-			{
-				Distance distance = dIter.next();
+			for (Distance distance : q) {
 				visitedSectors[distance.getEndSectorId()] = true; // This is here for warps, because they are delayed visits if we set this before the actual visit we'll get sectors marked as visited long before they are actually visited - causes problems when it's quicker to walk to the warp exit than to warp there.
 																// We still need to mark walked sectors as visited before we go to each one otherwise we get a huge number of paths being checked twice (up then left, left then up are essentially the same but if we set up-left as visited only when we actually check it then it gets queued up twice - nasty)
 				checkSector = sectors[distance.getEndSectorId()];

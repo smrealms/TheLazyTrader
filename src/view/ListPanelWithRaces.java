@@ -3,8 +3,8 @@ package view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
@@ -38,13 +38,12 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		races = new HashMap<Integer, Boolean>(Race.getNumberOfRaces());
 		// Races table
 		rtm = new MyTableModel(1, Race.getNumberOfRaces());
-		Iterator<Integer> iter = Race.getRaces().keySet().iterator();
-		for (int i = 0; iter.hasNext(); i++)
-		{
-			int raceId = iter.next();
-			rtm.setColumnName(Race.getName(raceId), i);
+		int i = 0;
+		for (Entry<Integer, Race> race : Race.getRaces().entrySet()) {
+			rtm.setColumnName(race.getValue().getName(), i);
 			rtm.setValueAt(true, 0, i);
-			races.put(raceId, true);
+			races.put(race.getKey(), true);
+			i++;
 		}
 		rtm.addTableModelListener(this);
 		this.selectRaces = new JTable(rtm);
@@ -121,10 +120,8 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 	protected void filterTableByRace()
 	{
 		String filterString = "";
-		Iterator<Integer> iter = this.races.keySet().iterator();
-		while (iter.hasNext())
+		for (int raceId : this.races.keySet())
 		{
-			int raceId = iter.next();
 			if (this.races.get(raceId))
 				filterString += "^" + Race.getName(raceId) + "$|";
 		}

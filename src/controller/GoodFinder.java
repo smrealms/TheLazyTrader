@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.Iterator;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
@@ -30,17 +29,13 @@ public class GoodFinder
 				}
 			}
 		}
-		Iterator<String> iter = dS.descendingMap().values().iterator();
-		while (iter.hasNext())
-		{
-			System.out.println(iter.next());
+		for (String s : dS.descendingMap().values()) {
+			System.out.println(s);
 		}
 		System.out.println();
 		System.out.println();
-		iter = dB.descendingMap().values().iterator();
-		while (iter.hasNext())
-		{
-			System.out.println(iter.next());
+		for (String s : dB.descendingMap().values()) {
+			System.out.println(s);
 		}
 	}
 

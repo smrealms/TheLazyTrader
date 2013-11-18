@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.event.TableModelListener;
@@ -46,11 +45,8 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 		col++;
 		ltm.setColumnName("Restrictions", col);
 
-		Iterator<Weapon> iter = weapons.values().iterator();
 		int row = 0;
-		while (iter.hasNext())
-		{
-			Weapon w = iter.next();
+		for (Weapon w : weapons.values()) {
 			col = 0;
 			ltm.setValueAt(w.getName(), row, col);
 			col++;
@@ -69,10 +65,8 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 			ltm.setValueAt(w.getEmpDamage() + (w.isEmpInPercent() ? "%" : ""), row, col);
 			col++;
 			String rString = "";
-			Iterator<Restriction> rIter = w.getRestrictions().iterator();
-			while (rIter.hasNext())
-			{
-				rString += rIter.next() + ", ";
+			for (Restriction r : w.getRestrictions()) {
+				rString += r + ", ";
 			}
 			if (rString.length() > 0)
 				rString = rString.substring(0, rString.length() - 2);
