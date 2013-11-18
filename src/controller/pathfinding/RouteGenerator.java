@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import controller.RouteSwingWorker;
+import java.util.Set;
 
 import settings.Settings;
 
@@ -249,6 +250,7 @@ public class RouteGenerator
 	{
 		int targetSectorId, currentSectorId;
 		boolean nothingAllowed = goods.get(Good.NOTHING);
+		Set<Integer> goodNameKeys = Good.getNames().keySet();
 		Distance distance;
 		Map<Integer, ArrayList<OneWayRoute>> routes = new LinkedHashMap<Integer, ArrayList<OneWayRoute>>();
 		Iterator<Integer> dKeyIter = distances.keySet().iterator();
@@ -289,7 +291,7 @@ public class RouteGenerator
 					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
 				}
 
-				Iterator<Integer> gIter = Good.getNames().keySet().iterator();
+				Iterator<Integer> gIter = goodNameKeys.iterator();
 				while (gIter.hasNext())
 				{
 					int goodId = gIter.next();
