@@ -274,7 +274,7 @@ public class RouteGenerator
 				Port targetPort = sectors[targetSectorId].getPort();
 				raceAllowed = races.get(targetPort.getPortRace());
 				if (raceAllowed == null) {
-					System.err.println("Error with Race ID: "+currentPort.getPortRace());
+					System.err.println("Error with Race ID: "+targetPort.getPortRace());
 					continue;
 				}
 				if (!raceAllowed) {
