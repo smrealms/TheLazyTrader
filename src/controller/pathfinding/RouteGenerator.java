@@ -20,6 +20,7 @@ import model.Distance;
 import model.Good;
 import model.MultiplePortRoute;
 import model.OneWayRoute;
+import model.Port;
 import model.Route;
 import model.Sector;
 
@@ -253,10 +254,11 @@ public class RouteGenerator
 		while (dKeyIter.hasNext())
 		{
 			currentSectorId = dKeyIter.next();
-			Boolean raceAllowed = races.get(sectors[currentSectorId].getPort().getPortRace());
+			Port currentPort = sectors[currentSectorId].getPort();
+			Boolean raceAllowed = races.get(currentPort.getPortRace());
 			if (raceAllowed==null)
 			{
-				System.err.println("Error with Race ID: "+sectors[currentSectorId].getPort().getPortRace());
+				System.err.println("Error with Race ID: "+currentPort.getPortRace());
 				continue;
 			}
 			if(!raceAllowed)
@@ -268,14 +270,15 @@ public class RouteGenerator
 			{
 				Entry<Integer, Distance> es = iter.next();
 				targetSectorId = es.getKey();
-				if (!races.get(sectors[targetSectorId].getPort().getPortRace()))
+				Port targetPort = sectors[targetSectorId].getPort();
+				if (!races.get(targetPort.getPortRace()))
 					continue;
 				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort)
 					continue;
 				distance = es.getValue();
 
 				if (goods.get(Good.NOTHING))
-					rl.add(new OneWayRoute(currentSectorId, targetSectorId, sectors[currentSectorId].getPort().getPortRace(), sectors[targetSectorId].getPort().getPortRace(), sectors[currentSectorId].getPort().getGoodDistance(Good.NOTHING), sectors[targetSectorId].getPort().getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
+					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
 
 				Iterator<Integer> gIter = Good.getNames().keySet().iterator();
 				while (gIter.hasNext())
@@ -283,9 +286,9 @@ public class RouteGenerator
 					int goodId = gIter.next();
 					if (goods.get(goodId))
 					{
-						if (sectors[currentSectorId].getPort().getGoodStatus(goodId) == Good.SELLS && sectors[targetSectorId].getPort().getGoodStatus(goodId) == Good.BUYS)
+						if (currentPort.getGoodStatus(goodId) == Good.SELLS && targetPort.getGoodStatus(goodId) == Good.BUYS)
 						{
-							rl.add(new OneWayRoute(currentSectorId, targetSectorId, sectors[currentSectorId].getPort().getPortRace(), sectors[targetSectorId].getPort().getPortRace(), sectors[currentSectorId].getPort().getGoodDistance(goodId), sectors[targetSectorId].getPort().getGoodDistance(goodId), distance, goodId));
+							rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(goodId), targetPort.getGoodDistance(goodId), distance, goodId));
 						}
 					}
 				}
@@ -305,7 +308,8 @@ public class RouteGenerator
 		while (dKeyIter.hasNext())
 		{
 			currentSectorId = dKeyIter.next();
-			if (!races.get(sectors[currentSectorId].getPort().getPortRace()))
+			Port currentPort = sectors[currentSectorId].getPort();
+			if (!races.get(currentPort.getPortRace()))
 				continue;
 			Map<Integer, Distance> d = distances.get(currentSectorId);
 			Iterator<Entry<Integer, Distance>> iter = d.entrySet().iterator();
@@ -313,7 +317,8 @@ public class RouteGenerator
 			{
 				Entry<Integer, Distance> es = iter.next();
 				targetSectorId = es.getKey();
-				if (!races.get(sectors[targetSectorId].getPort().getPortRace()))
+				Port targetPort = sectors[targetSectorId].getPort();
+				if (!races.get(targetPort.getPortRace()))
 					continue;
 				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort)
 					continue;
@@ -325,10 +330,10 @@ public class RouteGenerator
 					int goodId = gIter.next();
 					if (goods.get(goodId))
 					{
-						if (sectors[currentSectorId].getPort().getGoodStatus(goodId) == Good.SELLS && sectors[targetSectorId].getPort().getGoodStatus(goodId) == Good.BUYS)
+						if (currentPort.getGoodStatus(goodId) == Good.SELLS && targetPort.getGoodStatus(goodId) == Good.BUYS)
 						{
-							Route owr = new OneWayRoute(currentSectorId, targetSectorId, sectors[currentSectorId].getPort().getPortRace(), sectors[targetSectorId].getPort().getPortRace(), sectors[currentSectorId].getPort().getGoodDistance(goodId), sectors[targetSectorId].getPort().getGoodDistance(goodId), distance, goodId);
-							Route fakeReturn = new OneWayRoute(targetSectorId, currentSectorId, sectors[targetSectorId].getPort().getPortRace(), sectors[currentSectorId].getPort().getPortRace(), 0, 0, distance, Good.NOTHING);
+							Route owr = new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(goodId), targetPort.getGoodDistance(goodId), distance, goodId);
+							Route fakeReturn = new OneWayRoute(targetSectorId, currentSectorId, targetPort.getPortRace(), currentPort.getPortRace(), 0, 0, distance, Good.NOTHING);
 							Route mpr = new MultiplePortRoute(owr, fakeReturn);
 							addExpRoute(mpr);
 							addMoneyRoute(mpr);
