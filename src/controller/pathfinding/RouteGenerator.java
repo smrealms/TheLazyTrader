@@ -318,12 +318,8 @@ public class RouteGenerator
 		if (overallMultiplier > dontAddWorseThan[EXP_ROUTE])
 			synchronized (expRoutes)
 			{
-				if (expRoutes.get(overallMultiplier) != null)
-				{
-					rl = expRoutes.get(overallMultiplier);
-				}
-				else
-				{
+				rl = expRoutes.get(overallMultiplier);
+				if (rl == null) {
 					rl = new ArrayList<Route>();
 				}
 				rl.add(r);
@@ -338,12 +334,8 @@ public class RouteGenerator
 		if (overallMultiplier > dontAddWorseThan[MONEY_ROUTE])
 			synchronized (moneyRoutes)
 			{
-				if (moneyRoutes.get(overallMultiplier) != null)
-				{
-					rl = moneyRoutes.get(overallMultiplier);
-				}
-				else
-				{
+				rl = moneyRoutes.get(overallMultiplier);
+				if (rl == null) {
 					rl = new ArrayList<Route>();
 				}
 				rl.add(r);
