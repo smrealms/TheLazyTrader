@@ -1,3 +1,7 @@
+v1.3.3
+BugFix: Fixed an issue generating routes when there are ports with invalid race ids.
+Enhancement: A bunch of changes under the hood to reduce the amount of code and also improve performance in some cases.
+
 v1.3.2
 DataUpdate: Updated the money formula.
 
