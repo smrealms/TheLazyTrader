@@ -365,9 +365,11 @@ public class RouteGenerator
 					iter.next();
 				}
 				dontAddWorseThan[EXP_ROUTE] = iter.next();
+
 				while (iter.hasNext())
 				{
-					expRoutes.remove(iter.next());
+					iter.next();
+					iter.remove();
 				}
 //				trimmed = true;
 			}
@@ -384,7 +386,8 @@ public class RouteGenerator
 				dontAddWorseThan[MONEY_ROUTE] = iter.next();
 				while (iter.hasNext())
 				{
-					moneyRoutes.remove(iter.next());
+					iter.next();
+					iter.remove();
 				}
 //				trimmed = true;
 			}
