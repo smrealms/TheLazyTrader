@@ -11,13 +11,13 @@ import model.Galaxy;
 import model.Location;
 import model.Port;
 import model.Sector;
-import model.SectorList;
 import model.Universe;
 
 import org.ini4j.Ini;
 import org.ini4j.Profile.Section;
 
 import controller.pathfinding.DiCalculator;
+import java.util.ArrayList;
 
 public class SMRIniParser extends UniverseParser implements Runnable
 {
@@ -104,7 +104,7 @@ public class SMRIniParser extends UniverseParser implements Runnable
 		Scanner sc;
 		int i;
 
-		SectorList sl = new SectorList();
+		ArrayList<Sector> sl = new ArrayList<Sector>();
 		i = 1;
 		int galaxyId = 1, endSectorId = 0;
 		Galaxy g = this.storedUni.getGalaxy(galaxyId);
