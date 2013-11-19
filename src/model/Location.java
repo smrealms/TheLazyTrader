@@ -9,9 +9,9 @@ import model.ship.ShipEquipment;
 
 public class Location
 {
-	private static NavigableMap<String, Location> locationSingletons = new TreeMap<String, Location>();
-	private static NavigableMap<String, NavigableMap<String, Location>> locationSingletonsByType = new TreeMap<String, NavigableMap<String, Location>>();
-	private String locationName;
+	private static final NavigableMap<String, Location> locationSingletons = new TreeMap<String, Location>();
+	private static final NavigableMap<String, NavigableMap<String, Location>> locationSingletonsByType = new TreeMap<String, NavigableMap<String, Location>>();
+	private final String locationName;
 	private String type;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
 	private ArrayList<Weapon> weapons = new ArrayList<Weapon>();
@@ -77,7 +77,7 @@ public class Location
 	}
 
 	/**
-	 * @param shipEquipment
+	 * @param _shipEquipment
 	 *            the shipEquipment to set
 	 */
 	public void setShipEquipment(ArrayList<ShipEquipment> _shipEquipment)
@@ -86,7 +86,7 @@ public class Location
 	}
 
 	/**
-	 * @param shipEquipment
+	 * @param _shipEquipment
 	 *            the shipEquipment to add
 	 */
 	public void addShipEquipment(ShipEquipment _shipEquipment)
@@ -108,7 +108,7 @@ public class Location
 	}
 
 	/**
-	 * @param ships
+	 * @param _ships
 	 *            the ships to set
 	 */
 	public void setShips(ArrayList<Ship> _ships)
@@ -117,7 +117,7 @@ public class Location
 	}
 
 	/**
-	 * @param ship
+	 * @param _ship
 	 *            the ship to add
 	 */
 	public void addShip(Ship _ship)
@@ -139,7 +139,7 @@ public class Location
 	}
 
 	/**
-	 * @param weapons
+	 * @param _weapons
 	 *            the weapons to set
 	 */
 	public void setWeapons(ArrayList<Weapon> _weapons)
@@ -148,7 +148,7 @@ public class Location
 	}
 
 	/**
-	 * @param weapon
+	 * @param _weapon
 	 *            the weapon to add
 	 */
 	public void addWeapon(Weapon _weapon)
@@ -183,6 +183,7 @@ public class Location
 		return false;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.locationName;
@@ -197,7 +198,7 @@ public class Location
 	}
 
 	/**
-	 * @param type
+	 * @param _type
 	 *            the type to set
 	 */
 	public void setType(String _type)

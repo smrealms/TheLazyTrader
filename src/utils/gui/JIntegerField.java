@@ -30,6 +30,7 @@ public class JIntegerField extends JTextField
 		this.setText(Integer.toString(startValue));
 	}
 
+	@Override
 	protected Document createDefaultModel()
 	{
 		return new IntegerDocument();
@@ -82,11 +83,10 @@ public class JIntegerField extends JTextField
 
 	class IntegerDocument extends PlainDocument
 	{
+		@Override
 		public void insertString(int offs, String str, AttributeSet a) throws BadLocationException
 		{
-			long typedValue = -1;
-
-			StringBuffer textBuffer = new StringBuffer(JIntegerField.this.getText().trim());
+			StringBuilder textBuffer = new StringBuilder(JIntegerField.this.getText().trim());
 			// The offset argument must be greater than or equal to 0, and less
 			// than or equal to the length of this string buffer
 			if ((offs >= 0) && (offs <= textBuffer.length()))
@@ -108,20 +108,20 @@ public class JIntegerField extends JTextField
 
 				if (textValue.equals("-") && minValue < 0)
 				{
-					super.insertString(offs, new String(str), a);
+					super.insertString(offs, str, a);
 					return;
 				}
 
 				try
 				{
-					typedValue = Long.parseLong(textValue);
+					long typedValue = Long.parseLong(textValue);
 					if ((typedValue > maxValue) || (typedValue < minValue))
 					{
 						JOptionPane.showMessageDialog(JIntegerField.this, "The value can only be from " + getMinValue() + " to " + getMaxValue(), "Error Message", JOptionPane.ERROR_MESSAGE);
 					}
 					else
 					{
-						super.insertString(offs, new String(str), a);
+						super.insertString(offs, str, a);
 					}
 				}
 				catch (final NumberFormatException ex)

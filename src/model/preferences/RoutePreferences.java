@@ -17,7 +17,7 @@ public class RoutePreferences
 	}
 
 	/**
-	 * @param useRelationsFactor
+	 * @param _useRelationsFactor
 	 *            the useRelationsFactor to set
 	 */
 	public static void setUseRelationsFactor(boolean _useRelationsFactor)

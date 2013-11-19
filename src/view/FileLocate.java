@@ -56,7 +56,7 @@ public class FileLocate
 		return universeParser != null;
 	}
 
-	private static ArrayList<FileLocateListener> fileLocateListeners = new ArrayList<FileLocateListener>();
+	private static final ArrayList<FileLocateListener> fileLocateListeners = new ArrayList<FileLocateListener>();
 
 	public static boolean openUniverseFile(Component parent)
 	{

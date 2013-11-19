@@ -19,6 +19,7 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 		this.title = "Weapon List";
 	}
 
+	@Override
 	protected void initListTableModel()
 	{
 		// Weapon list table

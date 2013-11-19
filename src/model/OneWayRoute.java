@@ -123,7 +123,7 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 		return this.distance.getTurns() + tradeTurns;
 	}
 
-//	@Override
+	@Override
 	public int compareTo(OneWayRoute compare)
 	{
 		if (this.equals(compare))

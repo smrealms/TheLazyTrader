@@ -16,7 +16,7 @@ public class GeneralPreferences
 	}
 
 	/**
-	 * @param askForMemory
+	 * @param _askForMemory
 	 *            the askForMemory to set
 	 */
 	public static void setAskForMemory(boolean _askForMemory)
@@ -34,7 +34,7 @@ public class GeneralPreferences
 	}
 
 	/**
-	 * @param memoryToAllocate
+	 * @param _memoryToAllocate
 	 *            the memoryToAllocate to set
 	 */
 	public static void setMemoryToAllocate(int _memoryToAllocate)

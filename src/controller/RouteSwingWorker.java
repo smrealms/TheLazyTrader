@@ -11,9 +11,9 @@ import java.util.Date;
 
 public class RouteSwingWorker extends SwingWorker<String, String>
 {
-	private JTextArea routeDisplay;
-	private RouteHandler routeHandler;
-	private JProgressBar progressBar;
+	private final JTextArea routeDisplay;
+	private final RouteHandler routeHandler;
+	private final JProgressBar progressBar;
 	private Date startDate;
 
 	public RouteSwingWorker(JTextArea _routeDisplay, RouteHandler _routeHandler, JProgressBar _progressBar)

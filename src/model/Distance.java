@@ -52,6 +52,7 @@ public class Distance implements Comparable<Distance>
 		return this.numWarps;
 	}
 
+	@Override
 	public Distance clone()
 	{
 		return new Distance(this.distance, this.numWarps, (ArrayList<Integer>) this.path.clone());
@@ -78,6 +79,7 @@ public class Distance implements Comparable<Distance>
 		return this.path.get(0);
 	}
 
+	@Override
 	public int compareTo(Distance d)
 	{
 		if (this.equals(d))
@@ -96,8 +98,8 @@ public class Distance implements Comparable<Distance>
 	}
 
 	/**
-	 * @param path
-	 *            the path to set
+	 * @param nextSector
+	 *            the nextSector to set
 	 */
 	public void addToPath(int nextSector)
 	{

@@ -10,7 +10,7 @@ public class Sector
 	private ArrayList<Connection> warps = new ArrayList<Connection>();
 	private Port port;
 	private boolean planet;
-	private ArrayList<Location> locations = new ArrayList<Location>();
+	private final ArrayList<Location> locations = new ArrayList<Location>();
 
 	public static String getBBCode(int sectorId) {
 		return "[sector=" + sectorId + "]";
@@ -64,7 +64,7 @@ public class Sector
 
 	public void setPlanet(int i)
 	{
-		this.planet = (i == 1 ? true : false);
+		this.planet = (i == 1);
 	}
 
 	public void setPlanet(boolean b)
@@ -129,9 +129,7 @@ public class Sector
 	{
 		if (this.port == null)
 			return false;
-		if (this.port.getPortLevel() == 0)
-			return false;
-		return true;
+		return this.port.getPortLevel() != 0;
 	}
 
 	public Port getPort()
@@ -154,6 +152,7 @@ public class Sector
 		return this.locations;
 	}
 	
+	@Override
 	public boolean equals(Object obj)
 	{
 		if(obj instanceof Sector)

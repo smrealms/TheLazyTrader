@@ -9,7 +9,7 @@ public class ShipEquipment
 	int cost;
 	String description;
 
-	private static NavigableMap<String, ShipEquipment> SHIP_EQUIPMENTS = new TreeMap<String, ShipEquipment>();
+	private static final NavigableMap<String, ShipEquipment> SHIP_EQUIPMENTS = new TreeMap<String, ShipEquipment>();
 
 	public static void addShipEquipment(ShipEquipment shipEquip)
 	{
@@ -40,7 +40,7 @@ public class ShipEquipment
 	}
 
 	/**
-	 * @param cost
+	 * @param _cost
 	 *            the cost to set
 	 */
 	public void setCost(int _cost)
@@ -57,7 +57,7 @@ public class ShipEquipment
 	}
 
 	/**
-	 * @param description
+	 * @param _description
 	 *            the description to set
 	 */
 	public void setDescription(String _description)
@@ -74,7 +74,7 @@ public class ShipEquipment
 	}
 
 	/**
-	 * @param name
+	 * @param _name
 	 *            the name to set
 	 */
 	public void setName(String _name)
@@ -82,6 +82,7 @@ public class ShipEquipment
 		this.name = _name;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.name;

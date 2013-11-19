@@ -10,7 +10,7 @@ import model.Race;
 
 public class PlayerPreferences
 {
-	private static NavigableMap<Integer, Integer> relations = new TreeMap<Integer, Integer>();
+	private static final NavigableMap<Integer, Integer> relations = new TreeMap<Integer, Integer>();
 
 	static
 	{
@@ -28,7 +28,8 @@ public class PlayerPreferences
 	}
 
 	/**
-	 * @param relations
+	 * @param race
+	 * @param _relations
 	 *            the relations to set
 	 */
 	public static void setRelation(int race, int _relations)

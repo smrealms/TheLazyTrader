@@ -85,6 +85,7 @@ public class Galaxy
 		this.startSectorId = _startSectorId;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.name;

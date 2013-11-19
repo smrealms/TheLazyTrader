@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class SMRIniParser extends UniverseParser implements Runnable
 {
-	private Ini mapFile;
+	private final Ini mapFile;
 	private Universe storedUni;
 
 	public SMRIniParser(URL mapFileLocation) throws IOException
@@ -42,6 +42,7 @@ public class SMRIniParser extends UniverseParser implements Runnable
 		doParse();
 	}
 
+	@Override
 	synchronized public Universe getUniverse()
 	{
 		if (this.storedUni == null)
@@ -49,6 +50,7 @@ public class SMRIniParser extends UniverseParser implements Runnable
 		return this.storedUni;
 	}
 
+	@Override
 	synchronized public Map<Integer, Galaxy> getGalaxies()
 	{
 		if (this.storedUni == null)
@@ -56,11 +58,13 @@ public class SMRIniParser extends UniverseParser implements Runnable
 		return this.storedUni.getGalaxies();
 	}
 
+	@Override
 	public void doParse()
 	{
 		new Thread(this).start();
 	}
 
+	@Override
 	synchronized public void run()
 	{
 		new DatabaseIniParser(this.mapFile).run();

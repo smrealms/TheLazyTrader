@@ -59,6 +59,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		this.title = "Trade Routes";
 	}
 
+	@Override
 	protected void initComponents()
 	{
 		races = new HashMap<Integer, Boolean>((int)(Race.getNumberOfRaces()*1.5));
@@ -119,6 +120,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		routeHandler = new RouteHandler(RouteGenerator.EXP_ROUTE, this.selectNumberOfRoutes.getValue(), this.selectStart.getValue(), this.selectEnd.getValue(), this.selectMaxDistance.getValue(), this.selectNumberPorts.getValue(), -1, (Route.DisplayType) this.selectDisplayType.getSelectedItem(), this.races, this.goods);
 	}
 
+	@Override
 	protected void addComponents()
 	{
 		GridBagLayout gbl = new GridBagLayout();
@@ -195,6 +197,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		add(progressBar);
 	}
 
+	@Override
 	protected void initActionsFileMenu()
 	{
 		jmiActionOptions = new JMenuItem[4];
@@ -216,6 +219,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		return true;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		Object source = e.getSource();
@@ -279,6 +283,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		this.rsw.execute();
 	}
 
+	@Override
 	public void tableChanged(TableModelEvent e)
 	{
 		if (e.getSource() == this.selectGoods.getModel())
@@ -288,6 +293,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 			this.races.put(Race.getId(this.selectRaces.getColumnName(e.getColumn())), (Boolean) this.selectRaces.getValueAt(e.getFirstRow(), e.getColumn()));
 	}
 
+	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object item = e.getItem();
 		if (item instanceof String) {

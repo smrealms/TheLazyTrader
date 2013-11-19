@@ -8,8 +8,8 @@ import model.ship.Restriction;
 
 public class Weapon implements HasRace
 {
-	private static NavigableMap<String, Weapon> WEAPONS = new TreeMap<String, Weapon>();
-	private static NavigableMap<Integer, NavigableMap<String, Weapon>> WEAPONS_BY_POWER = new TreeMap<Integer, NavigableMap<String, Weapon>>();
+	private static final NavigableMap<String, Weapon> WEAPONS = new TreeMap<String, Weapon>();
+	private static final NavigableMap<Integer, NavigableMap<String, Weapon>> WEAPONS_BY_POWER = new TreeMap<Integer, NavigableMap<String, Weapon>>();
 
 	private String name;
 	private int race;
@@ -20,7 +20,7 @@ public class Weapon implements HasRace
 	private int powerLevel;
 	private int empDamage;
 	private boolean isEmpInPercent;
-	private ArrayList<Restriction> restrictions = new ArrayList<Restriction>();
+	private final ArrayList<Restriction> restrictions = new ArrayList<Restriction>();
 
 	public Weapon(String _name)
 	{
@@ -67,7 +67,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param armour
+	 * @param _armour
 	 *            the armour to set
 	 */
 	public void setArmourDamage(int _armour)
@@ -84,7 +84,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param cost
+	 * @param _cost
 	 *            the cost to set
 	 */
 	public void setCost(int _cost)
@@ -101,7 +101,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param emp
+	 * @param _emp
 	 *            the emp to set
 	 */
 	public void setEmpDamage(int _emp)
@@ -118,7 +118,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param isEmpInPercent
+	 * @param _isEmpInPercent
 	 *            the isEmpInPercent to set
 	 */
 	public void setEmpInPercent(boolean _isEmpInPercent)
@@ -135,7 +135,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param name
+	 * @param _name
 	 *            the name to set
 	 */
 	public void setName(String _name)
@@ -152,7 +152,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param powerLevel
+	 * @param _powerLevel
 	 *            the powerLevel to set
 	 */
 	public void setPowerLevel(int _powerLevel)
@@ -163,13 +163,14 @@ public class Weapon implements HasRace
 	/**
 	 * @return the race
 	 */
+	@Override
 	public int getRace()
 	{
 		return this.race;
 	}
 
 	/**
-	 * @param race
+	 * @param _race
 	 *            the race to set
 	 */
 	public void setRace(int _race)
@@ -186,7 +187,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param restriction
+	 * @param _restriction
 	 *            the restriction to set
 	 */
 	public void addRestriction(Restriction _restriction)
@@ -203,7 +204,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param shield
+	 * @param _shield
 	 *            the shield to set
 	 */
 	public void setShieldDamage(int _shield)
@@ -220,7 +221,7 @@ public class Weapon implements HasRace
 	}
 
 	/**
-	 * @param accuracy
+	 * @param _accuracy
 	 *            the accuracy to set
 	 */
 	public void setAccuracy(int _accuracy)
@@ -228,6 +229,7 @@ public class Weapon implements HasRace
 		this.accuracy = _accuracy;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.name;

@@ -53,9 +53,7 @@ public class MainContainer extends JFrame implements ChangeListener, FileLocateL
 	{
 		if(FileLocate.getUniverseParser() == null)
 			FileLocate.openUniverseFile(this);
-		if(FileLocate.getUniverseParser() == null)
-			return false;
-		return true;
+		return FileLocate.getUniverseParser() != null;
 	}
 
 	public void showShipList()
@@ -133,6 +131,7 @@ public class MainContainer extends JFrame implements ChangeListener, FileLocateL
 		this.jtp.setSelectedComponent(tlp);
 	}
 
+	@Override
 	public void stateChanged(ChangeEvent e)
 	{
 		if (e.getSource() == this.jtp)

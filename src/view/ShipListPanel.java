@@ -56,9 +56,8 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 //		col++;
 
 		ShipEquipment[] shipEquips = ShipEquipment.getShipEquipments().values().toArray(new ShipEquipment[1]);
-		for (int i = 0; i < shipEquips.length; i++)
-		{
-			ltm.setColumnName(shipEquips[i].getName(), col);
+		for (ShipEquipment se : shipEquips) {
+			ltm.setColumnName(se.getName(), col);
 			col++;
 		}
 
@@ -98,10 +97,10 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 //			col++;
 
 			Map<ShipEquipment,Integer> shipEq = s.getEquipments();
-			for (int i = 0; i < shipEquips.length; i++)
+			for (ShipEquipment se : shipEquips)
 			{
-				if (shipEq.containsKey(shipEquips[i]))
-					ltm.setValueAt(shipEq.get(shipEquips[i]),row,col);
+				if (shipEq.containsKey(se))
+					ltm.setValueAt(shipEq.get(se),row,col);
 				else
 					ltm.setValueAt(0, row, col);
 //				if (shipEq.contains(shipEquips[i]))

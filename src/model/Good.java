@@ -34,7 +34,7 @@ public class Good
 	public static final int ADD_BUY_SELL = 3;
 
 	private int state = UNAVAILABLE;
-	private int goodId;
+	private final int goodId;
 	private int distanceIndex = 0;
 	
 	static

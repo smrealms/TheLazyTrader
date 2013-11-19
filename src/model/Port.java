@@ -7,7 +7,7 @@ public class Port
 {
 	private int portLevel;
 	private int portRace;
-	private Map<Integer, Good> goods = new HashMap<Integer, Good>();
+	private final Map<Integer, Good> goods = new HashMap<Integer, Good>();
 
 	public Port()
 	{

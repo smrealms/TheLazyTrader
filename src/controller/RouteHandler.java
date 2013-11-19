@@ -178,7 +178,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param endSector
+	 * @param _endSector
 	 *            the endSector to set
 	 */
 	public void setEndSector(long _endSector)
@@ -200,7 +200,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * Cannot be set to null.
 	 * 
-	 * @param goods
+	 * @param _goods
 	 *            the goods to set
 	 */
 	public void setGoods(Map<Integer, Boolean> _goods)
@@ -230,7 +230,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param maxDistance
+	 * @param _maxDistance
 	 *            the maxDistance to set
 	 */
 	public void setMaxDistance(long _maxDistance)
@@ -250,7 +250,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param maxNumberOfPorts
+	 * @param _maxNumberOfPorts
 	 *            the maxNumberOfPorts to set
 	 */
 	public void setMaxNumberOfPorts(long _maxNumberOfPorts)
@@ -270,7 +270,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param numberOfRoutes
+	 * @param _numberOfRoutes
 	 *            the numberOfRoutes to set
 	 */
 	public void setNumberOfRoutes(long _numberOfRoutes)
@@ -291,7 +291,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param races
+	 * @param _races
 	 *            the races to set
 	 */
 	public void setRaces(Map<Integer, Boolean> _races)
@@ -321,7 +321,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param typeOfRoute
+	 * @param routeType
 	 *            the typeOfRoute to set
 	 */
 	public void setTypeOfRoute(int routeType)
@@ -338,7 +338,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param startSector
+	 * @param _startSector
 	 *            the startSector to set
 	 */
 	public void setStartSector(long _startSector)
@@ -350,7 +350,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param universe
+	 * @param _universe
 	 *            the universe to set
 	 */
 	protected void setUniverse(Universe _universe)
@@ -368,7 +368,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param doSave
+	 * @param _doSave
 	 *            the doSave to set
 	 */
 	public void setDoSave(boolean _doSave)
@@ -385,7 +385,7 @@ public class RouteHandler implements FileLocateListener
 	}
 
 	/**
-	 * @param saveFile
+	 * @param _saveFile
 	 *            the saveFile to set
 	 */
 	public void setSaveFile(File _saveFile)
@@ -401,6 +401,7 @@ public class RouteHandler implements FileLocateListener
 		this.routesForPort = _routesForPort;
 	}
 
+	@Override
 	public void universeLocated()
 	{
 		this.setUniverse(FileLocate.getUniverseParser().getUniverse());

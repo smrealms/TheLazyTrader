@@ -25,7 +25,6 @@ import java.awt.dnd.InvalidDnDOperationException;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
@@ -44,13 +43,16 @@ public class DnDTabbedPane extends JTabbedPane
 	public DnDTabbedPane(final JFrame frame)
 	{
 		super();
-		final DragSourceListener dsl = new DragSourceListener()
+		final DragSourceListener dsl;
+		dsl = new DragSourceListener()
 		{
+			@Override
 			public void dragEnter(DragSourceDragEvent e)
 			{
 				e.getDragSourceContext().setCursor(DragSource.DefaultMoveDrop);
 			}
 
+			@Override
 			public void dragExit(DragSourceEvent e)
 			{
 				e.getDragSourceContext()
@@ -60,6 +62,7 @@ public class DnDTabbedPane extends JTabbedPane
 				glassPane.repaint();
 			}
 
+			@Override
 			public void dragOver(DragSourceDragEvent e)
 			{
 				// e.getLocation()
@@ -96,6 +99,7 @@ public class DnDTabbedPane extends JTabbedPane
 				}
 			}
 
+			@Override
 			public void dropActionChanged(DragSourceDragEvent e)
 			{
 			}
@@ -105,11 +109,13 @@ public class DnDTabbedPane extends JTabbedPane
 			private final DataFlavor FLAVOR = new DataFlavor(
 					DataFlavor.javaJVMLocalObjectMimeType, NAME);
 
+			@Override
 			public Object getTransferData(DataFlavor flavor)
 			{
 				return DnDTabbedPane.this;
 			}
 
+			@Override
 			public DataFlavor[] getTransferDataFlavors()
 			{
 				DataFlavor[] f = new DataFlavor[1];
@@ -117,6 +123,7 @@ public class DnDTabbedPane extends JTabbedPane
 				return f;
 			}
 
+			@Override
 			public boolean isDataFlavorSupported(DataFlavor flavor)
 			{
 				return flavor.getHumanPresentableName().equals(NAME);
@@ -205,11 +212,7 @@ public class DnDTabbedPane extends JTabbedPane
 			if (t == null)
 				return false;
 			DataFlavor[] f = e.getCurrentDataFlavors();
-			if (t.isDataFlavorSupported(f[0]) && dragTabIndex >= 0)
-			{
-				return true;
-			}
-			return false;
+			return t.isDataFlavorSupported(f[0]) && dragTabIndex >= 0;
 		}
 
 		public boolean isDropAcceptable(DropTargetDropEvent e)
@@ -218,11 +221,7 @@ public class DnDTabbedPane extends JTabbedPane
 			if (t == null)
 				return false;
 			DataFlavor[] f = t.getTransferDataFlavors();
-			if (t.isDataFlavorSupported(f[0]) && dragTabIndex >= 0)
-			{
-				return true;
-			}
-			return false;
+			return t.isDataFlavorSupported(f[0]) && dragTabIndex >= 0;
 		}
 	}
 

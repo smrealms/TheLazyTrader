@@ -29,6 +29,7 @@ public class MainPanel extends TheLazyTraderPanel implements ActionListener, Ite
 		this.title = "Main";
 	}
 
+	@Override
 	protected void initActionsFileMenu()
 	{
 		jmiActionOptions = new JMenuItem[5];
@@ -44,6 +45,7 @@ public class MainPanel extends TheLazyTraderPanel implements ActionListener, Ite
 		jmiActionOptions[4].setMnemonic('P'); // Set P as the shortcut key
 	}
 
+	@Override
 	protected void initComponents()
 	{
 		jbActionButtons = new JButton[5];
@@ -59,17 +61,18 @@ public class MainPanel extends TheLazyTraderPanel implements ActionListener, Ite
 		jbActionButtons[4].setMnemonic('P'); // Set P as the shortcut key
 	}
 
+	@Override
 	protected void addComponents()
 	{
 		setLayout(new FlowLayout());
-		for (int i = 0; i < jbActionButtons.length; i++)
-		{
-			jbActionButtons[i].addActionListener(this); // Add action listeners
+		for (JButton button : jbActionButtons) {
+			button.addActionListener(this); // Add action listeners
 			// for the menu options
-			add(jbActionButtons[i]);
+			add(button);
 		}
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		// Override
@@ -103,6 +106,7 @@ public class MainPanel extends TheLazyTraderPanel implements ActionListener, Ite
 		}
 	}// end of actionPerformed
 
+	@Override
 	public void itemStateChanged(ItemEvent e)
 	{
 		if (e.getItem().getClass().equals(Galaxy.class))

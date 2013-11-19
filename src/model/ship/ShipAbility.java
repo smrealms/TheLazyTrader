@@ -8,7 +8,7 @@ public class ShipAbility
 	String name;
 	String description;
 
-	private static NavigableMap<String, ShipAbility> SHIP_ABILITIES = new TreeMap<String, ShipAbility>();
+	private static final NavigableMap<String, ShipAbility> SHIP_ABILITIES = new TreeMap<String, ShipAbility>();
 
 	public static void addShipAbility(ShipAbility shipAbil)
 	{
@@ -39,7 +39,7 @@ public class ShipAbility
 	}
 
 	/**
-	 * @param description
+	 * @param _description
 	 *            the description to set
 	 */
 	public void setDescription(String _description)
@@ -56,7 +56,7 @@ public class ShipAbility
 	}
 
 	/**
-	 * @param name
+	 * @param _name
 	 *            the name to set
 	 */
 	public void setName(String _name)

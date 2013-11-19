@@ -5,10 +5,10 @@ import java.util.TreeMap;
 
 public class Race
 {
-	private static NavigableMap<Integer, Race> RACE_NAMES = new TreeMap<Integer, Race>();
+	private static final NavigableMap<Integer, Race> RACE_NAMES = new TreeMap<Integer, Race>();
 
-	private String name;
-	private int id;
+	private final String name;
+	private final int id;
 
 	// public static final int NEUTRAL = 0;
 	// public static final int ALSKANT = 1;
@@ -90,6 +90,7 @@ public class Race
 		return this.name;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.name;

@@ -18,7 +18,7 @@ public class Restriction implements Comparable<Object>
 	}
 
 	/**
-	 * @param name
+	 * @param _name
 	 *            the name to set
 	 */
 	public void setName(String _name)
@@ -26,6 +26,7 @@ public class Restriction implements Comparable<Object>
 		this.name = _name;
 	}
 
+	@Override
 	public int compareTo(Object o)
 	{
 		if (this.equals(o))
@@ -52,6 +53,7 @@ public class Restriction implements Comparable<Object>
 		return -1;
 	}
 
+	@Override
 	public String toString()
 	{
 		if(this.name.equals("0"))

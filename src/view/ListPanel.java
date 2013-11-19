@@ -24,6 +24,7 @@ public abstract class ListPanel extends TheLazyTraderPanel implements ActionList
 
 	abstract protected void initListTableModel();
 
+	@Override
 	protected void initComponents()
 	{
 		initListTableModel();
@@ -39,6 +40,7 @@ public abstract class ListPanel extends TheLazyTraderPanel implements ActionList
 		this.list.setRowSorter(sorter);
 	}
 
+	@Override
 	protected void addComponents()
 	{
 		GridBagLayout gbl = new GridBagLayout();
@@ -57,6 +59,7 @@ public abstract class ListPanel extends TheLazyTraderPanel implements ActionList
 		add(jsp);
 	}
 
+	@Override
 	protected void initActionsFileMenu()
 	{
 		jmiActionOptions = new JMenuItem[1];
@@ -70,6 +73,7 @@ public abstract class ListPanel extends TheLazyTraderPanel implements ActionList
 		// jmiActionOptions[3].setMnemonic('A'); // Set A as the shortcut key
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		if (this.standardActionChecks(e))
@@ -81,17 +85,15 @@ public abstract class ListPanel extends TheLazyTraderPanel implements ActionList
 
 	protected void filterTable(String filterString)
 	{
-		RowFilter<MyTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.
 		try
 		{
-			rf = RowFilter.regexFilter(filterString);
+			RowFilter<MyTableModel, Object> rf = RowFilter.regexFilter(filterString);
+			sorter.setRowFilter(rf);
 		}
 		catch (java.util.regex.PatternSyntaxException e)
 		{
-			return;
 		}
-		sorter.setRowFilter(rf);
 	}
 
 	protected void createLTM(int rows, int cols)

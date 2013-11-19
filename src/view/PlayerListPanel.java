@@ -41,6 +41,7 @@ public class PlayerListPanel extends ListPanel implements ActionListener, TableM
 		ltm.addTableModelListener(this);
 	}
 
+	@Override
 	public void tableChanged(TableModelEvent e)
 	{
 		if (e.getSource() == this.ltm)

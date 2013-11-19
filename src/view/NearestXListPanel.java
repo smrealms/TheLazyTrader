@@ -200,6 +200,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		ltm.addTableModelListener(this);
 	}
 
+	@Override
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		FilterableTreeNode node = (FilterableTreeNode) itemsTree.getLastSelectedPathComponent();
@@ -312,22 +313,27 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		}
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void mouseExited(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e)
 	{
 		rowSelected();

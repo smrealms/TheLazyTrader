@@ -27,7 +27,7 @@ import model.Sector;
 
 public class RouteGenerator
 {
-	private static ExecutorService executor = Executors.newFixedThreadPool(Settings.NUMBER_OF_PROCESSORS);
+	private static final ExecutorService executor = Executors.newFixedThreadPool(Settings.NUMBER_OF_PROCESSORS);
 	public static final int EXP_ROUTE = 0;
 	public static final int MONEY_ROUTE = 1;
 	static NavigableMap<Double, ArrayList<Route>> expRoutes;
@@ -107,6 +107,7 @@ public class RouteGenerator
 		for (final Entry<Integer, ArrayList<OneWayRoute>> es : routeLists.entrySet()) {
 			runs.add(new Callable<Object>()
 			{
+				@Override
 				public Object call()
 				{
 //					System.out.println(tasksCompleted);
@@ -119,6 +120,7 @@ public class RouteGenerator
 			{
 				runs.add(new Callable<Object>()
 				{
+					@Override
 					public Object call()
 					{
 						trimRoutes(numberOfRoutes);
@@ -350,7 +352,7 @@ public class RouteGenerator
 	}
 
 	/**
-	 * @param publishProgressTo
+	 * @param _publishProgressTo
 	 *            the publishProgressTo to set
 	 */
 	public static void setPublishProgressTo(RouteSwingWorker _publishProgressTo)

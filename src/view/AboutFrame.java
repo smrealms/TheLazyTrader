@@ -43,6 +43,7 @@ public class AboutFrame extends JFrame implements ActionListener, HyperlinkListe
 		setVisible(true);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		if (e.getSource() == jbtnOk)
@@ -51,6 +52,7 @@ public class AboutFrame extends JFrame implements ActionListener, HyperlinkListe
 		}
 	}
 
+	@Override
 	public void hyperlinkUpdate(HyperlinkEvent e)
 	{
 		if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED)

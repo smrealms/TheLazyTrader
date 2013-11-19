@@ -20,7 +20,7 @@ import org.ini4j.Profile.Section;
 
 public class DatabaseIniParser extends DatabaseParser implements Runnable
 {
-	private Ini mapFile;
+	private final Ini mapFile;
 
 	public DatabaseIniParser(Ini mapFileLocation)
 	{
@@ -42,11 +42,13 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 		this.mapFile = new Ini(new FileReader(mapFileLocation));
 	}
 
+	@Override
 	public void doParse()
 	{
 		new Thread(this).start();
 	}
 
+	@Override
 	synchronized public void run()
 	{
 		parseRaces();

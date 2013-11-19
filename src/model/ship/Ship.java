@@ -11,8 +11,8 @@ import model.Race;
 
 public class Ship implements HasRace
 {
-	private static NavigableMap<String, Ship> SHIPS = new TreeMap<String, Ship>();
-	private static NavigableMap<String, NavigableMap<String, Ship>> SHIPS_BY_RACE = new TreeMap<String, NavigableMap<String, Ship>>();
+	private static final NavigableMap<String, Ship> SHIPS = new TreeMap<String, Ship>();
+	private static final NavigableMap<String, NavigableMap<String, Ship>> SHIPS_BY_RACE = new TreeMap<String, NavigableMap<String, Ship>>();
 
 	private String name;
 	private int race;
@@ -27,8 +27,8 @@ public class Ship implements HasRace
 //	private int combats;
 //	private int scouts;
 //	private int mines;
-	private Map<ShipEquipment,Integer> equipment = new HashMap<ShipEquipment,Integer>();
-	private ArrayList<ShipAbility> abilities = new ArrayList<ShipAbility>();
+	private final Map<ShipEquipment,Integer> equipment = new HashMap<ShipEquipment,Integer>();
+	private final ArrayList<ShipAbility> abilities = new ArrayList<ShipAbility>();
 	private Restriction restriction = new Restriction("");
 
 
@@ -128,7 +128,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param cost
+	 * @param _cost
 	 *            the cost to set
 	 */
 	public void setCost(int _cost)
@@ -137,7 +137,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param power
+	 * @param _power
 	 *            the power to set
 	 */
 	public void setPower(int _power)
@@ -201,7 +201,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param hardpoints
+	 * @param _hardpoints
 	 *            the hardpoints to set
 	 */
 	public void setHardpoints(int _hardpoints)
@@ -235,7 +235,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param name
+	 * @param _name
 	 *            the name to set
 	 */
 	public void setName(String _name)
@@ -246,6 +246,7 @@ public class Ship implements HasRace
 	/**
 	 * @return the race of the ship
 	 */
+	@Override
 	public int getRace()
 	{
 		return this.race;
@@ -260,7 +261,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param race
+	 * @param _race
 	 *            the race to set
 	 */
 	public void setRace(int _race)
@@ -277,7 +278,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param turnRate
+	 * @param _turnRate
 	 *            the turnRate to set
 	 */
 	public void setTurnRate(int _turnRate)
@@ -324,7 +325,7 @@ public class Ship implements HasRace
 		this.equipment.put(equipmentName,value);
 	}
 
-	public boolean hasEquipment(String equipmentName)
+	public boolean hasEquipment(ShipEquipment equipmentName)
 	{
 		return this.equipment.containsKey(equipmentName);
 	}
@@ -339,7 +340,7 @@ public class Ship implements HasRace
 		this.abilities.add(abil);
 	}
 
-	public boolean hasAbility(String abilName)
+	public boolean hasAbility(ShipAbility abilName)
 	{
 		return this.abilities.contains(abilName);
 	}
@@ -358,7 +359,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param manu
+	 * @param _manu
 	 *            the manu to set
 	 */
 	public void setManu(int _manu)
@@ -375,7 +376,7 @@ public class Ship implements HasRace
 	}
 
 	/**
-	 * @param restriction
+	 * @param _restriction
 	 *            the restriction to set
 	 */
 	public void setRestriction(Restriction _restriction)
@@ -383,6 +384,7 @@ public class Ship implements HasRace
 		this.restriction = _restriction;
 	}
 
+	@Override
 	public String toString()
 	{
 		return this.name;

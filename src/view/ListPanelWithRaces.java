@@ -25,8 +25,10 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		super(_parent);
 	}
 
+	@Override
 	abstract protected void initListTableModel();
 
+	@Override
 	protected void initComponents()
 	{
 		super.initComponents();
@@ -50,6 +52,7 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		this.selectRaces.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 
+	@Override
 	protected void addComponents()
 	{
 		GridBagLayout gbl = new GridBagLayout();
@@ -73,6 +76,7 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		add(jsp);
 	}
 
+	@Override
 	protected void initActionsFileMenu()
 	{
 		jmiActionOptions = new JMenuItem[1];
@@ -86,6 +90,7 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		// jmiActionOptions[3].setMnemonic('A'); // Set A as the shortcut key
 	}
 
+	@Override
 	public void tableChanged(TableModelEvent e)
 	{
 		checkForStandardTableChanged(e);
@@ -102,19 +107,18 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		return false;
 	}
 
+	@Override
 	protected void filterTable(String filterString)
 	{
-		RowFilter<MyTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.
 		try
 		{
-			rf = RowFilter.regexFilter(filterString);
+			RowFilter<MyTableModel, Object> rf = RowFilter.regexFilter(filterString);
+			sorter.setRowFilter(rf);
 		}
 		catch (java.util.regex.PatternSyntaxException e)
 		{
-			return;
 		}
-		sorter.setRowFilter(rf);
 	}
 
 	protected void filterTableByRace()

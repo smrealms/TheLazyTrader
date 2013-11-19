@@ -3,8 +3,8 @@ package model;
 public class Connection
 {
 	public static final String WARP = "Warp";
-	private String type;
-	private int targetSector;
+	private final String type;
+	private final int targetSector;
 
 	public Connection(String _type, int _targetSector)
 	{

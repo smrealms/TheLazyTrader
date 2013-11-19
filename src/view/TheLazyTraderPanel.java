@@ -63,9 +63,8 @@ public abstract class TheLazyTraderPanel extends JPanel implements ActionListene
 	protected void createStandardMenuBar()
 	{
 		// setJMenuBar(jmb); // Add menu bar to frame
-		for (int i = 0; i < fileMenu.length; i++)
-		{
-			jmb.add(fileMenu[i]); // Add File menu to menu bar
+		for (JMenu menu : fileMenu) {
+			jmb.add(menu); // Add File menu to menu bar
 		}
 		fileMenu[0].setMnemonic('F'); // Set Alt-F as the shortcut key
 		fileMenu[1].setMnemonic('A'); // Set Alt-H as the shortcut key
@@ -97,34 +96,21 @@ public abstract class TheLazyTraderPanel extends JPanel implements ActionListene
 		jmiHelpOptions[0] = new JMenuItem("About");
 		jmiHelpOptions[0].setMnemonic('A'); // Set A as the shortcut key
 
-		for (int i = 0; i < jmiFileOptions.length; i++)
-		{
-			fileMenu[0].add(jmiFileOptions[i]); // Add the File menu items to
-			// the File menu
-			jmiFileOptions[i].addActionListener(this); // Add action listeners
-			// for the menu options
+		for (JMenuItem menuItem : jmiFileOptions) {
+			fileMenu[0].add(menuItem);
+			menuItem.addActionListener(this);
 		}
-		for (int i = 0; i < jmiActionOptions.length; i++)
-		{
-			fileMenu[1].add(jmiActionOptions[i]); // Add the File menu items
-			// to the File menu
-			jmiActionOptions[i].addActionListener(this); // Add action
-			// listeners for the
-			// menu options
+		for (JMenuItem menuItem : jmiActionOptions) {
+			fileMenu[1].add(menuItem);
+			menuItem.addActionListener(this);
 		}
-		for (int i = 0; i < jmiViewOptions.length; i++)
-		{
-			fileMenu[2].add(jmiViewOptions[i]); // Add the File menu items to
-			// the File menu
-			jmiViewOptions[i].addActionListener(this); // Add action listeners
-			// for the menu options
+		for (JMenuItem menuItem : jmiViewOptions) {
+			fileMenu[2].add(menuItem);
+			menuItem.addActionListener(this);
 		}
-		for (int i = 0; i < jmiHelpOptions.length; i++)
-		{
-			fileMenu[3].add(jmiHelpOptions[i]); // Add the Help menu items to
-			// the Help menu
-			jmiHelpOptions[i].addActionListener(this);// Add action listeners
-			// for the help options
+		for (JMenuItem menuItem : jmiHelpOptions) {
+			fileMenu[3].add(menuItem);
+			menuItem.addActionListener(this);
 		}
 	}
 

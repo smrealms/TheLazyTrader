@@ -9,10 +9,10 @@ import java.awt.Point;
 
 public class CloseTabListener implements MouseListener, ActionListener
 {
-	private JTabbedPane tabbedPane;
-	private JPopupMenu popup;
+	private final JTabbedPane tabbedPane;
+	private final JPopupMenu popup;
 	private int tabIndex;
-	private JMenuItem menuItem;
+	private final JMenuItem menuItem;
 
 	public CloseTabListener(JTabbedPane _tabbedPane)
 	{
@@ -44,6 +44,7 @@ public class CloseTabListener implements MouseListener, ActionListener
 		}
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e)
 	{
 		if (SwingUtilities.isMiddleMouseButton(e))
@@ -55,24 +56,29 @@ public class CloseTabListener implements MouseListener, ActionListener
 			}
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e)
 	{
 		showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e)
 	{
 		showPopup(e); // here because different platforms handle popups differently
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void mouseExited(MouseEvent e)
 	{
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		if (e.getSource() == this.menuItem)

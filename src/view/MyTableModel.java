@@ -6,11 +6,11 @@ import javax.swing.table.AbstractTableModel;
 
 public class MyTableModel extends AbstractTableModel
 {
-	private String[] columnNames;
-	private Object[][] data;
+	private final String[] columnNames;
+	private final Object[][] data;
 	private boolean editable = true;
-	private DecimalFormat dfInt = new DecimalFormat("#,##0");
-	private DecimalFormat dfReal = new DecimalFormat("#,##0.###");
+	private final DecimalFormat dfInt = new DecimalFormat("#,##0");
+	private final DecimalFormat dfReal = new DecimalFormat("#,##0.###");
 
 	public MyTableModel(int _rowCount, int _columnCount)
 	{
@@ -18,21 +18,25 @@ public class MyTableModel extends AbstractTableModel
 		this.data = new Object[_rowCount][_columnCount];
 	}
 
+	@Override
 	public int getColumnCount()
 	{
 		return columnNames.length;
 	}
 
+	@Override
 	public int getRowCount()
 	{
 		return data.length;
 	}
 
+	@Override
 	public String getColumnName(int col)
 	{
 		return columnNames[col];
 	}
 
+	@Override
 	public Object getValueAt(int row, int col)
 	{
 		Object value = data[row][col];
@@ -55,6 +59,7 @@ public class MyTableModel extends AbstractTableModel
 		columnNames[col] = value;
 	}
 
+	@Override
 	public void setValueAt(Object newValue, int row, int col)
 	{
 		if(newValue.getClass() == String.class)
@@ -84,6 +89,7 @@ public class MyTableModel extends AbstractTableModel
 	 * contain text ("true"/"false"), rather than a check box.
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public Class getColumnClass(int c)
 	{
 		Object o = getValueAt(0, c);
@@ -104,6 +110,7 @@ public class MyTableModel extends AbstractTableModel
 	/*
 	 * Don't need to implement this method unless your table's editable.
 	 */
+	@Override
 	public boolean isCellEditable(int row, int col)
 	{
 		return this.editable;

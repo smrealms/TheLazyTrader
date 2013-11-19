@@ -52,7 +52,7 @@ public class ExecuteGUI
 					{
 					}
 					Boolean[] trueFalse = { true, false };
-					temp = JOptionPane.showInputDialog(null, "Ask for memory each time?", "Ask for memory", JOptionPane.QUESTION_MESSAGE, null, trueFalse, new Boolean(true));
+					temp = JOptionPane.showInputDialog(null, "Ask for memory each time?", "Ask for memory", JOptionPane.QUESTION_MESSAGE, null, trueFalse, Boolean.valueOf(true));
 					if(temp!=null)
 						askForMemory = (Boolean) temp;
 				}
@@ -120,11 +120,13 @@ public class ExecuteGUI
 	{
 		final JTextArea error = new JTextArea();
 		PrintStream errorStream = new PrintStream(new OutputStream(){
+			@Override
 			public void write(byte[] b)
 			{	
 				error.setText(error.getText()+new String(b));
 			}
 
+			@Override
 			public void write(int b){
 				byte[] c = { Byte.parseByte(Integer.toString(b)) };
 				write(c);
@@ -139,11 +141,13 @@ public class ExecuteGUI
 
 		final JTextArea out = new JTextArea();
 		PrintStream outStream = new PrintStream(new OutputStream(){
+			@Override
 			public void write(byte[] b)
 			{	
 				out.setText(out.getText()+new String(b));
 			}
 
+			@Override
 			public void write(int b){
 				byte[] c = { Byte.parseByte(Integer.toString(b)) };
 				write(c);
