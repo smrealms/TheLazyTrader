@@ -27,8 +27,7 @@ public abstract class Route {
 	}
 
 	public boolean containsPort(int sectorID) {
-		Route route = this.getReturnRoute();
-		return (route != null && route.containsPort(sectorID)) || ((route = this.getForwardRoute()) != null && route.containsPort(sectorID));
+		return this.getReturnRoute().containsPort(sectorID) || this.getForwardRoute().containsPort(sectorID);
 	}
 
 	public abstract Route getForwardRoute();
