@@ -183,9 +183,9 @@ public class RouteGenerator
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
-			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (lastGoodIsNothing & (lastGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId()))
 				continue; // Don't do two nothings in a row
+			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (currentStepBuySector >= startSectorId) // Not already checked or back to start
 			{
 				if (currentStepBuySector == startSectorId) // Route returns to start
