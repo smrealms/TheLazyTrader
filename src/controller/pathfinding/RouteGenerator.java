@@ -158,12 +158,13 @@ public class RouteGenerator
 	 */
 	static void startRoutesToContinue(long maxNumPorts, int startSectorId, ArrayList<OneWayRoute> forwardRoutes, Map<Integer, ArrayList<OneWayRoute>> routeLists)
 	{
+		maxNumPorts--;
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
 			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (currentStepBuySector > startSectorId) // Not already checked
 			// && currentStepRoute.getGoodId()!=Good.NOTHING) // Don't start with nothing. // We can start with nothing, as long as we don't do 2 nothings in a row.
 			{
-				getContinueRoutes(maxNumPorts - 1, startSectorId, currentStepRoute, routeLists.get(currentStepBuySector), routeLists, currentStepRoute.getGoodId() == Good.NOTHING);
+				getContinueRoutes(maxNumPorts, startSectorId, currentStepRoute, routeLists.get(currentStepBuySector), routeLists, currentStepRoute.getGoodId() == Good.NOTHING);
 			}
 		}
 	}
@@ -180,6 +181,7 @@ public class RouteGenerator
 	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, ArrayList<OneWayRoute> forwardRoutes, Map<Integer, ArrayList<OneWayRoute>> routeLists, boolean lastGoodIsNothing)// ,boolean[]
 																																																						// visitedPorts)
 	{
+		maxNumPorts--;
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
@@ -194,10 +196,10 @@ public class RouteGenerator
 					addExpRoute(mpr);
 					addMoneyRoute(mpr);
 				}
-				else if (maxNumPorts > 1 && !routeToContinue.containsPort(currentStepBuySector))
+				else if (maxNumPorts > 0 && !routeToContinue.containsPort(currentStepBuySector))
 				{
 					MultiplePortRoute mpr = new MultiplePortRoute(routeToContinue, currentStepRoute);
-					getContinueRoutes(maxNumPorts - 1, startSectorId, mpr, routeLists.get(currentStepBuySector), routeLists, lastGoodIsNothing);
+					getContinueRoutes(maxNumPorts, startSectorId, mpr, routeLists.get(currentStepBuySector), routeLists, lastGoodIsNothing);
 				}
 			}
 		}
