@@ -31,6 +31,7 @@ import view.swing.tree.FilterableTreeNode;
 import view.swing.tree.FilteredTreeModel;
 import controller.pathfinding.Pathfinding;
 import gnu.trove.list.array.TIntArrayList;
+import gnu.trove.map.TIntObjectMap;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
 import javax.swing.JTree;
@@ -219,10 +220,10 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		if(this.sectorBox.hasValue())
 			if (this.checkSectorsFileOpened())
 			{
-				Map<Integer, Distance> distances = Pathfinding.findDistanceToX(x, FileLocate.getUniverseParser().getUniverse().getSectors(), (int) this.sectorBox.getValue(), Long.MIN_VALUE, Long.MAX_VALUE, Long.MAX_VALUE, false);
+				TIntObjectMap<Distance> distances = Pathfinding.findDistanceToX(x, FileLocate.getUniverseParser().getUniverse().getSectors(), (int) this.sectorBox.getValue(), Long.MIN_VALUE, Long.MAX_VALUE, Long.MAX_VALUE, false);
 				if (distances.size() > 0)
 				{
-					this.storedDistances = distances.values().toArray(new Distance[1]);
+					this.storedDistances = distances.values(new Distance[0]);
 					Arrays.sort(this.storedDistances);
 					createLTM(this.storedDistances.length);
 					for (int i = 0; i < this.storedDistances.length; i++)

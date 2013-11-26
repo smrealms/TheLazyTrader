@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import controller.RouteSwingWorker;
+import gnu.trove.iterator.TIntObjectIterator;
+import gnu.trove.map.TIntObjectMap;
 import java.util.Set;
 
 import settings.Settings;
@@ -37,7 +39,7 @@ public class RouteGenerator
 	static int totalTasks;
 	private static int tasksCompleted;
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(long maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, long numberOfRoutes) throws InterruptedException
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(long maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, long numberOfRoutes) throws InterruptedException
 	{
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
@@ -148,13 +150,14 @@ public class RouteGenerator
 		}
 	}
 
-	private static Map<Integer, OneWayRoute[]> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
+	private static Map<Integer, OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
 		int[] goodNameKeys = Good.getNames().keys();
-		Distance distance;
 		Map<Integer, OneWayRoute[]> routes = new LinkedHashMap<Integer, OneWayRoute[]>();
-		for (int currentSectorId : distances.keySet()) {
+		for (TIntObjectIterator<TIntObjectMap<Distance>> iter = distances.iterator(); iter.hasNext();) {
+			iter.advance();
+			int currentSectorId = iter.key();
 			Port currentPort = sectors[currentSectorId].getPort();
 			Boolean raceAllowed = races.get(currentPort.getPortRace());
 			if (raceAllowed == null) {
@@ -164,10 +167,11 @@ public class RouteGenerator
 			if (!raceAllowed) {
 				continue;
 			}
-			Map<Integer, Distance> d = distances.get(currentSectorId);
 			ArrayList<OneWayRoute> rl = new ArrayList<OneWayRoute>(15);
-			for (Entry<Integer, Distance> es : d.entrySet()) {
-				int targetSectorId = es.getKey();
+
+			for (TIntObjectIterator<Distance> d = iter.value().iterator(); d.hasNext();) {
+				d.advance();
+				int targetSectorId = d.key();
 				Port targetPort = sectors[targetSectorId].getPort();
 				raceAllowed = races.get(targetPort.getPortRace());
 				if (raceAllowed == null) {
@@ -180,7 +184,7 @@ public class RouteGenerator
 				if(routesForPort!=-1 && currentSectorId != routesForPort && targetSectorId != routesForPort) {
 					continue;
 				}
-				distance = es.getValue();
+				Distance distance = d.value();
 
 				if (nothingAllowed) {
 					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
@@ -201,7 +205,7 @@ public class RouteGenerator
 		return routes;
 	}
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
 	{
 		Map<Integer, OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();

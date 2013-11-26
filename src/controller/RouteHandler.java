@@ -16,6 +16,7 @@ import view.FileLocateListener;
 
 import controller.pathfinding.Pathfinding;
 import controller.pathfinding.RouteGenerator;
+import gnu.trove.map.TIntObjectMap;
 
 import model.Distance;
 import model.Route;
@@ -42,7 +43,7 @@ public class RouteHandler implements FileLocateListener
 
 	private boolean distancesChangedSinceLastRun = true;
 	private boolean routesChangedSinceLastRun = true;
-	private Map<Integer, Map<Integer, Distance>> distances;
+	private TIntObjectMap<TIntObjectMap<Distance>> distances;
 	private NavigableMap<Double, ArrayList<Route>>[] allRoutes;
 
 

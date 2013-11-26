@@ -1,5 +1,7 @@
 package controller.pathfinding;
 
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,10 +16,10 @@ import model.Sector;
 
 public class Pathfinding
 {
-	public static Map<Integer, Map<Integer, Distance>> calculatePortToPortDistances(
+	public static TIntObjectMap<TIntObjectMap<Distance>> calculatePortToPortDistances(
 			Sector[] sectors, long lowLimit, long highLimit, long distanceLimit)
 	{
-		Map<Integer, Map<Integer, Distance>> distances = new HashMap<Integer, Map<Integer, Distance>>();
+		TIntObjectMap<TIntObjectMap<Distance>> distances = new TIntObjectHashMap<TIntObjectMap<Distance>>();
 		for (Sector sec : sectors)
 		{
 			if (sec != null)
@@ -38,17 +40,17 @@ public class Pathfinding
 		return distances;
 	}
 
-	public static Map<Integer, Distance> findDistanceToOtherPorts(Sector[] sectors, int sectorId, long lowLimit, long highLimit, long distanceLimit)
+	public static TIntObjectMap<Distance> findDistanceToOtherPorts(Sector[] sectors, int sectorId, long lowLimit, long highLimit, long distanceLimit)
 	{
 		return findDistanceToX(Port.class, sectors, sectorId, lowLimit, highLimit, distanceLimit, false);
 	}
 
-	public static Map<Integer, Distance> findDistanceToX(Object x,
+	public static TIntObjectMap<Distance> findDistanceToX(Object x,
 			Sector[] sectors, int sectorId, long lowLimit, long highLimit,
 			long distanceLimit, boolean useFirst)
 	{
 		Sector checkSector;
-		Map<Integer, Distance> distances = new HashMap<Integer, Distance>();
+		TIntObjectMap<Distance> distances = new TIntObjectHashMap<Distance>();
 		int sectorsTravelled = 0;
 		boolean[] visitedSectors = new boolean[sectors.length];
 		visitedSectors[sectorId] = true;
