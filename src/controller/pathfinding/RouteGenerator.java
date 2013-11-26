@@ -33,69 +33,14 @@ public class RouteGenerator
 	static NavigableMap<Double, ArrayList<Route>> expRoutes;
 	static NavigableMap<Double, ArrayList<Route>> moneyRoutes;
 	static RouteSwingWorker publishProgressTo;
-//	static int trimToBestXRoutes = Settings.DEFAULT_TRIM_TO_BEST_X_ROUTES;
 	static double[] dontAddWorseThan = { 0, 0 };
 	static int totalTasks;
 	private static int tasksCompleted;
-
-	// synchronized public static NavigableMap<Double, ArrayList<Route>>[]
-	// generateRoutes(Sector[] sectors,boolean[] goodIds,Map<Integer, Boolean>
-	// races,Map<Integer,Map<Integer,Distance>> distances) throws
-	// InterruptedException
-	// {
-	// return
-	// findTwoWayRoutes(findOneWayRoutes(sectors,distances,goodIds,races));
-	// }
 
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(long maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, long numberOfRoutes) throws InterruptedException
 	{
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
-
-	// private static NavigableMap<Double, ArrayList<Route>>[]
-	// findTwoWayRoutes(final Map<Integer, ArrayList<OneWayRoute>> routeLists)
-	// throws InterruptedException
-	// {
-	// expRoutes = new TreeMap<Double, ArrayList<Route>>();
-	// moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-	// Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
-	// Iterator<Entry<Integer, ArrayList<OneWayRoute>>> iter =
-	// routeLists.entrySet().iterator();
-	// totalTasks=0;
-	// // int i=0;
-	// while(iter.hasNext())
-	// {
-	// final Entry<Integer, ArrayList<OneWayRoute>> es = iter.next();
-	// runs.add(new Callable<Object>(){
-	// public Object call()
-	// {
-	// // System.out.println("Starting: " + es.getKey());
-	// findLastRouteOnMultiPortRoute(es.getKey(),es.getValue(),routeLists);
-	// RouteGenerator.publishProgress();
-	// return null;
-	// }
-	// });
-	// if(totalTasks%10==0)
-	// {
-	// runs.add(new Callable<Object>(){
-	// public Object call()
-	// {
-	// trimRoutes();
-	// return null;
-	// }
-	// });
-	// }
-	// totalTasks++;
-	// // i++;
-	// }
-	// tasksCompleted=0;
-	// executor.invokeAll(runs);
-	//		
-	// NavigableMap<Double, ArrayList<Route>>[] allRoutes = new TreeMap[2];
-	// allRoutes[EXP_ROUTE]=expRoutes;
-	// allRoutes[MONEY_ROUTE]=moneyRoutes;
-	// return allRoutes;
-	// }
 
 	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final Map<Integer, ArrayList<OneWayRoute>> routeLists, final long numberOfRoutes) throws InterruptedException
 	{
@@ -103,14 +48,12 @@ public class RouteGenerator
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
 		Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
 		totalTasks = 0;
-		// int i=0;
 		for (final Entry<Integer, ArrayList<OneWayRoute>> es : routeLists.entrySet()) {
 			runs.add(new Callable<Object>()
 			{
 				@Override
 				public Object call()
 				{
-//					System.out.println(tasksCompleted);
 					startRoutesToContinue(maxNumPorts, es.getKey(), es.getValue(), routeLists);
 					RouteGenerator.publishProgress();
 					return null;
@@ -129,7 +72,6 @@ public class RouteGenerator
 				});
 			}
 			totalTasks++;
-			// i++;
 		}
 		tasksCompleted = 0;
 		executor.invokeAll(runs);
@@ -185,12 +127,12 @@ public class RouteGenerator
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
-			boolean newGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId();
-			if (lastGoodIsNothing && newGoodIsNothing)
-				continue; // Don't do two nothings in a row
 			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (currentStepBuySector >= startSectorId) // Not already checked or back to start
 			{
+				boolean newGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId();
+				if (lastGoodIsNothing && newGoodIsNothing)
+					continue; // Don't do two nothings in a row
 				if (currentStepBuySector == startSectorId) // Route returns to start
 				{
 					MultiplePortRoute mpr = new MultiplePortRoute(routeToContinue, currentStepRoute);
@@ -205,42 +147,6 @@ public class RouteGenerator
 			}
 		}
 	}
-
-	// static void findLastRouteOnMultiPortRoute(int
-	// startSectorId,ArrayList<OneWayRoute> forwardRoutes,Map<Integer,
-	// ArrayList<OneWayRoute>> routeLists)
-	// {
-	// Iterator<OneWayRoute> forwardRouteIter = forwardRoutes.iterator();
-	// while(forwardRouteIter.hasNext())
-	// {
-	// OneWayRoute forwardRoute = forwardRouteIter.next();
-	// if(forwardRoute.getBuySectorId()>forwardRoute.getSellSectorId()) //Not
-	// already checked
-	// {
-	// //Add one way routes in case they are best. // Will be Nothing on return
-	// for one way.
-	// // addExpRoute(forwardRoute,expRoutes);
-	// // addMoneyRoute(forwardRoute,moneyRoutes);
-	//				
-	// ArrayList<OneWayRoute> returnRoutes =
-	// routeLists.get(forwardRoute.getBuySectorId());
-	// if(returnRoutes!=null) // If port has return routes
-	// {
-	// Iterator<OneWayRoute> returnRouteIter = returnRoutes.iterator();
-	// while(returnRouteIter.hasNext())
-	// {
-	// OneWayRoute returnRoute = returnRouteIter.next();
-	// if(returnRoute.getBuySectorId()==startSectorId) //Route returns to start
-	// {
-	// MultiplePortRoute mpr = new MultiplePortRoute(forwardRoute,returnRoute);
-	// addExpRoute(mpr);
-	// addMoneyRoute(mpr);
-	// }
-	// }
-	// }
-	// }
-	// }
-	// }
 
 	private static Map<Integer, ArrayList<OneWayRoute>> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
