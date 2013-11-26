@@ -1,5 +1,7 @@
 package model.preferences;
 
+import gnu.trove.map.TIntIntMap;
+import gnu.trove.map.hash.TIntIntHashMap;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 import java.util.prefs.Preferences;
@@ -10,7 +12,7 @@ import model.Race;
 
 public class PlayerPreferences
 {
-	private static final NavigableMap<Integer, Integer> relations = new TreeMap<Integer, Integer>();
+	private static final TIntIntMap relations = new TIntIntHashMap();
 
 	static
 	{
@@ -22,7 +24,7 @@ public class PlayerPreferences
 	/**
 	 * @return the relations
 	 */
-	public static NavigableMap<Integer, Integer> getRelations()
+	public static TIntIntMap getRelations()
 	{
 		return relations;
 	}
