@@ -30,6 +30,7 @@ import model.ship.ShipEquipment;
 import view.swing.tree.FilterableTreeNode;
 import view.swing.tree.FilteredTreeModel;
 import controller.pathfinding.Pathfinding;
+import gnu.trove.list.array.TIntArrayList;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
 import javax.swing.JTree;
@@ -300,7 +301,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 			{
 				if (this.storedDistances[selRow] != null)
 				{
-					ArrayList<Integer> path = this.storedDistances[selRow].getPath();
+					TIntArrayList path = this.storedDistances[selRow].getPath();
 					for (int x = 0; x < path.size(); x++)
 					{
 						pathString += path.get(x) + ", ";

@@ -1,5 +1,6 @@
 package model;
 
+import gnu.trove.list.array.TIntArrayList;
 import java.util.ArrayList;
 
 import settings.Settings;
@@ -8,14 +9,14 @@ public class Distance implements Comparable<Distance>
 {
 	private int distance = -1; //First sector added will be the start and a distance of 0
 	private int numWarps = 0;
-	private ArrayList<Integer> path = new ArrayList<Integer>();
+	private TIntArrayList path = new TIntArrayList();
 
 	public Distance(int _startSectorId)
 	{
 		this.addToPath(_startSectorId);
 	}
 
-	public Distance(int _distance, int _numWarps, ArrayList<Integer> _path)
+	private Distance(int _distance, int _numWarps, TIntArrayList _path)
 	{
 		this.distance = _distance;
 		this.numWarps = _numWarps;
@@ -55,7 +56,7 @@ public class Distance implements Comparable<Distance>
 	@Override
 	public Distance clone()
 	{
-		return new Distance(this.distance, this.numWarps, (ArrayList<Integer>) this.path.clone());
+		return new Distance(this.distance, this.numWarps, new TIntArrayList(this.path));
 	}
 
 	public double getTurns()
@@ -92,7 +93,7 @@ public class Distance implements Comparable<Distance>
 	/**
 	 * @return the path
 	 */
-	public ArrayList<Integer> getPath()
+	public TIntArrayList getPath()
 	{
 		return this.path;
 	}
