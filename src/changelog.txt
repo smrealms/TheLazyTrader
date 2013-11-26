@@ -1,3 +1,6 @@
+v1.3.4
+Enhancement: If an error occurs whilst generating routes the error is now shown in the route window rather than showing nothing.
+
 v1.3.3
 BugFix: Fixed an issue generating routes when there are ports with invalid race ids.
 Enhancement: A bunch of changes under the hood to reduce the amount of code and also improve performance in some cases.

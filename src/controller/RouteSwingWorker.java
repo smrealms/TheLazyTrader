@@ -7,6 +7,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import controller.pathfinding.RouteGenerator;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Date;
 
 public class RouteSwingWorker extends SwingWorker<String, String>
@@ -44,7 +46,9 @@ public class RouteSwingWorker extends SwingWorker<String, String>
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			StringWriter stackTrace = new StringWriter();
+			e.printStackTrace(new PrintWriter(stackTrace));
+			this.routeDisplay.setText("Error generating routes, please let Page know:\n\n" + stackTrace);
 		}
 	}
 
