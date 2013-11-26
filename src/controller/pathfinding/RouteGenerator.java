@@ -15,6 +15,8 @@ import java.util.concurrent.Executors;
 import controller.RouteSwingWorker;
 import gnu.trove.iterator.TIntObjectIterator;
 import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
+import gnu.trove.procedure.TIntObjectProcedure;
 import java.util.Set;
 
 import settings.Settings;
@@ -44,38 +46,42 @@ public class RouteGenerator
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
 
-	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final Map<Integer, OneWayRoute[]> routeLists, final long numberOfRoutes) throws InterruptedException
+	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, final long numberOfRoutes) throws InterruptedException
 	{
 		dontAddWorseThan = new double[]{ 0.0, 0.0 };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
+		final Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
 		totalTasks = 0;
-		for (final Entry<Integer, OneWayRoute[]> es : routeLists.entrySet()) {
-			runs.add(new Callable<Object>()
-			{
-				@Override
-				public Object call()
-				{
-					startRoutesToContinue(maxNumPorts, es.getKey(), es.getValue(), routeLists);
-					RouteGenerator.publishProgress();
-					return null;
-				}
-			});
-			if (totalTasks % 10 == 0 && totalTasks > numberOfRoutes)
-			{
+		routeLists.forEachEntry(new TIntObjectProcedure<OneWayRoute[]>() {
+			@Override
+			public boolean execute(final int sectorId, final OneWayRoute[] owrs) {
 				runs.add(new Callable<Object>()
 				{
 					@Override
 					public Object call()
 					{
-						trimRoutes(numberOfRoutes);
+						startRoutesToContinue(maxNumPorts, sectorId, owrs, routeLists);
+						RouteGenerator.publishProgress();
 						return null;
 					}
 				});
+				if (totalTasks % 10 == 0 && totalTasks > numberOfRoutes)
+				{
+					runs.add(new Callable<Object>()
+					{
+						@Override
+						public Object call()
+						{
+							trimRoutes(numberOfRoutes);
+							return null;
+						}
+					});
+				}
+				totalTasks++;
+				return true;
 			}
-			totalTasks++;
-		}
+		});
 		tasksCompleted = 0;
 		executor.invokeAll(runs);
 		// SLOW System.gc(); // Get rid of anything we can before going idle.
@@ -101,7 +107,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param expRoutes
 	 */
-	static void startRoutesToContinue(long maxNumPorts, int startSectorId, OneWayRoute[] forwardRoutes, Map<Integer, OneWayRoute[]> routeLists)
+	static void startRoutesToContinue(long maxNumPorts, int startSectorId, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists)
 	{
 		maxNumPorts--;
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
@@ -123,9 +129,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param allRoutes
 	 */
-	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, OneWayRoute[] forwardRoutes, Map<Integer, OneWayRoute[]> routeLists, boolean lastGoodIsNothing)// ,boolean[]
-																																																						// visitedPorts)
-	{
+	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists, boolean lastGoodIsNothing) {
 		maxNumPorts--;
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
@@ -151,11 +155,11 @@ public class RouteGenerator
 		}
 	}
 
-	private static Map<Integer, OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
+	private static TIntObjectMap<OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
 		int[] goodNameKeys = Good.getNames().keys();
-		Map<Integer, OneWayRoute[]> routes = new LinkedHashMap<Integer, OneWayRoute[]>();
+		TIntObjectMap<OneWayRoute[]> routes = new TIntObjectHashMap<OneWayRoute[]>();
 		for (TIntObjectIterator<TIntObjectMap<Distance>> iter = distances.iterator(); iter.hasNext();) {
 			iter.advance();
 			int currentSectorId = iter.key();
@@ -208,11 +212,11 @@ public class RouteGenerator
 
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
 	{
-		Map<Integer, OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
+		TIntObjectMap<OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		dontAddWorseThan = new double[]{ 0.0, 0.0 };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		for (OneWayRoute[] routes : sectorRoutes.values()) {
+		for (OneWayRoute[] routes : (OneWayRoute[][]) sectorRoutes.values()) {
 			for(OneWayRoute owr : routes) {
 				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
 				Route mpr = new MultiplePortRoute(owr, fakeReturn);

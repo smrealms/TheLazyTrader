@@ -30,7 +30,6 @@ import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
 import gnu.trove.iterator.TIntObjectIterator;
 import java.util.ArrayList;
-import java.util.Map.Entry;
 import javax.swing.JButton;
 import model.Route;
 
