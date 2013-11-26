@@ -28,6 +28,7 @@ import model.Race;
 import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
+import gnu.trove.iterator.TIntObjectIterator;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 import javax.swing.JButton;
@@ -90,10 +91,11 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		// Goods Table
 		MyTableModel mtm = new MyTableModel(1, Good.getNames().size());
 		int count = 0;
-		for (Entry<Integer, String> good : Good.getNames().entrySet()) {
-			mtm.setColumnName(good.getValue(), count);
+		for (TIntObjectIterator<String> good = Good.getNames().iterator(); good.hasNext();) {
+			good.advance();
+			mtm.setColumnName(good.value(), count);
 			mtm.setValueAt(true, 0, count);
-			goods.put(good.getKey(), true);
+			goods.put(good.key(), true);
 			count++;
 		}
 		mtm.addTableModelListener(this);

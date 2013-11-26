@@ -40,7 +40,7 @@ public class DiCalculator
 
 	public static Sector[] generateDistanceIndexesForPort(Sector[] sectors, int sectorId, int goodIdOnly)
 	{
-		for (int goodId : Good.getNames().keySet()) {
+		for (int goodId : Good.getNames().keys()) {
 			if (goodIdOnly == -1 || goodIdOnly == goodId) {
 				if (sectors[sectorId].getPort().getGoodStatus(goodId) == Good.BUYS)
 					sectors[sectorId].getPort().setGoodDistance(goodId, findNearestGoodWithStatus(sectors, sectorId, goodId, Good.SELLS));

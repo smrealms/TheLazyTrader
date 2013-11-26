@@ -1,13 +1,13 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 public class Port
 {
 	private int portLevel;
 	private int portRace;
-	private final Map<Integer, Good> goods = new HashMap<Integer, Good>();
+	private final TIntObjectMap<Good> goods = new TIntObjectHashMap<Good>();
 
 	public Port()
 	{
@@ -84,7 +84,7 @@ public class Port
 		return g.getDistanceIndex();
 	}
 
-	public Map<Integer, Good> getGoods()
+	public TIntObjectMap<Good> getGoods()
 	{
 		return this.goods;
 	}
@@ -104,7 +104,7 @@ public class Port
 				return !this.getGoods().isEmpty();
 			if(s.equals("BOUGHT")||s.equals("SOLD")||s.equals("EITHER"))
 			{
-				for (Good g : this.getGoods().values()) {
+				for (Good g : (Good[]) this.getGoods().values()) {
 					int state = g.getState();
 					return (s.equals("BOUGHT")&&state==Good.BUYS) || (s.equals("SOLD")&&state==Good.SELLS) || (s.equals("EITHER")&&(state==Good.SELLS||state==Good.BUYS));
 				}

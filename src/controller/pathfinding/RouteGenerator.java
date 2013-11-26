@@ -151,7 +151,7 @@ public class RouteGenerator
 	private static Map<Integer, ArrayList<OneWayRoute>> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
-		Set<Integer> goodNameKeys = Good.getNames().keySet();
+		int[] goodNameKeys = Good.getNames().keys();
 		Distance distance;
 		Map<Integer, ArrayList<OneWayRoute>> routes = new LinkedHashMap<Integer, ArrayList<OneWayRoute>>();
 		for (int currentSectorId : distances.keySet()) {
