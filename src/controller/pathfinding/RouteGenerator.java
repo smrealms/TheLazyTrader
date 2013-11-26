@@ -42,13 +42,13 @@ public class RouteGenerator
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
 
-	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final Map<Integer, ArrayList<OneWayRoute>> routeLists, final long numberOfRoutes) throws InterruptedException
+	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final Map<Integer, OneWayRoute[]> routeLists, final long numberOfRoutes) throws InterruptedException
 	{
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
 		Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
 		totalTasks = 0;
-		for (final Entry<Integer, ArrayList<OneWayRoute>> es : routeLists.entrySet()) {
+		for (final Entry<Integer, OneWayRoute[]> es : routeLists.entrySet()) {
 			runs.add(new Callable<Object>()
 			{
 				@Override
@@ -98,7 +98,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param expRoutes
 	 */
-	static void startRoutesToContinue(long maxNumPorts, int startSectorId, ArrayList<OneWayRoute> forwardRoutes, Map<Integer, ArrayList<OneWayRoute>> routeLists)
+	static void startRoutesToContinue(long maxNumPorts, int startSectorId, OneWayRoute[] forwardRoutes, Map<Integer, OneWayRoute[]> routeLists)
 	{
 		maxNumPorts--;
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
@@ -120,7 +120,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param allRoutes
 	 */
-	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, ArrayList<OneWayRoute> forwardRoutes, Map<Integer, ArrayList<OneWayRoute>> routeLists, boolean lastGoodIsNothing)// ,boolean[]
+	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, OneWayRoute[] forwardRoutes, Map<Integer, OneWayRoute[]> routeLists, boolean lastGoodIsNothing)// ,boolean[]
 																																																						// visitedPorts)
 	{
 		maxNumPorts--;
@@ -148,12 +148,12 @@ public class RouteGenerator
 		}
 	}
 
-	private static Map<Integer, ArrayList<OneWayRoute>> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
+	private static Map<Integer, OneWayRoute[]> findOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
 		int[] goodNameKeys = Good.getNames().keys();
 		Distance distance;
-		Map<Integer, ArrayList<OneWayRoute>> routes = new LinkedHashMap<Integer, ArrayList<OneWayRoute>>();
+		Map<Integer, OneWayRoute[]> routes = new LinkedHashMap<Integer, OneWayRoute[]>();
 		for (int currentSectorId : distances.keySet()) {
 			Port currentPort = sectors[currentSectorId].getPort();
 			Boolean raceAllowed = races.get(currentPort.getPortRace());
@@ -196,17 +196,17 @@ public class RouteGenerator
 					}
 				}
 			}
-			routes.put(sectors[currentSectorId].getSectorID(), rl);
+			routes.put(sectors[currentSectorId].getSectorID(), rl.toArray(new OneWayRoute[0]));
 		}
 		return routes;
 	}
 
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, Map<Integer, Map<Integer, Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
 	{
-		Map<Integer, ArrayList<OneWayRoute>> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
+		Map<Integer, OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		for (ArrayList<OneWayRoute> routes : sectorRoutes.values()) {
+		for (OneWayRoute[] routes : sectorRoutes.values()) {
 			for(OneWayRoute owr : routes) {
 				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
 				Route mpr = new MultiplePortRoute(owr, fakeReturn);
