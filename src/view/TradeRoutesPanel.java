@@ -105,10 +105,11 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		// Races table
 		mtm = new MyTableModel(1, Race.getNumberOfRaces());
 		count = 0;
-		for (Entry<Integer, Race> race : Race.getRaces().entrySet()) {
-			mtm.setColumnName(race.getValue().getName(), count);
+		for (TIntObjectIterator<Race> race = Race.getRaces().iterator(); race.hasNext();) {
+			race.advance();
+			mtm.setColumnName(race.value().getName(), count);
 			mtm.setValueAt(true, 0, count);
-			races.put(race.getKey(), true);
+			races.put(race.key(), true);
 			count++;
 		}
 		mtm.addTableModelListener(this);

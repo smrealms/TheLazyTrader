@@ -14,7 +14,7 @@ public class PlayerPreferences
 
 	static
 	{
-		for (int raceId : Race.getRaces().keySet()) {
+		for (int raceId : Race.getRaces().keys()) {
 			relations.put(raceId, Integer.parseInt(Preferences.userNodeForPackage(PlayerPreferences.class).get(Integer.toString(raceId), Integer.toString(Settings.DEFAULT_RACE_RELATIONS))));
 		}
 	}

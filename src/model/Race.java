@@ -1,11 +1,11 @@
 package model;
 
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 public class Race
 {
-	private static final NavigableMap<Integer, Race> RACE_NAMES = new TreeMap<Integer, Race>();
+	private static final TIntObjectMap<Race> RACE_NAMES = new TIntObjectHashMap<Race>();
 
 	private final String name;
 	private final int id;
@@ -41,7 +41,7 @@ public class Race
 
 	public static int getId(String raceName)
 	{
-		for (int raceId : RACE_NAMES.keySet()) {
+		for (int raceId : RACE_NAMES.keys()) {
 			if (raceName.equals(getName(raceId)))
 				return raceId;
 		}
@@ -53,7 +53,7 @@ public class Race
 		RACE_NAMES.put(r.getId(), r);
 	}
 
-	public static NavigableMap<Integer, Race> getRaces()
+	public static TIntObjectMap<Race> getRaces()
 	{
 		return RACE_NAMES;
 	}
