@@ -1,6 +1,7 @@
 v1.3.4
 Enhancement: If an error occurs whilst generating routes the error is now shown in the route window rather than showing nothing.
 BugFix: Fixed a rare issue where a route may not be found if it contains a portion without goods.
+BugFix: Fixed an issue where very few (or no) routes would be found after multiple route generations with different settings.
 
 v1.3.3
 BugFix: Fixed an issue generating routes when there are ports with invalid race ids.
