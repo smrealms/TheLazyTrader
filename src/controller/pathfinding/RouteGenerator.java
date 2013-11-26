@@ -185,7 +185,8 @@ public class RouteGenerator
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
-			if (lastGoodIsNothing & (lastGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId()))
+			boolean newGoodIsNothing = Good.NOTHING == currentStepRoute.getGoodId();
+			if (lastGoodIsNothing && newGoodIsNothing)
 				continue; // Don't do two nothings in a row
 			int currentStepBuySector = currentStepRoute.getBuySectorId();
 			if (currentStepBuySector >= startSectorId) // Not already checked or back to start
@@ -199,7 +200,7 @@ public class RouteGenerator
 				else if (maxNumPorts > 0 && !routeToContinue.containsPort(currentStepBuySector))
 				{
 					MultiplePortRoute mpr = new MultiplePortRoute(routeToContinue, currentStepRoute);
-					getContinueRoutes(maxNumPorts, startSectorId, mpr, routeLists.get(currentStepBuySector), routeLists, lastGoodIsNothing);
+					getContinueRoutes(maxNumPorts, startSectorId, mpr, routeLists.get(currentStepBuySector), routeLists, newGoodIsNothing);
 				}
 			}
 		}
