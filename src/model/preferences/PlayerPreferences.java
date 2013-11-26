@@ -2,8 +2,6 @@ package model.preferences;
 
 import gnu.trove.map.TIntIntMap;
 import gnu.trove.map.hash.TIntIntHashMap;
-import java.util.NavigableMap;
-import java.util.TreeMap;
 import java.util.prefs.Preferences;
 
 import settings.Settings;
@@ -40,7 +38,7 @@ public class PlayerPreferences
 		relations.put(race, _relations);
 	}
 
-	public static Integer getRelationsForRace(int raceId)
+	public static int getRelationsForRace(int raceId)
 	{
 		return relations.get(raceId);
 	}

@@ -96,7 +96,7 @@ public class Good
 		return GOOD_VALUES.get(_goodId);
 	}
 
-	public static void addGood(Integer key, String name, Integer value)
+	public static void addGood(int key, String name, int value)
 	{
 		GOOD_NAMES.put(key, name);
 		GOOD_VALUES.put(key, value);
