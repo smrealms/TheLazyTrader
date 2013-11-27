@@ -1,0 +1,985 @@
+ExecuteGUI -> ExecuteGUI:
+    void main(java.lang.String[]) -> main
+controller.RouteHandler -> a:
+    java.text.DecimalFormat df -> a
+    int numberOfRoutes -> a
+    model.Universe universe -> a
+    int startSector -> b
+    int endSector -> c
+    int maxDistance -> d
+    int maxNumberOfPorts -> e
+    int routesForPort -> f
+    model.Route$DisplayType displayType -> a
+    java.util.Map races -> a
+    java.util.Map goods -> b
+    int typeOfRoute -> g
+    boolean doSave -> a
+    java.io.File saveFile -> a
+    boolean distancesChangedSinceLastRun -> b
+    boolean routesChangedSinceLastRun -> c
+    gnu.trove.map.TIntObjectMap distances -> a
+    java.util.NavigableMap[] allRoutes -> a
+    java.lang.String doInBackground(controller.RouteSwingWorker) -> a
+    java.lang.String getTopRoutesString() -> a
+    void setEndSector(int) -> a
+    void setGoods(java.util.Map) -> a
+    void setMaxDistance(int) -> b
+    void setMaxNumberOfPorts(int) -> c
+    void setNumberOfRoutes(int) -> d
+    void setDisplayType(model.Route$DisplayType) -> a
+    void setRaces(java.util.Map) -> b
+    void setTypeOfRoute(int) -> e
+    void setStartSector(int) -> f
+    void setUniverse(model.Universe) -> a
+    void setDoSave(boolean) -> a
+    void setSaveFile(java.io.File) -> a
+    void setRoutesForPort(int) -> g
+    void universeLocated() -> a
+    void universeLost() -> b
+controller.RouteSwingWorker -> b:
+    javax.swing.JTextArea routeDisplay -> a
+    controller.RouteHandler routeHandler -> a
+    javax.swing.JProgressBar progressBar -> a
+    java.util.Date startDate -> a
+    void done() -> done
+    void publishProgress(java.lang.String) -> a
+    void process(java.util.List) -> process
+    void publishProgressToBar(int,int) -> a
+    java.lang.Object doInBackground() -> doInBackground
+controller.fileaccess.DatabaseIniParser -> c:
+    org.ini4j.Ini mapFile -> a
+    void doParse() -> a
+    void run() -> run
+    void parseRaces() -> b
+    void parseGoods() -> c
+    void parseShipEquipment() -> d
+    void parseShipAbilities() -> e
+    void parseShips() -> f
+    void parseWeapons() -> g
+    void parseLocations() -> h
+controller.fileaccess.DatabaseParser -> d:
+controller.fileaccess.SMRIniParser -> e:
+    org.ini4j.Ini mapFile -> a
+    model.Universe storedUni -> a
+    model.Universe getUniverse() -> a
+    java.util.Map getGalaxies() -> a
+    void run() -> run
+    void parseGalaxies() -> a
+    void parseSectors() -> b
+controller.fileaccess.UniverseParser -> f:
+    model.Universe getUniverse() -> a
+    java.util.Map getGalaxies() -> a
+controller.pathfinding.DiCalculator -> g:
+    java.util.Collection val$runs -> a
+    int val$maxNumPorts -> a
+    gnu.trove.map.TIntObjectMap val$routeLists -> a
+    model.Sector[] generateDistanceIndexesForGood$43b5cee8(model.Sector[]) -> a
+    int findNearestGoodWithStatus(model.Sector[],int,int,int) -> a
+    gnu.trove.map.TIntObjectMap findDistanceToX$3f36fa02(java.lang.Object,model.Sector[],int,long,long,long) -> a
+    boolean execute(int,java.lang.Object) -> a
+    java.lang.Object findService(java.lang.Class) -> a
+    java.lang.Class findServiceClass(java.lang.Class) -> a
+    java.lang.String findServiceClassName(java.lang.String) -> a
+    java.lang.String loadLine(java.lang.String) -> b
+controller.pathfinding.RouteGenerator -> h:
+    java.util.concurrent.ExecutorService executor -> a
+    java.util.NavigableMap expRoutes -> a
+    java.util.NavigableMap moneyRoutes -> b
+    int trimToBestXRoutes -> b
+    controller.RouteSwingWorker publishProgressTo -> a
+    double[] dontAddWorseThan -> a
+    int totalTasks -> a
+    int tasksCompleted -> c
+    java.util.NavigableMap[] generateMultiPortRoutes(int,model.Sector[],java.util.Map,java.util.Map,gnu.trove.map.TIntObjectMap,int,int) -> a
+    void publishProgress() -> a
+    void startRoutesToContinue(int,int,model.OneWayRoute[],gnu.trove.map.TIntObjectMap) -> a
+    void getContinueRoutes(int,int,model.Route,model.OneWayRoute[],gnu.trove.map.TIntObjectMap,boolean) -> a
+    gnu.trove.map.TIntObjectMap findOneWayRoutes(model.Sector[],gnu.trove.map.TIntObjectMap,int,java.util.Map,java.util.Map) -> a
+    java.util.NavigableMap[] generateOneWayRoutes(model.Sector[],gnu.trove.map.TIntObjectMap,java.util.Map,java.util.Map,int) -> a
+    void addExpRoute(model.Route) -> a
+    void addMoneyRoute(model.Route) -> b
+    void setPublishProgressTo(controller.RouteSwingWorker) -> a
+    void trimRoutes() -> b
+controller.pathfinding.RouteGenerator$1$1 -> i:
+    int val$sectorId -> a
+    model.OneWayRoute[] val$owrs -> a
+    controller.pathfinding.DiCalculator this$0$5a35fdf2 -> a
+    java.lang.Object call() -> call
+gnu.trove.TIntCollection -> j:
+    int size() -> a
+    gnu.trove.TIntCollection iterator$627ba2d4() -> a
+    boolean hasNext() -> a
+    void advance() -> c
+    int key() -> b
+    java.lang.Object value() -> a
+    int next() -> c
+    boolean execute(int,int) -> a
+    boolean execute(int,java.lang.Object) -> a
+    void handleComment(java.lang.String) -> a
+    void handleOption(java.lang.String,java.lang.String) -> a
+    void endIni() -> d
+    void endSection() -> e
+    void startIni() -> f
+    void startSection(java.lang.String) -> b
+    void universeLocated() -> a
+    void universeLost() -> b
+gnu.trove.impl.Constants -> k:
+    boolean VERBOSE -> a
+    byte DEFAULT_BYTE_NO_ENTRY_VALUE -> a
+    short DEFAULT_SHORT_NO_ENTRY_VALUE -> a
+    int DEFAULT_INT_NO_ENTRY_VALUE -> a
+    long DEFAULT_LONG_NO_ENTRY_VALUE -> a
+    float DEFAULT_FLOAT_NO_ENTRY_VALUE -> a
+    double DEFAULT_DOUBLE_NO_ENTRY_VALUE -> a
+gnu.trove.impl.HashFunctions -> l:
+    int hash(int) -> a
+    int fastCeil$133ade() -> a
+gnu.trove.impl.PrimeFinder -> m:
+    int[] primeCapacities -> a
+    int nextPrime(int) -> a
+gnu.trove.impl.hash.THash -> n:
+    int _size -> a
+    int _free -> b
+    float _loadFactor -> a
+    int _maxSize -> c
+    float _autoCompactionFactor -> b
+    boolean isEmpty() -> a
+    int size() -> a
+    int capacity() -> b
+    void clear() -> a
+    int setUp(int) -> a
+    void rehash(int) -> a
+    void computeMaxSize(int) -> b
+    void postInsertHook(boolean) -> a
+    void writeExternal(java.io.ObjectOutput) -> writeExternal
+    void readExternal(java.io.ObjectInput) -> readExternal
+gnu.trove.impl.hash.THashPrimitiveIterator -> o:
+    gnu.trove.impl.hash.TPrimitiveHash _hash -> a
+    int _expectedSize -> b
+    int _index -> a
+    int nextIndex() -> d
+    boolean hasNext() -> a
+    void moveToNextIndex() -> g
+gnu.trove.impl.hash.TIntHash -> p:
+    int[] _set -> a
+    int no_entry_value -> b
+    boolean consumeFreeSlot -> a
+    int setUp(int) -> a
+    boolean contains(int) -> a
+    int index(int) -> b
+    int insertKey(int) -> c
+    void insertKeyAt(int,int) -> a
+gnu.trove.impl.hash.TIntIntHash -> q:
+    int[] _set -> a
+    int no_entry_key -> b
+    int no_entry_value -> c
+    boolean consumeFreeSlot -> a
+    int getNoEntryValue() -> c
+    int setUp(int) -> a
+    int insertKey(int) -> a_
+    void insertKeyAt(int,int) -> a
+    void writeExternal(java.io.ObjectOutput) -> writeExternal
+    void readExternal(java.io.ObjectInput) -> readExternal
+gnu.trove.impl.hash.TPrimitiveHash -> r:
+    byte[] _states -> a
+    int capacity() -> b
+    int setUp(int) -> a
+gnu.trove.list.array.TIntArrayList -> s:
+    int[] _data -> a
+    int _pos -> a
+    int no_entry_value -> b
+    int size() -> a
+    boolean add(int) -> a
+    int get(int) -> a
+    gnu.trove.TIntCollection iterator$627ba2d4() -> a
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+    java.lang.String toString() -> toString
+    void writeExternal(java.io.ObjectOutput) -> writeExternal
+    void readExternal(java.io.ObjectInput) -> readExternal
+gnu.trove.list.array.TIntArrayList$TIntArrayIterator -> t:
+    int cursor -> a
+    gnu.trove.list.array.TIntArrayList this$0 -> a
+    boolean hasNext() -> a
+    int next() -> c
+gnu.trove.map.TIntIntMap -> u:
+    int getNoEntryValue() -> c
+    int put(int,int) -> a
+    int get(int) -> b
+    int size() -> a
+gnu.trove.map.TIntObjectMap -> v:
+    int size() -> a
+    boolean containsKey(int) -> a_
+    java.lang.Object get(int) -> a
+    java.lang.Object put(int,java.lang.Object) -> a
+    java.lang.Object[] values() -> a
+    java.lang.Object[] values(java.lang.Object[]) -> a
+    gnu.trove.TIntCollection iterator$10f19d6d() -> a
+    boolean forEachEntry$7a70d1fd(gnu.trove.TIntCollection) -> a
+gnu.trove.map.hash.TIntIntHashMap -> w:
+    int[] _values -> b
+    int setUp(int) -> a
+    void rehash(int) -> a
+    int put(int,int) -> a
+    int get(int) -> b
+    void clear() -> a
+    boolean isEmpty() -> a
+    boolean forEachEntry$40a85583(gnu.trove.TIntCollection) -> a
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+    java.lang.String toString() -> toString
+    void writeExternal(java.io.ObjectOutput) -> writeExternal
+    void readExternal(java.io.ObjectInput) -> readExternal
+gnu.trove.map.hash.TIntIntHashMap$1 -> x:
+    boolean first -> a
+    java.lang.StringBuilder val$buf -> a
+    boolean execute(int,int) -> a
+gnu.trove.map.hash.TIntObjectHashMap -> y:
+    java.lang.Object[] _values -> a
+    int no_entry_key -> b
+    int setUp(int) -> a
+    void rehash(int) -> a
+    boolean containsKey(int) -> a_
+    java.lang.Object get(int) -> a
+    java.lang.Object put(int,java.lang.Object) -> a
+    void clear() -> a
+    java.lang.Object[] values() -> a
+    java.lang.Object[] values(java.lang.Object[]) -> a
+    gnu.trove.TIntCollection iterator$10f19d6d() -> a
+    boolean forEachEntry$7a70d1fd(gnu.trove.TIntCollection) -> a
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+    void writeExternal(java.io.ObjectOutput) -> writeExternal
+    void readExternal(java.io.ObjectInput) -> readExternal
+    java.lang.String toString() -> toString
+gnu.trove.map.hash.TIntObjectHashMap$1 -> z:
+    gnu.trove.map.hash.TIntObjectHashMap this$0 -> a
+    boolean execute(int,java.lang.Object) -> a
+gnu.trove.map.hash.TIntObjectHashMap$2 -> A:
+    boolean first -> a
+    java.lang.StringBuilder val$buf -> a
+    boolean execute(int,java.lang.Object) -> a
+gnu.trove.map.hash.TIntObjectHashMap$TIntObjectHashIterator -> B:
+    gnu.trove.map.hash.TIntObjectHashMap _map -> a
+    void advance() -> c
+    int key() -> b
+    java.lang.Object value() -> a
+loci.visbio.util.BrowserLauncher -> C:
+    int jvm -> a
+    java.lang.Object theBrowser -> a
+    boolean loadedWithoutErrors -> a
+    java.lang.Class mrjFileUtilsClass -> a
+    java.lang.Class mrjOSTypeClass -> b
+    java.lang.Class aeDescClass -> c
+    java.lang.reflect.Constructor aeTargetConstructor -> a
+    java.lang.reflect.Constructor appleEventConstructor -> b
+    java.lang.reflect.Constructor aeDescConstructor -> c
+    java.lang.reflect.Method findFolder -> a
+    java.lang.reflect.Method getFileCreator -> b
+    java.lang.reflect.Method getFileType -> c
+    java.lang.reflect.Method openURL -> d
+    java.lang.reflect.Method makeOSType -> e
+    java.lang.reflect.Method putParameter -> f
+    java.lang.reflect.Method sendNoReply -> g
+    java.lang.Object kSystemFolderType -> b
+    java.lang.Integer keyDirectObject -> a
+    java.lang.Integer kAutoGenerateReturnID -> b
+    java.lang.Integer kAnyTransactionID -> c
+    java.lang.String errorMessage -> a
+    boolean loadClasses() -> a
+    java.lang.Object locateBrowser() -> a
+    void openURL(java.lang.String) -> a
+    int ICStart(int[],int) -> a
+    int ICStop(int[]) -> a
+    int ICLaunchURL(int,byte[],byte[],int,int[],int[]) -> a
+model.Connection -> D:
+    int targetSector -> a
+model.Distance -> E:
+    int distance -> a
+    int numWarps -> b
+    gnu.trove.list.array.TIntArrayList path -> a
+    int getDistance() -> a
+    int getNumWarps() -> b
+    model.Distance clone() -> a
+    double getTurns() -> a
+    int getEndSectorId() -> c
+    gnu.trove.list.array.TIntArrayList getPath() -> a
+    void addToPath(int) -> a
+    void addWarpToPath(int) -> b
+    java.lang.Object clone() -> clone
+    int compareTo(java.lang.Object) -> compareTo
+model.Galaxy -> F:
+    int galaxyId -> a
+    int width -> b
+    int height -> c
+    int startSectorId -> d
+    int endSectorId -> e
+    java.lang.String name -> a
+    java.lang.String toString() -> toString
+model.Good -> G:
+    java.util.NavigableMap GOOD_NAMES -> a
+    java.util.NavigableMap GOOD_VALUES -> b
+    int state -> a
+    int goodId -> b
+    int distanceIndex -> c
+    void setDistanceIndex(int) -> a
+    int getState() -> a
+    int getDistanceIndex() -> b
+    java.lang.String getName(int) -> a
+    java.util.Map getNames() -> a
+    int getValue(int) -> a
+    void addGood(int,java.lang.String,int) -> a
+    int getId(java.lang.String) -> a
+    int getGoodId() -> c
+    boolean matchesState(int) -> a
+    java.lang.String toString() -> toString
+    void clearGoods() -> a
+model.HasRace -> H:
+    int getRace() -> a
+model.Location -> I:
+    java.util.NavigableMap locationSingletons -> a
+    java.util.NavigableMap locationSingletonsByType -> b
+    java.lang.String locationName -> a
+    java.lang.String type -> b
+    java.util.ArrayList ships -> a
+    java.util.ArrayList weapons -> b
+    java.util.ArrayList shipEquipment -> c
+    model.Location getLocation(java.lang.String) -> a
+    void putLocation(model.Location) -> a
+    java.util.NavigableMap getLocationByType(java.lang.String) -> a
+    java.util.NavigableMap getLocationsByType() -> a
+    void addShipEquipment(model.ship.ShipEquipment) -> a
+    void addShip(model.ship.Ship) -> a
+    void addWeapon(model.Weapon) -> a
+    boolean hasX(java.lang.Object) -> a
+    java.lang.String toString() -> toString
+    java.lang.String getType() -> a
+    void setType(java.lang.String) -> a
+    void clearLocations() -> a
+model.MultiplePortRoute -> J:
+    model.Route forwardRoute -> a
+    model.Route returnRoute -> b
+    model.Route getForwardRoute() -> a
+    model.Route getReturnRoute() -> b
+model.OneWayRoute -> K:
+    int sellSectorId -> a
+    int buySectorId -> b
+    int sellDi -> c
+    int buyDi -> d
+    model.Distance distance -> a
+    int goodId -> e
+    int sellPortRace -> f
+    int buyPortRace -> g
+    int getSellSectorId() -> a
+    int getBuySectorId() -> b
+    int getSellPortRace() -> c
+    int getBuyPortRace() -> d
+    model.Distance getDistance() -> a
+    int getGoodId() -> e
+    double getMoneyMultiplierSum() -> a
+    double getExpMultiplierSum() -> b
+    double getTurnsForRoute() -> c
+    boolean containsPort(int) -> a
+    java.lang.String getRouteString(model.Route$DisplayType) -> a
+    model.Route getReturnRoute() -> b
+    model.Route getForwardRoute() -> a
+    int compareTo(java.lang.Object) -> compareTo
+model.OneWayRoute$1 -> L:
+    int[] $SwitchMap$model$Route$DisplayType -> a
+model.Port -> M:
+    int portLevel -> a
+    int portRace -> b
+    java.util.Map goods -> a
+    void setPortRace(int) -> a
+    void setGoodDistance(int,int) -> a
+    void addPortBuy(int) -> b
+    void addPortSell(int) -> c
+    int getGoodStatus(int) -> a
+    int getPortLevel() -> a
+    int getPortRace() -> b
+    int getGoodDistance(int) -> b
+    boolean hasX(java.lang.Object) -> a
+model.Race -> N:
+    java.util.NavigableMap RACE_NAMES -> a
+    java.lang.String name -> a
+    int id -> a
+    java.lang.String getName(int) -> a
+    java.lang.String getBBCode(int) -> b
+    int getId(java.lang.String) -> a
+    void addRace(model.Race) -> a
+    java.util.NavigableMap getRaces() -> a
+    int getNumberOfRaces() -> a
+    int getId() -> b
+    java.lang.String getName() -> a
+    java.lang.String toString() -> toString
+    void clearRaces() -> a
+model.Route -> O:
+    double getOverallExpMultiplier() -> d
+    double getOverallMoneyMultiplier() -> e
+    double getTurnsForRoute() -> c
+    double getExpMultiplierSum() -> b
+    double getMoneyMultiplierSum() -> a
+    boolean containsPort(int) -> a
+    model.Route getForwardRoute() -> a
+    model.Route getReturnRoute() -> b
+    java.lang.String getRouteString(model.Route$DisplayType) -> a
+model.Route$DisplayType -> P:
+    model.Route$DisplayType TheLazyTrader -> a
+    model.Route$DisplayType TheLazyTradeBBCode -> b
+    model.Route$DisplayType[] $VALUES -> a
+    model.Route$DisplayType[] values() -> a
+model.Sector -> Q:
+    int sectorId -> a
+    java.util.ArrayList connections -> a
+    java.util.ArrayList warps -> b
+    model.Port port -> a
+    java.util.ArrayList locations -> c
+    java.lang.String getBBCode(int) -> a
+    void addConnection$505cff1c(int) -> a
+    boolean hasPort() -> a
+    boolean hasLocation() -> b
+    boolean equals(java.lang.Object) -> equals
+    boolean hasX(java.lang.Object) -> a
+model.Universe -> R:
+    java.util.Map galaxies -> a
+    model.Sector[] sectors -> a
+    model.Galaxy getGalaxy(int) -> a
+model.Weapon -> S:
+    java.util.NavigableMap WEAPONS -> a
+    java.util.NavigableMap WEAPONS_BY_POWER -> b
+    java.lang.String name -> a
+    int race -> a
+    int cost -> b
+    int shieldDamage -> c
+    int armourDamage -> d
+    int accuracy -> e
+    int powerLevel -> f
+    int empDamage -> g
+    boolean isEmpInPercent -> a
+    java.util.ArrayList restrictions -> a
+    void addWeapon(model.Weapon) -> a
+    model.Weapon getWeapon(java.lang.String) -> a
+    java.util.NavigableMap getWeapons() -> a
+    java.util.NavigableMap getWeaponsByPower() -> b
+    int getArmourDamage() -> b
+    void setArmourDamage(int) -> a
+    int getCost() -> c
+    void setCost(int) -> b
+    int getEmpDamage() -> d
+    void setEmpDamage(int) -> c
+    boolean isEmpInPercent() -> a
+    void setEmpInPercent(boolean) -> a
+    java.lang.String getName() -> a
+    int getPowerLevel() -> e
+    void setPowerLevel(int) -> d
+    int getRace() -> a
+    void setRace(int) -> e
+    java.util.ArrayList getRestrictions() -> a
+    void addRestriction(model.ship.Restriction) -> a
+    int getShieldDamage() -> f
+    void setShieldDamage(int) -> f
+    int getAccuracy() -> g
+    void setAccuracy(int) -> g
+    java.lang.String toString() -> toString
+    void clearWeapons() -> a
+model.preferences.GeneralPreferences -> T:
+    boolean askForMemory -> a
+    int memoryToAllocate -> a
+    boolean askForMemory() -> a
+    void setAskForMemory(boolean) -> a
+    int getMemoryToAllocate() -> a
+    void setMemoryToAllocate(int) -> a
+model.preferences.ParsingPreferences -> U:
+    java.lang.String SMRFileParserPath -> a
+    java.lang.String getSMRFileParserPath() -> a
+    void setSMRFileParserPath(java.lang.String) -> a
+model.preferences.PlayerPreferences -> V:
+    gnu.trove.map.TIntIntMap relations -> a
+    void setRelation(int,int) -> a
+    int getRelationsForRace(int) -> a
+model.preferences.RoutePreferences -> W:
+    boolean useRelationsFactor -> a
+    boolean useRelationsFactor() -> a
+model.ship.Restriction -> X:
+    java.lang.String name -> a
+    int compareTo(java.lang.Object) -> compareTo
+    java.lang.String toString() -> toString
+model.ship.Ship -> Y:
+    java.util.NavigableMap SHIPS -> a
+    java.util.NavigableMap SHIPS_BY_RACE -> b
+    java.lang.String name -> a
+    int race -> a
+    int cost -> b
+    int turnRate -> c
+    int power -> d
+    int hardpoints -> e
+    java.util.Map equipment -> a
+    java.util.ArrayList abilities -> a
+    model.ship.Restriction restriction -> a
+    void addShip(model.ship.Ship) -> a
+    model.ship.Ship getShip(java.lang.String) -> a
+    java.util.NavigableMap getShips() -> a
+    java.util.NavigableMap getShipsByRace() -> b
+    int getCost() -> b
+    void setCost(int) -> a
+    void setPower(int) -> b
+    int getPower() -> c
+    int getHardpoints() -> d
+    void setHardpoints(int) -> c
+    java.lang.String getName() -> a
+    int getRace() -> a
+    java.lang.String getRaceName() -> b
+    void setRace(int) -> d
+    int getTurnRate() -> e
+    void setTurnRate(int) -> e
+    void addEquipment(model.ship.ShipEquipment,int) -> a
+    java.util.Map getEquipments() -> a
+    void addAbility(model.ship.ShipAbility) -> a
+    int getTradePotential() -> f
+    model.ship.Restriction getRestriction() -> a
+    void setRestriction(model.ship.Restriction) -> a
+    java.lang.String toString() -> toString
+    void clearShips() -> a
+model.ship.ShipAbility -> Z:
+    java.lang.String name -> a
+    java.util.NavigableMap SHIP_ABILITIES -> a
+    void addShipAbility(model.ship.ShipAbility) -> a
+    model.ship.ShipAbility getShipAbility(java.lang.String) -> a
+    void setDescription$552c4e01() -> a
+model.ship.ShipEquipment -> aa:
+    java.lang.String name -> a
+    java.util.NavigableMap SHIP_EQUIPMENTS -> a
+    void addShipEquipment(model.ship.ShipEquipment) -> a
+    model.ship.ShipEquipment getShipEquipment(java.lang.String) -> a
+    java.util.NavigableMap getShipEquipments() -> a
+    void setCost$13462e() -> a
+    void setDescription$552c4e01() -> b
+    java.lang.String getName() -> a
+    java.lang.String toString() -> toString
+org.ini4j.BasicMultiMap -> ab:
+    java.util.Map _impl -> a
+    java.util.List getAll(java.lang.Object) -> a
+    boolean isEmpty() -> isEmpty
+    void add(java.lang.Object,java.lang.Object) -> a
+    void clear() -> clear
+    boolean containsKey(java.lang.Object) -> containsKey
+    boolean containsValue(java.lang.Object) -> containsValue
+    java.util.Set entrySet() -> entrySet
+    java.lang.Object get(java.lang.Object) -> get
+    java.util.Set keySet() -> keySet
+    java.lang.Object put(java.lang.Object,java.lang.Object) -> put
+    void putAll(java.util.Map) -> putAll
+    java.lang.Object remove(java.lang.Object) -> remove
+    int size() -> size
+    java.lang.String toString() -> toString
+    java.util.Collection values() -> values
+    java.util.List getList(java.lang.Object,boolean) -> a
+org.ini4j.BasicMultiMap$ShadowEntry -> ac:
+    java.lang.Object _key -> a
+    org.ini4j.BasicMultiMap this$0 -> a
+    java.lang.Object getKey() -> getKey
+    java.lang.Object getValue() -> getValue
+    java.lang.Object setValue(java.lang.Object) -> setValue
+org.ini4j.BasicOptionMap -> ad:
+    org.ini4j.BasicProfile _profile -> a
+org.ini4j.BasicProfile -> ae:
+    org.ini4j.MultiMap add$8d387e6(java.lang.String) -> a
+    boolean isTreeMode() -> a
+    char getPathSeparator() -> a
+org.ini4j.CommentedMap -> af:
+    java.lang.String putComment(java.lang.Object,java.lang.String) -> a
+org.ini4j.CommonMultiMap -> ag:
+    java.util.SortedMap _meta -> a
+    void clear() -> clear
+    void putAll(java.util.Map) -> putAll
+    java.lang.String putComment(java.lang.Object,java.lang.String) -> a
+    java.lang.Object remove(java.lang.Object) -> remove
+    java.lang.String makeKey(java.lang.String,java.lang.Object) -> a
+    java.util.Map meta() -> a
+org.ini4j.Config -> ah:
+    java.lang.String DEFAULT_LINE_SEPARATOR -> a
+    java.nio.charset.Charset DEFAULT_FILE_ENCODING -> a
+    org.ini4j.Config GLOBAL -> a
+    boolean _comment -> a
+    boolean _emptyOption -> b
+    boolean _escape -> c
+    boolean _escapeNewline -> d
+    java.nio.charset.Charset _fileEncoding -> b
+    boolean _globalSection -> e
+    java.lang.String _globalSectionName -> b
+    boolean _headerComment -> f
+    boolean _include -> g
+    java.lang.String _lineSeparator -> c
+    boolean _lowerCaseOption -> h
+    boolean _lowerCaseSection -> i
+    boolean _multiOption -> j
+    boolean _multiSection -> k
+    char _pathSeparator -> a
+    boolean _tree -> l
+    boolean _unnamedSection -> m
+    org.ini4j.Config getGlobal() -> a
+    java.lang.String getSystemProperty(java.lang.String,java.lang.String) -> a
+    boolean isEscape() -> a
+    boolean isEscapeNewline() -> b
+    boolean isInclude() -> c
+    boolean isTree() -> d
+    java.nio.charset.Charset getFileEncoding() -> a
+    java.lang.String getGlobalSectionName() -> a
+    java.lang.String getLineSeparator() -> b
+    boolean isEmptyOption() -> e
+    boolean isGlobalSection() -> f
+    boolean isLowerCaseOption() -> g
+    boolean isLowerCaseSection() -> h
+    boolean isMultiOption() -> i
+    boolean isMultiSection() -> j
+    boolean isUnnamedSection() -> k
+    char getPathSeparator() -> a
+    boolean isComment() -> l
+    boolean isHeaderComment() -> m
+    org.ini4j.Config clone() -> b
+    boolean getBoolean(java.lang.String,boolean) -> a
+    java.lang.String getString(java.lang.String,java.lang.String) -> b
+    java.lang.Object clone() -> clone
+org.ini4j.Ini -> ai:
+    org.ini4j.Config _config -> a
+    org.ini4j.Config getConfig() -> a
+    boolean isTreeMode() -> a
+    char getPathSeparator() -> a
+org.ini4j.InvalidFileFormatException -> aj:
+org.ini4j.MultiMap -> ak:
+    java.util.List getAll(java.lang.Object) -> a
+    void add(java.lang.Object,java.lang.Object) -> a
+    org.ini4j.MultiMap add$8d387e6(java.lang.String) -> a
+org.ini4j.spi.AbstractParser -> al:
+    java.lang.String _comments -> a
+    org.ini4j.Config _config -> a
+    java.lang.String _operators -> b
+    void parseError(java.lang.String,int) -> a
+    void parseOptionLine$3851e7f9(java.lang.String,gnu.trove.TIntCollection,int) -> a
+    java.lang.String unescapeFilter(java.lang.String) -> a
+org.ini4j.spi.AbstractProfileBuilder -> am:
+    org.ini4j.MultiMap _currentSection$2ca7077d -> a
+    boolean _header -> a
+    java.lang.String _lastComment -> a
+    void endIni() -> d
+    void endSection() -> e
+    void handleComment(java.lang.String) -> a
+    void handleOption(java.lang.String,java.lang.String) -> a
+    void startIni() -> f
+    void startSection(java.lang.String) -> b
+    org.ini4j.Config getConfig() -> a
+    org.ini4j.MultiMap getProfile$34f14ddd() -> a
+    void setHeaderComment() -> g
+    void putComment(org.ini4j.CommentedMap,java.lang.String) -> a
+org.ini4j.spi.EscapeTool -> an:
+    org.ini4j.spi.EscapeTool INSTANCE -> a
+    org.ini4j.spi.EscapeTool getInstance() -> a
+    java.lang.String unescape(java.lang.String) -> a
+    int unescapeBinary(java.lang.StringBuilder,char,java.lang.String,int) -> a
+org.ini4j.spi.IniBuilder -> ao:
+    org.ini4j.Ini _ini -> a
+    org.ini4j.spi.IniBuilder newInstance(org.ini4j.Ini) -> a
+    org.ini4j.Config getConfig() -> a
+    org.ini4j.MultiMap getProfile$34f14ddd() -> a
+    void startSection(java.lang.String) -> b
+    void startIni() -> f
+    void handleOption(java.lang.String,java.lang.String) -> a
+    void handleComment(java.lang.String) -> a
+    void endSection() -> e
+    void endIni() -> d
+org.ini4j.spi.IniParser -> ap:
+    org.ini4j.spi.IniParser newInstance(org.ini4j.Config) -> a
+    void parse$292ac40b(java.io.Reader,gnu.trove.TIntCollection) -> a
+org.ini4j.spi.IniSource -> aq:
+    java.net.URL _base -> a
+    org.ini4j.spi.IniSource _chain -> a
+    java.lang.String _commentChars -> a
+    org.ini4j.Config _config -> a
+    gnu.trove.TIntCollection _handler$46510aaf -> a
+    java.io.LineNumberReader _reader -> a
+    int getLineNumber() -> a
+    java.lang.String readLine() -> a
+    int countEndingEscapes(java.lang.String) -> a
+    void handleComment(java.lang.StringBuilder) -> a
+    java.lang.String handleInclude(java.lang.String) -> a
+org.ini4j.spi.UnicodeInputStreamReader -> ar:
+    java.nio.charset.Charset _defaultEncoding -> a
+    java.io.InputStreamReader _reader -> a
+    java.io.PushbackInputStream _stream -> a
+    void close() -> close
+    int read(char[],int,int) -> read
+    void init() -> a
+org.ini4j.spi.UnicodeInputStreamReader$Bom -> as:
+    org.ini4j.spi.UnicodeInputStreamReader$Bom UTF32BE -> a
+    org.ini4j.spi.UnicodeInputStreamReader$Bom UTF32LE -> b
+    org.ini4j.spi.UnicodeInputStreamReader$Bom UTF16BE -> c
+    org.ini4j.spi.UnicodeInputStreamReader$Bom UTF16LE -> d
+    org.ini4j.spi.UnicodeInputStreamReader$Bom UTF8 -> e
+    byte[] _bytes -> a
+    java.nio.charset.Charset _charset -> a
+    org.ini4j.spi.UnicodeInputStreamReader$Bom[] $VALUES -> a
+    org.ini4j.spi.UnicodeInputStreamReader$Bom access$000(byte[]) -> a
+    java.nio.charset.Charset access$100(org.ini4j.spi.UnicodeInputStreamReader$Bom) -> a
+    byte[] access$200(org.ini4j.spi.UnicodeInputStreamReader$Bom) -> a
+settings.Settings -> at:
+    int NUMBER_OF_PROCESSORS -> a
+    int TURNS_WARP_SECTOR_EQUIVALENCE -> b
+utils.swing.CloseTabListener -> au:
+    javax.swing.JTabbedPane tabbedPane -> a
+    javax.swing.JPopupMenu popup -> a
+    int tabIndex -> a
+    javax.swing.JMenuItem menuItem -> a
+    int checkTabIndex(java.awt.Point) -> a
+    void showPopup(java.awt.event.MouseEvent) -> a
+    void mouseClicked(java.awt.event.MouseEvent) -> mouseClicked
+    void mousePressed(java.awt.event.MouseEvent) -> mousePressed
+    void mouseReleased(java.awt.event.MouseEvent) -> mouseReleased
+    void mouseEntered(java.awt.event.MouseEvent) -> mouseEntered
+    void mouseExited(java.awt.event.MouseEvent) -> mouseExited
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+utils.swing.DnDTabbedPane -> av:
+    utils.swing.GhostGlassPane glassPane -> a
+    java.awt.geom.Rectangle2D lineRect -> a
+    java.awt.Color lineColor -> a
+    java.awt.dnd.DragSource dragSource -> a
+    int dragTabIndex -> a
+    boolean hasGhost -> a
+    boolean hasGhost() -> a
+    void paintComponent(java.awt.Graphics) -> paintComponent
+    java.awt.geom.Rectangle2D access$000(utils.swing.DnDTabbedPane) -> a
+    utils.swing.GhostGlassPane access$100(utils.swing.DnDTabbedPane) -> a
+    int access$200(utils.swing.DnDTabbedPane,java.awt.Point) -> a
+    java.awt.Rectangle access$300(utils.swing.DnDTabbedPane) -> a
+    int access$400(utils.swing.DnDTabbedPane) -> a
+    int access$402(utils.swing.DnDTabbedPane,int) -> a
+    void access$500(utils.swing.DnDTabbedPane,java.awt.Component,java.awt.Point) -> a
+    void access$600(utils.swing.DnDTabbedPane,int) -> a
+    void access$700(utils.swing.DnDTabbedPane,int) -> b
+    void access$800(utils.swing.DnDTabbedPane,int,int) -> a
+utils.swing.DnDTabbedPane$1 -> aw:
+    utils.swing.DnDTabbedPane this$0 -> a
+    void dragEnter(java.awt.dnd.DragSourceDragEvent) -> dragEnter
+    void dragExit(java.awt.dnd.DragSourceEvent) -> dragExit
+    void dragOver(java.awt.dnd.DragSourceDragEvent) -> dragOver
+    void dragDropEnd(java.awt.dnd.DragSourceDropEvent) -> dragDropEnd
+    void dropActionChanged(java.awt.dnd.DragSourceDragEvent) -> dropActionChanged
+utils.swing.DnDTabbedPane$2 -> ax:
+    java.awt.datatransfer.DataFlavor FLAVOR -> a
+    utils.swing.DnDTabbedPane this$0 -> a
+    java.lang.Object getTransferData(java.awt.datatransfer.DataFlavor) -> getTransferData
+    java.awt.datatransfer.DataFlavor[] getTransferDataFlavors() -> getTransferDataFlavors
+    boolean isDataFlavorSupported(java.awt.datatransfer.DataFlavor) -> isDataFlavorSupported
+utils.swing.DnDTabbedPane$3 -> ay:
+    java.awt.datatransfer.Transferable val$t -> a
+    java.awt.dnd.DragSourceListener val$dsl -> a
+    utils.swing.DnDTabbedPane this$0 -> a
+    void dragGestureRecognized(java.awt.dnd.DragGestureEvent) -> dragGestureRecognized
+utils.swing.DnDTabbedPane$CDropTargetListener -> az:
+    utils.swing.DnDTabbedPane this$0 -> a
+    void dragEnter(java.awt.dnd.DropTargetDragEvent) -> dragEnter
+    void dragExit(java.awt.dnd.DropTargetEvent) -> dragExit
+    void dropActionChanged(java.awt.dnd.DropTargetDragEvent) -> dropActionChanged
+    void dragOver(java.awt.dnd.DropTargetDragEvent) -> dragOver
+    void drop(java.awt.dnd.DropTargetDropEvent) -> drop
+utils.swing.GhostGlassPane -> aA:
+    java.awt.AlphaComposite composite -> a
+    java.awt.Point location -> a
+    java.awt.image.BufferedImage draggingGhost -> a
+    void setImage(java.awt.image.BufferedImage) -> a
+    void setPoint(java.awt.Point) -> a
+    void paintComponent(java.awt.Graphics) -> paintComponent
+utils.swing.JIntegerField -> aB:
+    long maxValue -> a
+    int maxLength -> a
+    javax.swing.text.Document createDefaultModel() -> createDefaultModel
+    long getMaxValue() -> a
+    long getMaxLength() -> b
+    long getValue() -> c
+    int getIntValue() -> a
+    boolean hasValue() -> a
+utils.swing.JIntegerField$IntegerDocument -> aC:
+    utils.swing.JIntegerField this$0 -> a
+    void insertString(int,java.lang.String,javax.swing.text.AttributeSet) -> insertString
+view.AboutFrame -> aD:
+    javax.swing.JEditorPane jep -> a
+    javax.swing.JButton jbtnOk -> a
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void hyperlinkUpdate(javax.swing.event.HyperlinkEvent) -> hyperlinkUpdate
+view.FileLocate -> aE:
+    controller.fileaccess.UniverseParser universeParser -> a
+    java.util.ArrayList fileLocateListeners -> a
+    controller.fileaccess.UniverseParser getUniverseParser() -> a
+    boolean hasUniverseParser() -> a
+    boolean openUniverseFile(java.awt.Component) -> a
+    void closeUniverseFile() -> a
+    java.io.File askForSaveRoutesFile(java.awt.Component,java.io.File) -> a
+    void addFileLocateListener$34eb720(gnu.trove.TIntCollection) -> a
+    void fireUniverseFound() -> b
+view.ListPanel -> aF:
+    javax.swing.JTable list -> a
+    view.MyTableRowSorter sorter -> a
+    view.MyTableModel rtm -> a
+    view.MyTableModel ltm -> b
+    void initListTableModel() -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> d
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void createLTM(int,int) -> a
+view.ListPanelWithRaces -> aG:
+    javax.swing.JTable selectRaces -> b
+    java.util.Map races -> a
+    void initListTableModel() -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> d
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    boolean checkForStandardTableChanged(javax.swing.event.TableModelEvent) -> a
+    void filterTableByRace() -> e
+view.MainContainer -> aH:
+    utils.swing.DnDTabbedPane jtp -> a
+    view.MainPanel mp -> a
+    view.TradeRoutesPanel trc -> a
+    view.ShipListPanel slc -> a
+    view.WeaponListPanel wlc -> a
+    view.NearestXListPanel nxlc -> a
+    view.PlayerListPanel plp -> a
+    boolean checkForUniverseFile() -> b
+    void showShipList() -> g
+    void showWeaponList() -> h
+    void showNearestX() -> i
+    void showPlayer() -> j
+    void showRouteGenerator() -> k
+    void showMainMenu() -> l
+    void switchToTab(view.TheLazyTraderPanel) -> a
+    void stateChanged(javax.swing.event.ChangeEvent) -> stateChanged
+    void universeLocated() -> a
+    void universeLost() -> b
+view.MainPanel -> aI:
+    javax.swing.JButton[] jbActionButtons -> a
+    void initActionsFileMenu() -> d
+    void initComponents() -> b
+    void addComponents() -> c
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void itemStateChanged(java.awt.event.ItemEvent) -> itemStateChanged
+view.MyTableModel -> aJ:
+    java.lang.String[] columnNames -> a
+    java.lang.Object[][] data -> a
+    boolean editable -> a
+    java.text.DecimalFormat dfInt -> a
+    java.text.DecimalFormat dfReal -> b
+    int getColumnCount() -> getColumnCount
+    int getRowCount() -> getRowCount
+    java.lang.String getColumnName(int) -> getColumnName
+    java.lang.Object getValueAt(int,int) -> getValueAt
+    java.lang.Object getRealValueAt(int,int) -> a
+    void setColumnName(java.lang.String,int) -> a
+    void setValueAt(java.lang.Object,int,int) -> setValueAt
+    java.lang.Class getColumnClass(int) -> getColumnClass
+    java.lang.Class getRealColumnClass(int) -> a
+    boolean isCellEditable(int,int) -> isCellEditable
+    void setEditable$1385ff() -> a
+view.MyTableRowSorter -> aK:
+    java.util.Comparator COMPARABLE_COMPARATOR -> a
+    view.MyTableModel tableModel -> a
+    java.util.Comparator getComparator(int) -> getComparator
+    java.lang.Class getColumnClass(int) -> a
+    boolean useToString(int) -> useToString
+view.MyTableRowSorter$ComparableComparator -> aL:
+    int compare(java.lang.Object,java.lang.Object) -> compare
+view.MyTableRowSorter$TableRowSorterModelWrapper -> aM:
+    view.MyTableRowSorter this$0 -> a
+    int getColumnCount() -> getColumnCount
+    int getRowCount() -> getRowCount
+    java.lang.Object getValueAt(int,int) -> getValueAt
+    java.lang.String getStringValueAt(int,int) -> getStringValueAt
+    java.lang.Object getIdentifier(int) -> getIdentifier
+    java.lang.Object getModel() -> getModel
+view.NearestXListPanel -> aN:
+    javax.swing.JTree itemsTree -> a
+    utils.swing.JIntegerField sectorBox -> a
+    utils.swing.JIntegerField plotToBox -> b
+    view.swing.tree.FilterableTreeNode root -> a
+    view.swing.tree.FilteredTreeModel treeModel -> a
+    javax.swing.JTextArea routeDisplay -> a
+    model.Distance[] storedDistances -> a
+    java.lang.Object lastSearchedObject -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initListTableModel() -> a
+    void valueChanged(javax.swing.event.TreeSelectionEvent) -> valueChanged
+    void doPlotNearest(java.lang.Object) -> a
+    void createLTM(int) -> a
+    void filterTableByRace() -> e
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    void mouseClicked(java.awt.event.MouseEvent) -> mouseClicked
+    void mouseEntered(java.awt.event.MouseEvent) -> mouseEntered
+    void mouseExited(java.awt.event.MouseEvent) -> mouseExited
+    void mousePressed(java.awt.event.MouseEvent) -> mousePressed
+    void mouseReleased(java.awt.event.MouseEvent) -> mouseReleased
+    void keyPressed(java.awt.event.KeyEvent) -> keyPressed
+    void keyReleased(java.awt.event.KeyEvent) -> keyReleased
+    void keyTyped(java.awt.event.KeyEvent) -> keyTyped
+view.PlayerListPanel -> aO:
+    void initListTableModel() -> a
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+view.ShipListPanel -> aP:
+    void initListTableModel() -> a
+view.TheLazyTraderPanel -> aQ:
+    javax.swing.JMenuBar jmb -> a
+    javax.swing.JMenu[] fileMenu -> a
+    javax.swing.JMenuItem[] jmiFileOptions -> a
+    javax.swing.JMenuItem[] jmiActionOptions -> b
+    javax.swing.JMenuItem[] jmiViewOptions -> c
+    javax.swing.JMenuItem[] jmiHelpOptions -> d
+    view.AboutFrame aboutFrame -> a
+    java.lang.String title -> a
+    view.MainContainer parent -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    javax.swing.JPanel createLabelJComponentPair(java.lang.String,javax.swing.JComponent,int) -> a
+    javax.swing.JPanel createLabelJComponentPair(java.lang.String,javax.swing.JComponent) -> a
+    void initActionsFileMenu() -> d
+    void createStandardMenuBar() -> a
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    boolean standardActionChecks(java.awt.event.ActionEvent) -> a
+    boolean checkQuit() -> a
+    boolean checkSectorsFileOpened() -> b
+    javax.swing.JMenuBar getMenuBar() -> a
+    java.lang.String getTitle() -> a
+view.TradeRoutesPanel -> aR:
+    javax.swing.JTextArea jta -> a
+    javax.swing.JTable selectGoods -> a
+    javax.swing.JTable selectRaces -> b
+    java.util.Map races -> a
+    java.util.Map goods -> b
+    utils.swing.JIntegerField selectStart -> a
+    utils.swing.JIntegerField selectEnd -> b
+    utils.swing.JIntegerField selectMaxDistance -> c
+    utils.swing.JIntegerField selectNumberPorts -> d
+    utils.swing.JIntegerField selectNumberOfRoutes -> e
+    utils.swing.JIntegerField routesForPort -> f
+    javax.swing.JComboBox selectGalaxy -> a
+    javax.swing.JComboBox selectDisplayType -> b
+    javax.swing.JButton[] jbActionButtons -> a
+    java.io.File saveRoutesFile -> a
+    controller.RouteHandler routeHandler -> a
+    controller.RouteSwingWorker rsw -> a
+    javax.swing.JProgressBar progressBar -> a
+    void initComponents() -> b
+    void addComponents() -> c
+    void initActionsFileMenu() -> d
+    boolean askForSaveRoutesFile() -> c
+    void actionPerformed(java.awt.event.ActionEvent) -> actionPerformed
+    void doRouteGeneration() -> a
+    void tableChanged(javax.swing.event.TableModelEvent) -> tableChanged
+    void itemStateChanged(java.awt.event.ItemEvent) -> itemStateChanged
+view.WeaponListPanel -> aS:
+    void initListTableModel() -> a
+view.swing.tree.FilterableTreeNode -> aT:
+    java.util.Map races -> a
+    void setRaceFilter(java.util.Map) -> a
+    boolean filterAllows() -> a
+view.swing.tree.FilteredTreeModel -> aU:
+    java.lang.Object getChild(java.lang.Object,int) -> getChild
+    int getChildCount(java.lang.Object) -> getChildCount
