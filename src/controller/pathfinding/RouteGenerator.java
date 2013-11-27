@@ -106,6 +106,7 @@ public class RouteGenerator
 				getContinueRoutes(maxNumPorts, startSectorId, currentStepRoute, routeLists.get(currentStepBuySector), routeLists, currentStepRoute.getGoodId() == Good.NOTHING);
 			}
 		}
+		trimRoutes();
 	}
 
 	/**
@@ -141,6 +142,7 @@ public class RouteGenerator
 				}
 			}
 		}
+		trimRoutes();
 	}
 
 	private static TIntObjectMap<OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
@@ -272,45 +274,41 @@ public class RouteGenerator
 
 	public static void trimRoutes()
 	{
-//		boolean trimmed = false;
 		synchronized (expRoutes)
 		{
 			if (expRoutes.size() > trimToBestXRoutes)
 			{
-				Iterator<Double> iter = expRoutes.descendingKeySet().iterator();
-				for (int i = 1; i < trimToBestXRoutes; i++)
+				Iterator<Map.Entry<Double, ArrayList<Route>>> iter = expRoutes.descendingMap().entrySet().iterator();
+				for (int i = 0; i < trimToBestXRoutes;)
 				{
-					iter.next();
+					i += iter.next().getValue().size();
 				}
-				dontAddWorseThan[EXP_ROUTE] = iter.next();
+				dontAddWorseThan[EXP_ROUTE] = iter.next().getKey();
 
 				while (iter.hasNext())
 				{
 					iter.next();
 					iter.remove();
 				}
-//				trimmed = true;
 			}
 		}
 		synchronized (moneyRoutes)
 		{
 			if (moneyRoutes.size() > trimToBestXRoutes)
 			{
-				Iterator<Double> iter = moneyRoutes.descendingKeySet().iterator();
-				for (int i = 1; i < trimToBestXRoutes; i++)
+				Iterator<Map.Entry<Double, ArrayList<Route>>> iter = moneyRoutes.descendingMap().entrySet().iterator();
+				for (int i = 0; i < trimToBestXRoutes;)
 				{
-					iter.next();
+					i += iter.next().getValue().size();
 				}
-				dontAddWorseThan[MONEY_ROUTE] = iter.next();
+				dontAddWorseThan[MONEY_ROUTE] = iter.next().getKey();
+
 				while (iter.hasNext())
 				{
 					iter.next();
 					iter.remove();
 				}
-//				trimmed = true;
 			}
 		}
-//		if (trimmed)
-//			System.gc();
 	}
 }
