@@ -1,3 +1,7 @@
+v1.3.6
+Feature: Added trade potential to the ship list.
+Enhancement: Reduced peak memory usage fairly significantly, this is particularly noticeable for 3+ port routes.
+
 v1.3.5
 BugFix: Fixed the bloody money formula missing a set of brackets..
 BugFix: Fixed the ordering of race/good names.
