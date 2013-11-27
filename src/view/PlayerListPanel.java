@@ -1,7 +1,5 @@
 package view;
 
-import gnu.trove.iterator.TIntObjectIterator;
-import gnu.trove.map.TIntObjectMap;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.Map.Entry;
@@ -25,19 +23,18 @@ public class PlayerListPanel extends ListPanel implements ActionListener, TableM
 	protected void initListTableModel()
 	{
 		// Nearest list table
-		TIntObjectMap<Race> races = Race.getRaces();
+		NavigableMap<Integer, Race> races = Race.getRaces();
 		createLTM(races.size(), 2);
 
 		ltm.setColumnName("Race", 0);
 		ltm.setColumnName("Relations", 1);
 
 		int row = 0;
-		for (TIntObjectIterator<Race> race = Race.getRaces().iterator(); race.hasNext();) {
-			race.advance();
+		for (Entry<Integer, Race> race : races.entrySet()) {
 			int col = 0;
-			ltm.setValueAt(race.value(), row, col);
+			ltm.setValueAt(race.getValue(), row, col);
 			col++;
-			ltm.setValueAt(PlayerPreferences.getRelationsForRace(race.key()), row, col);
+			ltm.setValueAt(PlayerPreferences.getRelationsForRace(race.getKey()), row, col);
 			row++;
 		}
 

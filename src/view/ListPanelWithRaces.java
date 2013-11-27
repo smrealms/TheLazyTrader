@@ -1,6 +1,5 @@
 package view;
 
-import gnu.trove.iterator.TIntObjectIterator;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.HashMap;
@@ -42,11 +41,10 @@ public abstract class ListPanelWithRaces extends ListPanel implements TableModel
 		// Races table
 		rtm = new MyTableModel(1, Race.getNumberOfRaces());
 		int i = 0;
-		for (TIntObjectIterator<Race> race = Race.getRaces().iterator(); race.hasNext();) {
-			race.advance();
-			rtm.setColumnName(race.value().getName(), i);
+		for (Entry<Integer, Race> race : Race.getRaces().entrySet()) {
+			rtm.setColumnName(race.getValue().getName(), i);
 			rtm.setValueAt(true, 0, i);
-			races.put(race.key(), true);
+			races.put(race.getKey(), true);
 			i++;
 		}
 		rtm.addTableModelListener(this);

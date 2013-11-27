@@ -117,7 +117,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		FilterableTreeNode goodsBought = new FilterableTreeNode("Bought");
 		FilterableTreeNode goodsSold = new FilterableTreeNode("Sold");
 		FilterableTreeNode goodsEither = new FilterableTreeNode("Either");
-		for (int goodID : Good.getNames().keys()) {
+		for (int goodID : Good.getNames().keySet()) {
 			goodsBought.add(new FilterableTreeNode(new Good(goodID,Good.BUYS), false));
 			goodsSold.add(new FilterableTreeNode(new Good(goodID,Good.SELLS), false));
 			goodsEither.add(new FilterableTreeNode(new Good(goodID,Good.ADD_BUY_SELL), false));

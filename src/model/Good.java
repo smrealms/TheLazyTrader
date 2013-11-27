@@ -1,9 +1,8 @@
 package model;
 
-import gnu.trove.map.TIntIntMap;
-import gnu.trove.map.TIntObjectMap;
-import gnu.trove.map.hash.TIntIntHashMap;
-import gnu.trove.map.hash.TIntObjectHashMap;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 public class Good
 {
@@ -26,8 +25,8 @@ public class Good
 	// public static final int ANTIBIOTICS = 23;
 	// public static final int BOOKS = 28;
 
-	private static TIntObjectMap<String> GOOD_NAMES = new TIntObjectHashMap<String>();
-	private static TIntIntMap GOOD_VALUES = new TIntIntHashMap();
+	private static NavigableMap<Integer, String> GOOD_NAMES = new TreeMap<Integer, String>();
+	private static NavigableMap<Integer, Integer> GOOD_VALUES = new TreeMap<Integer, Integer>();
 
 	public static final int UNAVAILABLE = 0;
 	public static final int SELLS = 1;
@@ -86,7 +85,7 @@ public class Good
 		return GOOD_NAMES.get(_goodId);
 	}
 
-	public static TIntObjectMap<String> getNames()
+	public static Map<Integer, String> getNames()
 	{
 		return GOOD_NAMES;
 	}
@@ -104,7 +103,7 @@ public class Good
 
 	public static int getId(String goodName)
 	{
-		for (int key : GOOD_NAMES.keys()) {
+		for (int key : GOOD_NAMES.keySet()) {
 			if (GOOD_NAMES.get(key).equals(goodName))
 				return key;
 		}

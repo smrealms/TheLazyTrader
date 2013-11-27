@@ -158,7 +158,7 @@ public class RouteGenerator
 	private static TIntObjectMap<OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
-		int[] goodNameKeys = Good.getNames().keys();
+		Set<Integer> goodNameKeys = Good.getNames().keySet();
 		TIntObjectMap<OneWayRoute[]> routes = new TIntObjectHashMap<OneWayRoute[]>();
 		for (TIntObjectIterator<TIntObjectMap<Distance>> iter = distances.iterator(); iter.hasNext();) {
 			iter.advance();
@@ -195,9 +195,10 @@ public class RouteGenerator
 					rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(Good.NOTHING), targetPort.getGoodDistance(Good.NOTHING), distance, Good.NOTHING));
 				}
 
-				for (int goodId : goodNameKeys) {
-					if (goods.get(goodId))
+				for (Integer gId : goodNameKeys) {
+					if (goods.get(gId))
 					{
+						int goodId = gId;
 						if (currentPort.getGoodStatus(goodId) == Good.SELLS && targetPort.getGoodStatus(goodId) == Good.BUYS)
 						{
 							rl.add(new OneWayRoute(currentSectorId, targetSectorId, currentPort.getPortRace(), targetPort.getPortRace(), currentPort.getGoodDistance(goodId), targetPort.getGoodDistance(goodId), distance, goodId));

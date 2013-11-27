@@ -28,8 +28,8 @@ import model.Race;
 import controller.RouteHandler;
 import controller.RouteSwingWorker;
 import controller.pathfinding.RouteGenerator;
-import gnu.trove.iterator.TIntObjectIterator;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import javax.swing.JButton;
 import model.Route;
 
@@ -90,11 +90,10 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		// Goods Table
 		MyTableModel mtm = new MyTableModel(1, Good.getNames().size());
 		int count = 0;
-		for (TIntObjectIterator<String> good = Good.getNames().iterator(); good.hasNext();) {
-			good.advance();
-			mtm.setColumnName(good.value(), count);
+		for (Entry<Integer, String> good : Good.getNames().entrySet()) {
+			mtm.setColumnName(good.getValue(), count);
 			mtm.setValueAt(true, 0, count);
-			goods.put(good.key(), true);
+			goods.put(good.getKey(), true);
 			count++;
 		}
 		mtm.addTableModelListener(this);
@@ -104,11 +103,10 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 		// Races table
 		mtm = new MyTableModel(1, Race.getNumberOfRaces());
 		count = 0;
-		for (TIntObjectIterator<Race> race = Race.getRaces().iterator(); race.hasNext();) {
-			race.advance();
-			mtm.setColumnName(race.value().getName(), count);
+		for (Entry<Integer, Race> race : Race.getRaces().entrySet()) {
+			mtm.setColumnName(race.getValue().getName(), count);
 			mtm.setValueAt(true, 0, count);
-			races.put(race.key(), true);
+			races.put(race.getKey(), true);
 			count++;
 		}
 		mtm.addTableModelListener(this);

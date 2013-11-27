@@ -1,5 +1,6 @@
 v1.3.5
 BugFix: Fixed the bloody money formula missing a set of brackets..
+BugFix: Fixed the ordering of race/good names.
 
 v1.3.4
 Enhancement: Massive performance improvements (around a 60% improvement for me to generate routes on default settings).
