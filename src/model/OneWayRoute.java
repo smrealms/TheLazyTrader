@@ -96,7 +96,8 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 			int relations = Math.min(PlayerPreferences.getRelationsForRace(this.buyPortRace), Settings.MAX_MONEY_RELATIONS);
 			buyRelFactor = (relations + 350) / 8415.0;
 
-			sellRelFactor = 2 - (PlayerPreferences.getRelationsForRace(this.sellPortRace) + 50) / 850.0 * ((relations + 350)/57840);
+			relations = Math.min(PlayerPreferences.getRelationsForRace(this.sellPortRace), Settings.MAX_MONEY_RELATIONS);
+			sellRelFactor = 2 - (relations + 50) / 850.0 * ((relations + 350)/57840);
 		}
 		int goodValue = Good.getValue(this.goodId);
 		double buyPrice = goodValue * 0.6 * Math.pow(this.buyDi + .5, 1.8) * buyRelFactor;
