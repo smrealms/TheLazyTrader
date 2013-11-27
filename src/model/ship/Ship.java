@@ -21,12 +21,6 @@ public class Ship implements HasRace
 	private int power;
 	private int manu;
 	private int hardpoints;
-//	private int shields;
-//	private int armour;
-//	private int cargo;
-//	private int combats;
-//	private int scouts;
-//	private int mines;
 	private final Map<ShipEquipment,Integer> equipment = new HashMap<ShipEquipment,Integer>();
 	private final ArrayList<ShipAbility> abilities = new ArrayList<ShipAbility>();
 	private Restriction restriction = new Restriction("");
@@ -67,57 +61,6 @@ public class Ship implements HasRace
 	{
 		name = shipName;
 	}
-
-//	/**
-//	 * @return The armour that ship can have
-//	 */
-//	public int getArmour()
-//	{
-//		return this.armour;
-//	}
-//
-//	/**
-//	 * @param armour
-//	 *            The armour to set
-//	 */
-//	public void setArmour(int _armour)
-//	{
-//		this.armour = _armour;
-//	}
-//
-//	/**
-//	 * @return the cargo that ship can have
-//	 */
-//	public int getCargo()
-//	{
-//		return this.cargo;
-//	}
-//
-//	/**
-//	 * @param cargo
-//	 *            the cargo to set
-//	 */
-//	public void setCargo(int _cargo)
-//	{
-//		this.cargo = _cargo;
-//	}
-//
-//	/**
-//	 * @return the combats that ship can have
-//	 */
-//	public int getCombats()
-//	{
-//		return this.combats;
-//	}
-//
-//	/**
-//	 * @param combats
-//	 *            the combats to set
-//	 */
-//	public void setCombats(int _combats)
-//	{
-//		this.combats = _combats;
-//	}
 
 	/**
 	 * @return the cost of the ship
@@ -209,23 +152,6 @@ public class Ship implements HasRace
 		this.hardpoints = _hardpoints;
 	}
 
-//	/**
-//	 * @return the mines that ship can have
-//	 */
-//	public int getMines()
-//	{
-//		return this.mines;
-//	}
-//
-//	/**
-//	 * @param mines
-//	 *            the mines to set
-//	 */
-//	public void setMines(int _mines)
-//	{
-//		this.mines = _mines;
-//	}
-
 	/**
 	 * @return the name of ship
 	 */
@@ -285,40 +211,6 @@ public class Ship implements HasRace
 	{
 		this.turnRate = _turnRate;
 	}
-
-//	/**
-//	 * @return the scouts that the ship can have
-//	 */
-//	public int getScouts()
-//	{
-//		return this.scouts;
-//	}
-//
-//	/**
-//	 * @param scouts
-//	 *            the scouts to set
-//	 */
-//	public void setScouts(int _scouts)
-//	{
-//		this.scouts = _scouts;
-//	}
-//
-//	/**
-//	 * @return the shields that the ship can have
-//	 */
-//	public int getShields()
-//	{
-//		return this.shields;
-//	}
-//
-//	/**
-//	 * @param shields
-//	 *            the shields to set
-//	 */
-//	public void setShields(int _shields)
-//	{
-//		this.shields = _shields;
-//	}
 
 	public void addEquipment(ShipEquipment equipmentName, int value)
 	{
