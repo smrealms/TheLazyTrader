@@ -242,9 +242,9 @@ public class RouteGenerator
 				rl = expRoutes.get(boxedMult);
 				if (rl == null) {
 					rl = new ArrayList<Route>();
+					expRoutes.put(boxedMult, rl);
 				}
 				rl.add(r);
-				expRoutes.put(boxedMult, rl);
 			}
 		}
 	}
@@ -260,9 +260,9 @@ public class RouteGenerator
 				rl = moneyRoutes.get(boxedMult);
 				if (rl == null) {
 					rl = new ArrayList<Route>();
+					moneyRoutes.put(boxedMult, rl);
 				}
 				rl.add(r);
-				moneyRoutes.put(boxedMult, rl);
 			}
 		}
 	}
