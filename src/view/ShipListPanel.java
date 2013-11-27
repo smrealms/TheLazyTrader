@@ -34,7 +34,7 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 		col++;
 		ltm.setColumnName("Cost", col);
 		col++;
-		ltm.setColumnName("Turns Rate", col);
+		ltm.setColumnName("Speed", col);
 		col++;
 		ltm.setColumnName("Trade Potential", col);
 		col++;
