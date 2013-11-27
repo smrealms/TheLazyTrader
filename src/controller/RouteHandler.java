@@ -27,13 +27,13 @@ public class RouteHandler implements FileLocateListener
 {
 	private static final DecimalFormat df = new DecimalFormat("#.00");
 
-	private long numberOfRoutes;
+	private int numberOfRoutes;
 	private Universe universe;
-	private long startSector;
-	private long endSector;
-	private long maxDistance;
-	private long maxNumberOfPorts;
-	private long routesForPort;
+	private int startSector;
+	private int endSector;
+	private int maxDistance;
+	private int maxNumberOfPorts;
+	private int routesForPort;
 	private Route.DisplayType displayType;
 	private Map<Integer, Boolean> races;
 	private Map<Integer, Boolean> goods;
@@ -47,7 +47,7 @@ public class RouteHandler implements FileLocateListener
 	private NavigableMap<Double, ArrayList<Route>>[] allRoutes;
 
 
-	public RouteHandler(int _typeOfRoute, long _numberOfRoutes, long _startSector, long _endSector, long _maxDistance, long _maxNumberOfPorts, long _routesForPort, Route.DisplayType _displayType, Map<Integer, Boolean> _races, Map<Integer, Boolean> _goods)
+	public RouteHandler(int _typeOfRoute, int _numberOfRoutes, int _startSector, int _endSector, int _maxDistance, int _maxNumberOfPorts, int _routesForPort, Route.DisplayType _displayType, Map<Integer, Boolean> _races, Map<Integer, Boolean> _goods)
 	{
 		this.typeOfRoute = _typeOfRoute;
 		this.numberOfRoutes = _numberOfRoutes;
@@ -173,7 +173,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * @return the endSector
 	 */
-	public long getEndSector()
+	public int getEndSector()
 	{
 		return this.endSector;
 	}
@@ -182,7 +182,7 @@ public class RouteHandler implements FileLocateListener
 	 * @param _endSector
 	 *            the endSector to set
 	 */
-	public void setEndSector(long _endSector)
+	public void setEndSector(int _endSector)
 	{
 		if (this.endSector == _endSector)
 			return;
@@ -225,7 +225,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * @return the maxDistance
 	 */
-	public long getMaxDistance()
+	public int getMaxDistance()
 	{
 		return this.maxDistance;
 	}
@@ -234,7 +234,7 @@ public class RouteHandler implements FileLocateListener
 	 * @param _maxDistance
 	 *            the maxDistance to set
 	 */
-	public void setMaxDistance(long _maxDistance)
+	public void setMaxDistance(int _maxDistance)
 	{
 		if (this.maxDistance == _maxDistance)
 			return;
@@ -245,7 +245,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * @return the maxNumberOfPorts
 	 */
-	public long getMaxNumberOfPorts()
+	public int getMaxNumberOfPorts()
 	{
 		return this.maxNumberOfPorts;
 	}
@@ -254,7 +254,7 @@ public class RouteHandler implements FileLocateListener
 	 * @param _maxNumberOfPorts
 	 *            the maxNumberOfPorts to set
 	 */
-	public void setMaxNumberOfPorts(long _maxNumberOfPorts)
+	public void setMaxNumberOfPorts(int _maxNumberOfPorts)
 	{
 		if (this.maxNumberOfPorts == _maxNumberOfPorts)
 			return;
@@ -265,7 +265,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * @return the numberOfRoutes
 	 */
-	public long getNumberOfRoutes()
+	public int getNumberOfRoutes()
 	{
 		return this.numberOfRoutes;
 	}
@@ -274,7 +274,7 @@ public class RouteHandler implements FileLocateListener
 	 * @param _numberOfRoutes
 	 *            the numberOfRoutes to set
 	 */
-	public void setNumberOfRoutes(long _numberOfRoutes)
+	public void setNumberOfRoutes(int _numberOfRoutes)
 	{
 		this.numberOfRoutes = _numberOfRoutes;
 	}
@@ -333,7 +333,7 @@ public class RouteHandler implements FileLocateListener
 	/**
 	 * @return the startSector
 	 */
-	public long getStartSector()
+	public int getStartSector()
 	{
 		return this.startSector;
 	}
@@ -342,7 +342,7 @@ public class RouteHandler implements FileLocateListener
 	 * @param _startSector
 	 *            the startSector to set
 	 */
-	public void setStartSector(long _startSector)
+	public void setStartSector(int _startSector)
 	{
 		if (this.startSector == _startSector)
 			return;
@@ -394,7 +394,7 @@ public class RouteHandler implements FileLocateListener
 		this.saveFile = _saveFile;
 	}
 
-	public void setRoutesForPort(long _routesForPort)
+	public void setRoutesForPort(int _routesForPort)
 	{
 		if(this.routesForPort==_routesForPort)
 			return;

@@ -71,6 +71,11 @@ public class JIntegerField extends JTextField
 		return Long.parseLong(this.getText());
 	}
 
+	public int getIntValue()
+	{
+		return Integer.parseInt(this.getText());
+	}
+
 	public boolean hasValue()
 	{
 		return this.getText().length()>0;

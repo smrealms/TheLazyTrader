@@ -41,12 +41,12 @@ public class RouteGenerator
 	static int totalTasks;
 	private static int tasksCompleted;
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(long maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, long numberOfRoutes) throws InterruptedException
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(int maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, int numberOfRoutes) throws InterruptedException
 	{
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
 
-	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final long maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, final long numberOfRoutes) throws InterruptedException
+	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, final int numberOfRoutes) throws InterruptedException
 	{
 		dontAddWorseThan = new double[]{ 0.0, 0.0 };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
@@ -107,7 +107,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param expRoutes
 	 */
-	static void startRoutesToContinue(long maxNumPorts, int startSectorId, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists)
+	static void startRoutesToContinue(int maxNumPorts, int startSectorId, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists)
 	{
 		maxNumPorts--;
 		for (OneWayRoute currentStepRoute : forwardRoutes) {
@@ -129,7 +129,7 @@ public class RouteGenerator
 	 * @param routeLists
 	 * @param allRoutes
 	 */
-	private static void getContinueRoutes(long maxNumPorts, int startSectorId, Route routeToContinue, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists, boolean lastGoodIsNothing) {
+	private static void getContinueRoutes(int maxNumPorts, int startSectorId, Route routeToContinue, OneWayRoute[] forwardRoutes, TIntObjectMap<OneWayRoute[]> routeLists, boolean lastGoodIsNothing) {
 		maxNumPorts--;
 		// if (forwardRoutes==null)
 		// return; // Should never be null as it's always going to have at very least Good.NOTHING
@@ -155,7 +155,7 @@ public class RouteGenerator
 		}
 	}
 
-	private static TIntObjectMap<OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, long routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
+	private static TIntObjectMap<OneWayRoute[]> findOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, Map<Integer, Boolean> goods, Map<Integer, Boolean> races)
 	{
 		boolean nothingAllowed = goods.get(Good.NOTHING);
 		int[] goodNameKeys = Good.getNames().keys();
@@ -210,7 +210,7 @@ public class RouteGenerator
 		return routes;
 	}
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, long routesForPort)
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, int routesForPort)
 	{
 		TIntObjectMap<OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
 		dontAddWorseThan = new double[]{ 0.0, 0.0 };
@@ -271,7 +271,7 @@ public class RouteGenerator
 		RouteGenerator.publishProgressTo = _publishProgressTo;
 	}
 
-	public static void trimRoutes(long trimToBestXRoutes)
+	public static void trimRoutes(int trimToBestXRoutes)
 	{
 //		boolean trimmed = false;
 		synchronized (expRoutes)

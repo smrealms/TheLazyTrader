@@ -119,7 +119,7 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 
 		this.jta.setEditable(false);
 		selectGalaxy.addItemListener(this);
-		routeHandler = new RouteHandler(RouteGenerator.EXP_ROUTE, this.selectNumberOfRoutes.getValue(), this.selectStart.getValue(), this.selectEnd.getValue(), this.selectMaxDistance.getValue(), this.selectNumberPorts.getValue(), -1, (Route.DisplayType) this.selectDisplayType.getSelectedItem(), this.races, this.goods);
+		routeHandler = new RouteHandler(RouteGenerator.EXP_ROUTE, this.selectNumberOfRoutes.getIntValue(), this.selectStart.getIntValue(), this.selectEnd.getIntValue(), this.selectMaxDistance.getIntValue(), this.selectNumberPorts.getIntValue(), -1, (Route.DisplayType) this.selectDisplayType.getSelectedItem(), this.races, this.goods);
 	}
 
 	@Override
@@ -268,14 +268,14 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements ActionListen
 	{
 		this.jta.setText("Starting Generating.");
 		if(routesForPort.hasValue())
-			routeHandler.setRoutesForPort(routesForPort.getValue());
+			routeHandler.setRoutesForPort(routesForPort.getIntValue());
 		else
 			routeHandler.setRoutesForPort(-1);
-		routeHandler.setNumberOfRoutes(this.selectNumberOfRoutes.getValue());
-		routeHandler.setStartSector(this.selectStart.getValue());
-		routeHandler.setEndSector(this.selectEnd.getValue());
-		routeHandler.setMaxDistance(this.selectMaxDistance.getValue());
-		routeHandler.setMaxNumberOfPorts(this.selectNumberPorts.getValue());
+		routeHandler.setNumberOfRoutes(this.selectNumberOfRoutes.getIntValue());
+		routeHandler.setStartSector(this.selectStart.getIntValue());
+		routeHandler.setEndSector(this.selectEnd.getIntValue());
+		routeHandler.setMaxDistance(this.selectMaxDistance.getIntValue());
+		routeHandler.setMaxNumberOfPorts(this.selectNumberPorts.getIntValue());
 		routeHandler.setRaces(this.races);
 		routeHandler.setGoods(this.goods);
 		routeHandler.setDisplayType((Route.DisplayType) this.selectDisplayType.getSelectedItem());
