@@ -61,7 +61,7 @@ public class FileLocate
 	public static boolean openUniverseFile(Component parent)
 	{
 		JFileChooser jfc = new JFileChooser();
-		jfc.setFileFilter(new FileNameExtensionFilter("SMR 1.5 Sectors File (.smr)", "smr"));
+		jfc.setFileFilter(new FileNameExtensionFilter("SMR Sectors File (.smr)", "smr"));
 		try
 		{
 			jfc.setCurrentDirectory(new File(new File(".").getCanonicalPath()));
