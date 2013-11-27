@@ -3,11 +3,9 @@ package controller.pathfinding;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,6 +34,7 @@ public class RouteGenerator
 	public static final int MONEY_ROUTE = 1;
 	static NavigableMap<Double, ArrayList<Route>> expRoutes;
 	static NavigableMap<Double, ArrayList<Route>> moneyRoutes;
+	static int trimToBestXRoutes;
 	static RouteSwingWorker publishProgressTo;
 	static double[] dontAddWorseThan;
 	static int totalTasks;
@@ -46,8 +45,9 @@ public class RouteGenerator
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
 	}
 
-	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, final int numberOfRoutes) throws InterruptedException
+	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, int numberOfRoutes) throws InterruptedException
 	{
+		trimToBestXRoutes = numberOfRoutes;
 		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
@@ -66,18 +66,6 @@ public class RouteGenerator
 						return null;
 					}
 				});
-				if (totalTasks % 10 == 0 && totalTasks > numberOfRoutes)
-				{
-					runs.add(new Callable<Object>()
-					{
-						@Override
-						public Object call()
-						{
-							trimRoutes(numberOfRoutes);
-							return null;
-						}
-					});
-				}
 				totalTasks++;
 				return true;
 			}
@@ -243,6 +231,9 @@ public class RouteGenerator
 				if (rl == null) {
 					rl = new ArrayList<Route>();
 					expRoutes.put(boxedMult, rl);
+					if(expRoutes.size() > trimToBestXRoutes) {
+						dontAddWorseThan[EXP_ROUTE] = expRoutes.pollFirstEntry().getKey();
+					}
 				}
 				rl.add(r);
 			}
@@ -261,6 +252,9 @@ public class RouteGenerator
 				if (rl == null) {
 					rl = new ArrayList<Route>();
 					moneyRoutes.put(boxedMult, rl);
+					if(moneyRoutes.size() > trimToBestXRoutes) {
+						dontAddWorseThan[MONEY_ROUTE] = moneyRoutes.pollFirstEntry().getKey();
+					}
 				}
 				rl.add(r);
 			}
@@ -276,7 +270,7 @@ public class RouteGenerator
 		RouteGenerator.publishProgressTo = _publishProgressTo;
 	}
 
-	public static void trimRoutes(int trimToBestXRoutes)
+	public static void trimRoutes()
 	{
 //		boolean trimmed = false;
 		synchronized (expRoutes)
