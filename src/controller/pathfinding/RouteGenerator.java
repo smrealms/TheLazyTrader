@@ -48,7 +48,7 @@ public class RouteGenerator
 
 	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, final int numberOfRoutes) throws InterruptedException
 	{
-		dontAddWorseThan = new double[]{ 0.0, 0.0 };
+		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
 		final Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
@@ -213,7 +213,7 @@ public class RouteGenerator
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, int routesForPort)
 	{
 		TIntObjectMap<OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
-		dontAddWorseThan = new double[]{ 0.0, 0.0 };
+		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
 		for (OneWayRoute[] routes : (OneWayRoute[][]) sectorRoutes.values()) {
