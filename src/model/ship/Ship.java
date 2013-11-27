@@ -242,6 +242,12 @@ public class Ship implements HasRace
 		return this.abilities;
 	}
 
+	public int getTradePotential()
+	{
+		int cargo = this.getEquipments().get(ShipEquipment.getShipEquipment("Cargo Holds"));
+		return this.turnRate * cargo;
+	}
+
 	/**
 	 * @return the manu
 	 */
