@@ -1,4 +1,5 @@
 v1.3.4
+Enhancement: Massive performance improvements (around a 60% improvement for me to generate routes on default settings).
 Enhancement: If an error occurs whilst generating routes the error is now shown in the route window rather than showing nothing.
 BugFix: Fixed a rare issue where a route may not be found if it contains a portion without goods.
 BugFix: Fixed an issue where very few (or no) routes would be found after multiple route generations with different settings.
