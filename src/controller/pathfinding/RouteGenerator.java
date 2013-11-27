@@ -235,32 +235,36 @@ public class RouteGenerator
 	{
 		ArrayList<Route> rl;
 		double overallMultiplier = r.getOverallExpMultiplier();
-		if (overallMultiplier > dontAddWorseThan[EXP_ROUTE])
+		if (overallMultiplier > dontAddWorseThan[EXP_ROUTE]) {
+			Double boxedMult = overallMultiplier;
 			synchronized (expRoutes)
 			{
-				rl = expRoutes.get(overallMultiplier);
+				rl = expRoutes.get(boxedMult);
 				if (rl == null) {
 					rl = new ArrayList<Route>();
 				}
 				rl.add(r);
-				expRoutes.put(overallMultiplier, rl);
+				expRoutes.put(boxedMult, rl);
 			}
+		}
 	}
 
 	private static void addMoneyRoute(Route r)
 	{
 		ArrayList<Route> rl;
 		double overallMultiplier = r.getOverallMoneyMultiplier();
-		if (overallMultiplier > dontAddWorseThan[MONEY_ROUTE])
+		if (overallMultiplier > dontAddWorseThan[MONEY_ROUTE]) {
+			Double boxedMult = overallMultiplier;
 			synchronized (moneyRoutes)
 			{
-				rl = moneyRoutes.get(overallMultiplier);
+				rl = moneyRoutes.get(boxedMult);
 				if (rl == null) {
 					rl = new ArrayList<Route>();
 				}
 				rl.add(r);
-				moneyRoutes.put(overallMultiplier, rl);
+				moneyRoutes.put(boxedMult, rl);
 			}
+		}
 	}
 
 	/**
