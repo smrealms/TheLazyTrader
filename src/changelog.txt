@@ -1,3 +1,6 @@
+v1.3.5
+BugFix: Fixed the bloody money formula missing a set of brackets..
+
 v1.3.4
 Enhancement: Massive performance improvements (around a 60% improvement for me to generate routes on default settings).
 Enhancement: If an error occurs whilst generating routes the error is now shown in the route window rather than showing nothing.
