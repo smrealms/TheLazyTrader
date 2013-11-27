@@ -98,13 +98,14 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 
 			sellRelFactor = 2 - (PlayerPreferences.getRelationsForRace(this.sellPortRace) + 50) / 850.0 * ((relations + 350)/57840);
 		}
-		long buyPrice = Math.round((Good.getValue(this.goodId) * 0.6 * Math.pow(this.buyDi + .5, 1.8) * buyRelFactor));
-		long sellPrice = Math.round((Good.getValue(this.goodId) * 0.7 * Math.pow(this.sellDi, 1.84) * sellRelFactor /*
-																																 * * (1 +
-																																 * (10 -
-																																 * $port_lvl) /
-																																 * 50)
-																																 */));
+		int goodValue = Good.getValue(this.goodId);
+		double buyPrice = goodValue * 0.6 * Math.pow(this.buyDi + .5, 1.8) * buyRelFactor;
+		double sellPrice = goodValue * 0.7 * Math.pow(this.sellDi, 1.84) * sellRelFactor /*
+																						* * (1 +
+																						* (10 -
+																						* $port_lvl) /
+																						* 50)
+																						*/;
 		return sellPrice - buyPrice;
 	}
 
