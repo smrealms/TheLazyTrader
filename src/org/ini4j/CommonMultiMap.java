@@ -71,7 +71,7 @@ public class CommonMultiMap<K, V> extends BasicMultiMap<K, V> implements Comment
         return ret;
     }
 
-    @Override public V remove(Object key, int index)
+    @Override public V remove(K key, int index)
     {
         V ret = super.remove(key, index);
 
