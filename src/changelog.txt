@@ -1,3 +1,6 @@
+v1.3.7
+BugFix: Fix a bug that occurs with using the first path found when the path contains warps whilst there is another path that is longer that uses two or more less warps.  (2 warps vs 0, 3 warps vs 0/1, etc)
+
 v1.3.6
 Feature: Added trade potential to the ship list.
 Enhancement: Reduced peak memory usage fairly significantly, this is particularly noticeable for 3+ port routes.

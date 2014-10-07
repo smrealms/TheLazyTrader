@@ -49,6 +49,8 @@ public class Pathfinding
 			Sector[] sectors, int sectorId, long lowLimit, long highLimit,
 			long distanceLimit, boolean useFirst)
 	{
+		final int warpAddIndex = Settings.TURNS_WARP_SECTOR_EQUIVALENCE-1;
+
 		Sector checkSector;
 		TIntObjectMap<Distance> distances = new TIntObjectHashMap<Distance>();
 		int sectorsTravelled = 0;
@@ -64,7 +66,7 @@ public class Pathfinding
 			int nextSector = sectors[sectorId].getWarps().get(i).getTargetSector();
 			Distance d = new Distance(sectorId);
 			d.addWarpToPath(nextSector);
-			distanceQ.get(Settings.TURNS_WARP_SECTOR_EQUIVALENCE).add(d);
+			distanceQ.get(warpAddIndex).add(d);
 		}
 		for (int i = 0; i < sectors[sectorId].numConnections(); i++)
 		{
@@ -112,7 +114,7 @@ public class Pathfinding
 
 						Distance cloneDistance = distance.clone();
 						cloneDistance.addWarpToPath(c.getTargetSector());
-						distanceQ.get(Settings.TURNS_WARP_SECTOR_EQUIVALENCE).add(cloneDistance);
+						distanceQ.get(warpAddIndex).add(cloneDistance);
 					}
 					for (int i = 0; i < checkSector.numConnections(); i++)
 					{
