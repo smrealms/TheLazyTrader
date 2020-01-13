@@ -8,6 +8,7 @@ import model.HasRace;
 
 public class FilterableTreeNode extends DefaultMutableTreeNode
 {
+	protected Vector<FilterableTreeNode> children;
 	protected Map<Integer, Boolean> races;
 
 	public FilterableTreeNode(Object userObj)
@@ -29,7 +30,7 @@ public class FilterableTreeNode extends DefaultMutableTreeNode
 
 	private void setChildRaceFilters()
 	{
-		for (FilterableTreeNode f : (Vector<FilterableTreeNode>) this.children) {
+		for (FilterableTreeNode f : this.children) {
 			f.setRaceFilter(this.races);
 		}
 	}
