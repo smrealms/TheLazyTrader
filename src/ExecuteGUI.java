@@ -81,11 +81,15 @@ public class ExecuteGUI
 					if (exitVal == 0)
 						GeneralPreferences.setAskForMemory(askForMemory);
 					Scanner sc = new Scanner(p.getErrorStream());
-					while(sc.hasNextLine())
+					while(sc.hasNextLine()) {
 						System.out.println(sc.nextLine());
+					}
+					sc.close();
 					sc = new Scanner(p.getInputStream());
-					while(sc.hasNextLine())
+					while(sc.hasNextLine()) {
 						System.out.println(sc.nextLine());
+					}
+					sc.close();
 				}
 				catch (IOException e)
 				{
@@ -122,7 +126,7 @@ public class ExecuteGUI
 		PrintStream errorStream = new PrintStream(new OutputStream(){
 			@Override
 			public void write(byte[] b)
-			{	
+			{
 				error.setText(error.getText()+new String(b));
 			}
 
@@ -137,13 +141,13 @@ public class ExecuteGUI
 		vis.setSize(800,600);
 		vis.add(error);
 		vis.setVisible(true);
-		
+
 
 		final JTextArea out = new JTextArea();
 		PrintStream outStream = new PrintStream(new OutputStream(){
 			@Override
 			public void write(byte[] b)
-			{	
+			{
 				out.setText(out.getText()+new String(b));
 			}
 

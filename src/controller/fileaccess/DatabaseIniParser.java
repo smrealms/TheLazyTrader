@@ -161,6 +161,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 							}
 							s.addEquipment(ShipEquipment.getShipEquipment(next2.substring(0,next2.indexOf("="))), value);
 						}
+						sc2.close();
 					}
 					if (next.toUpperCase().startsWith("ABILITIES"))
 					{
@@ -170,6 +171,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 						{
 							s.addAbility(ShipAbility.getShipAbility(sc2.next().trim()));
 						}
+						sc2.close();
 					}
 					if (next.toUpperCase().startsWith("RESTRICTIONS"))
 					{
@@ -203,7 +205,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 				w.setEmpDamage(Integer.parseInt(emp.replaceAll("%", "")));
 
 				w.addRestriction(new Restriction(sc.next().trim()));
-				
+
 //				while (sc.hasNext())
 //				{
 //					String next = sc.next().trim();
@@ -250,6 +252,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 								{
 									l.addShip(Ship.getShip(sc2.next().trim()));
 								}
+								sc2.close();
 							}
 							if (next.toUpperCase().startsWith("SHIPEQUIPMENT"))
 							{
@@ -259,6 +262,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 								{
 									l.addShipEquipment(ShipEquipment.getShipEquipment(sc2.next().trim()));
 								}
+								sc2.close();
 							}
 							if (next.toUpperCase().startsWith("WEAPONS"))
 							{
@@ -268,6 +272,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 								{
 									l.addWeapon(Weapon.getWeapon(sc2.next().trim()));
 								}
+								sc2.close();
 							}
 						}
 						Location.putLocation(l);
