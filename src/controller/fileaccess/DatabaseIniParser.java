@@ -134,6 +134,7 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 				s.setTurnRate(sc.nextInt());
 				s.setHardpoints(sc.nextInt());
 				s.setPower(sc.nextInt());
+				s.setClass(sc.next());
 //				s.setManu(sc.nextInt());
 //				s.setShields(sc.nextInt());
 //				s.setArmour(sc.nextInt());

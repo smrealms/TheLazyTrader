@@ -24,13 +24,15 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 		// Ship list table
 		int numberEquipments = ShipEquipment.getShipEquipments().size();
 		Map<String, Ship> ships = Ship.getShips();
-		this.createLTM(ships.size(), 7 + numberEquipments + 1);
+		this.createLTM(ships.size(), 8 + numberEquipments + 1);
 		ltm.setEditable(false);
 
 		int col = 0;
 		ltm.setColumnName("Name", col);
 		col++;
 		ltm.setColumnName("Race", col);
+		col++;
+		ltm.setColumnName("Ship Class", col);
 		col++;
 		ltm.setColumnName("Cost", col);
 		col++;
@@ -74,6 +76,8 @@ public class ShipListPanel extends ListPanelWithRaces implements ActionListener,
 			ltm.setValueAt(s.getName(), row, col);
 			col++;
 			ltm.setValueAt(s.getRaceName(), row, col);
+			col++;
+			ltm.setValueAt(s.getShipClass(), row, col);
 			col++;
 			ltm.setValueAt(s.getCost(), row, col);
 			col++;

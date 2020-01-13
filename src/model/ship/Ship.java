@@ -15,6 +15,7 @@ public class Ship implements HasRace
 	private static final NavigableMap<String, NavigableMap<String, Ship>> SHIPS_BY_RACE = new TreeMap<String, NavigableMap<String, Ship>>();
 
 	private String name;
+	private String shipClass;
 	private int race;
 	private int cost;
 	private int turnRate;
@@ -60,6 +61,23 @@ public class Ship implements HasRace
 	public Ship(String shipName)
 	{
 		name = shipName;
+	}
+
+	/**
+	 * @return the ship class
+	 */
+	public String getShipClass()
+	{
+		return this.shipClass;
+	}
+
+	/**
+	 * @param _shipClass
+	 *            the ship class to set
+	 */
+	public void setClass(String _shipClass)
+	{
+		this.shipClass = _shipClass;
 	}
 
 	/**
