@@ -1,4 +1,4 @@
-package utils.swing;
+package utils.gui;
 
 import java.awt.Toolkit;
 

@@ -36,7 +36,7 @@ import java.util.Map.Entry;
 import java.util.NavigableMap;
 import javax.swing.JTree;
 
-import utils.swing.JIntegerField;
+import utils.gui.JIntegerField;
 
 public class NearestXListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener, TreeSelectionListener, MouseListener, KeyListener
 {
@@ -64,7 +64,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		sectorBox.addKeyListener(this);
 		plotToBox = new JIntegerField();
 		plotToBox.addKeyListener(this);
-		
+
 		routeDisplay = new JTextArea();
 
 		FilterableTreeNode shipEqs = new FilterableTreeNode("ShipEquipment");
@@ -126,7 +126,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		goodsByType.add(goodsBought);
 		goodsByType.add(goodsSold);
 		goodsByType.add(goodsEither);
-		
+
 		root = new FilterableTreeNode("Nearest X");
 		root.add(shipEqs);
 		root.add(shipsByRace);
@@ -160,11 +160,11 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 		// Second row
 		c.ipady = 18;
 		c.weighty = 1;
-		
+
 		JPanel sectorsPanel = new JPanel();
 		sectorsPanel.add(createLabelJComponentPair("Sector: ", this.sectorBox));
 		sectorsPanel.add(createLabelJComponentPair("Plot to: ", this.plotToBox));
-		
+
 		jsp = new JScrollPane(sectorsPanel);
 		gbl.setConstraints(jsp, c);
 		add(jsp);
@@ -213,7 +213,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 //			return;
 		doPlotNearest(selectedObj);
 	}
-	
+
 	protected void doPlotNearest(Object x)
 	{
 		this.lastSearchedObject = x;
@@ -249,10 +249,10 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 					ltm.setValueAt("None Found", 0, col);
 					col++;
 					ltm.setValueAt("None Found", 0, col);
-	
+
 				}
 				sorter = new MyTableRowSorter<MyTableModel>(ltm);
-	
+
 				ltm.addTableModelListener(this);
 				this.list.setModel(ltm);
 				this.list.setRowSorter(sorter);
@@ -345,7 +345,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements ActionListe
 	public void keyPressed(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

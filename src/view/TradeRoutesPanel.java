@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import utils.swing.JIntegerField;
+import utils.gui.JIntegerField;
 
 import model.Galaxy;
 import model.Good;
