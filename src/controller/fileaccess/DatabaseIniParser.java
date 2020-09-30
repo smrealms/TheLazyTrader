@@ -200,11 +200,6 @@ public class DatabaseIniParser extends DatabaseParser implements Runnable
 				w.setArmourDamage(sc.nextInt());
 				w.setAccuracy(sc.nextInt());
 				w.setPowerLevel(sc.nextInt());
-
-				String emp = sc.next();
-				w.setEmpInPercent(emp.endsWith("%"));
-				w.setEmpDamage(Integer.parseInt(emp.replaceAll("%", "")));
-
 				w.addRestriction(new Restriction(sc.next().trim()));
 
 //				while (sc.hasNext())

@@ -24,7 +24,7 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 	{
 		// Weapon list table
 		Map<String, Weapon> weapons = Weapon.getWeapons();
-		this.createLTM(weapons.size(), 9);
+		this.createLTM(weapons.size(), 8);
 		ltm.setEditable(false);
 
 		int col = 0;
@@ -41,8 +41,6 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 		ltm.setColumnName("Accuracy", col);
 		col++;
 		ltm.setColumnName("Power Level", col);
-		col++;
-		ltm.setColumnName("EMP", col);
 		col++;
 		ltm.setColumnName("Restrictions", col);
 
@@ -62,8 +60,6 @@ public class WeaponListPanel extends ListPanelWithRaces implements ActionListene
 			ltm.setValueAt(w.getAccuracy(), row, col);
 			col++;
 			ltm.setValueAt(w.getPowerLevel(), row, col);
-			col++;
-			ltm.setValueAt(w.getEmpDamage() + (w.isEmpInPercent() ? "%" : ""), row, col);
 			col++;
 			String rString = "";
 			for (Restriction r : w.getRestrictions()) {
