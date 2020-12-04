@@ -1,13 +1,12 @@
--injars TheLazyTrader.1.3.6-PREOBFUS.jar
--outjars TheLazyTrader.1.3.6.jar
+-injars TheLazyTrader.1.3.8-PREOBFUS.jar
+-outjars TheLazyTrader.1.3.8.jar
 
--libraryjars 'C:\Program Files\Java\jre7\lib\rt.jar'
+-libraryjars 'C:\Program Files\Java\jre1.8.0_271\lib\rt.jar'
 
-# -target 1.6
 -optimizationpasses 99
 -allowaccessmodification
 -mergeinterfacesaggressively
--printmapping TheLazyTrader.1.3.6.map
+-printmapping TheLazyTrader.1.3.8.map
 -overloadaggressively
 -flattenpackagehierarchy ''
 -repackageclasses ''
@@ -16,8 +15,8 @@
 -verbose
 
 
-# Keep - Applications. Keep all application classes, along with their 'main'
-# methods.
+
+# Keep - Applications. Keep all application classes, along with their 'main' methods.
 -keepclasseswithmembers public class ExecuteGUI {
     public static void main(java.lang.String[]);
 }
@@ -183,13 +182,6 @@
     public boolean isNaN();
     public boolean isInfinite();
     public int compareTo(java.lang.Double);
-    public <init>(byte);
-    public <init>(short);
-    public <init>(int);
-    public <init>(long);
-    public <init>(float);
-    public <init>(double);
-    public <init>(java.lang.String);
     public byte byteValue();
     public short shortValue();
     public int intValue();
@@ -205,17 +197,6 @@
 # Remove - String method calls. Remove all invocations of String
 # methods without side effects whose return values are not used.
 -assumenosideeffects public class java.lang.String {
-    public <init>();
-    public <init>(byte[]);
-    public <init>(byte[],int);
-    public <init>(byte[],int,int);
-    public <init>(byte[],int,int,int);
-    public <init>(byte[],int,int,java.lang.String);
-    public <init>(byte[],java.lang.String);
-    public <init>(char[]);
-    public <init>(char[],int,int);
-    public <init>(java.lang.String);
-    public <init>(java.lang.StringBuffer);
     public static java.lang.String copyValueOf(char[]);
     public static java.lang.String copyValueOf(char[],int,int);
     public static java.lang.String valueOf(boolean);
@@ -273,10 +254,6 @@
 # Remove - StringBuffer method calls. Remove all invocations of StringBuffer
 # methods without side effects whose return values are not used.
 -assumenosideeffects public class java.lang.StringBuffer {
-    public <init>();
-    public <init>(int);
-    public <init>(java.lang.String);
-    public <init>(java.lang.CharSequence);
     public java.lang.String toString();
     public char charAt(int);
     public int capacity();
@@ -293,10 +270,6 @@
 # Remove - StringBuilder method calls. Remove all invocations of StringBuilder
 # methods without side effects whose return values are not used.
 -assumenosideeffects public class java.lang.StringBuilder {
-    public <init>();
-    public <init>(int);
-    public <init>(java.lang.String);
-    public <init>(java.lang.CharSequence);
     public java.lang.String toString();
     public char charAt(int);
     public int capacity();

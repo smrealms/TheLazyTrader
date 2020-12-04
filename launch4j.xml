@@ -1,8 +1,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Dropbox\Development\Java\TheLazyTrader\TheLazyTrader.1.3.6.jar</jar>
-  <outfile>C:\Dropbox\Development\Java\TheLazyTrader\TheLazyTrader.1.3.6.exe</outfile>
+  <jar>C:\Dropbox\Development\Java\TheLazyTrader\TheLazyTrader.1.3.8.jar</jar>
+  <outfile>C:\Dropbox\Development\Java\TheLazyTrader\TheLazyTrader.1.3.8.exe</outfile>
   <errTitle></errTitle>
   <cmdLine>x</cmdLine>
   <chdir></chdir>

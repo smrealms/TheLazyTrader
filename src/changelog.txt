@@ -1,3 +1,6 @@
+v1.3.8
+Enhancement: Update with support for sectors file v1.0.7
+
 v1.3.7
 BugFix: Fix a bug that occurs with using the first path found when the path contains warps whilst there is another path that is longer that uses two or more less warps.  (2 warps vs 0, 3 warps vs 0/1, etc)
 
