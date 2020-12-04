@@ -18,8 +18,6 @@ public class Weapon implements HasRace
 	private int armourDamage;
 	private int accuracy;
 	private int powerLevel;
-	private int empDamage;
-	private boolean isEmpInPercent;
 	private final ArrayList<Restriction> restrictions = new ArrayList<Restriction>();
 
 	public Weapon(String _name)
@@ -90,40 +88,6 @@ public class Weapon implements HasRace
 	public void setCost(int _cost)
 	{
 		this.cost = _cost;
-	}
-
-	/**
-	 * @return the emp
-	 */
-	public int getEmpDamage()
-	{
-		return this.empDamage;
-	}
-
-	/**
-	 * @param _emp
-	 *            the emp to set
-	 */
-	public void setEmpDamage(int _emp)
-	{
-		this.empDamage = _emp;
-	}
-
-	/**
-	 * @return the isEmpInPercent
-	 */
-	public boolean isEmpInPercent()
-	{
-		return this.isEmpInPercent;
-	}
-
-	/**
-	 * @param _isEmpInPercent
-	 *            the isEmpInPercent to set
-	 */
-	public void setEmpInPercent(boolean _isEmpInPercent)
-	{
-		this.isEmpInPercent = _isEmpInPercent;
 	}
 
 	/**
