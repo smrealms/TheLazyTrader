@@ -87,7 +87,7 @@ public class RouteHandler implements FileLocateListener
 				distances = Pathfinding.calculatePortToPortDistances(this.universe.getSectors(), startSector, endSector, maxDistance);
 //				long t2 = System.nanoTime();
 //				System.out.println("Time taken:" + ((t2-t1)/1000000000.0));
-				
+
 				this.distancesChangedSinceLastRun = false;
 				this.routesChangedSinceLastRun = true;
 				parent.publishProgress("Distances Generated");
@@ -98,7 +98,7 @@ public class RouteHandler implements FileLocateListener
 			{
 //				long t1 = System.nanoTime();
 				if (this.maxNumberOfPorts == 1)
-					allRoutes = RouteGenerator.generateOneWayRoutes(this.universe.getSectors(), this.distances, this.goods, this.races, this.routesForPort);
+					allRoutes = RouteGenerator.generateOneWayRoutes(this.universe.getSectors(), this.goods, this.races, this.distances, this.routesForPort, this.numberOfRoutes);
 				else
 					allRoutes = RouteGenerator.generateMultiPortRoutes(this.maxNumberOfPorts, this.universe.getSectors(), this.goods, this.races, this.distances, this.routesForPort, this.numberOfRoutes);
 //				long t2 = System.nanoTime();
@@ -200,7 +200,7 @@ public class RouteHandler implements FileLocateListener
 
 	/**
 	 * Cannot be set to null.
-	 * 
+	 *
 	 * @param _goods
 	 *            the goods to set
 	 */

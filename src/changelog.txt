@@ -1,3 +1,5 @@
+BugFix: Fixed generating routes with max ports set to 1
+
 v1.3.8
 Enhancement: Update with support for sectors file v1.0.7
 
