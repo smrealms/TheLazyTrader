@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    maven:
+        image: maven:3.6-jdk-11
+        working_dir: /TheLazyTrader
+        command: mvn clean package
+        volumes:
+            - .:/TheLazyTrader
+            - maven-m2:/root/.m2
+
+volumes:
+    maven-m2:
