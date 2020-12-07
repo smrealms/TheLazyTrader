@@ -40,17 +40,21 @@ public class RouteGenerator
 	static int totalTasks;
 	private static int tasksCompleted;
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(int maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, int numberOfRoutes) throws InterruptedException
-	{
-		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
-	}
-
-	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, int numberOfRoutes) throws InterruptedException
-	{
+	private static void initialize(int numberOfRoutes) {
 		trimToBestXRoutes = numberOfRoutes;
 		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
 		expRoutes = new TreeMap<Double, ArrayList<Route>>();
 		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
+	}
+
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(int maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, int numberOfRoutes) throws InterruptedException
+	{
+		RouteGenerator.initialize(numberOfRoutes);
+		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races));
+	}
+
+	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists) throws InterruptedException
+	{
 		final Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
 		totalTasks = 0;
 		routeLists.forEachEntry(new TIntObjectProcedure<OneWayRoute[]>() {
@@ -89,7 +93,7 @@ public class RouteGenerator
 
 	/**
 	 * Works by pass by reference so will update higher levels, hacky but works.
-	 * 
+	 *
 	 * @param startSectorId
 	 * @param forwardRoutes
 	 * @param routeLists
@@ -111,7 +115,7 @@ public class RouteGenerator
 
 	/**
 	 * Works by pass by reference so will update higher levels, hacky but works.
-	 * 
+	 *
 	 * @param startSectorId
 	 * @param routeToContinue
 	 * @param forwardRoutes
@@ -201,20 +205,22 @@ public class RouteGenerator
 		return routes;
 	}
 
-	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, int routesForPort)
+	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, int numberOfRoutes)
 	{
+		RouteGenerator.initialize(numberOfRoutes);
 		TIntObjectMap<OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
-		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
-		expRoutes = new TreeMap<Double, ArrayList<Route>>();
-		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
-		for (OneWayRoute[] routes : (OneWayRoute[][]) sectorRoutes.values()) {
-			for(OneWayRoute owr : routes) {
-				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
-				Route mpr = new MultiplePortRoute(owr, fakeReturn);
-				addExpRoute(mpr);
-				addMoneyRoute(mpr);
+		sectorRoutes.forEachEntry(new TIntObjectProcedure<OneWayRoute[]>() {
+			@Override
+			public boolean execute(final int sectorId, final OneWayRoute[] owrs) {
+				for(OneWayRoute owr : owrs) {
+					Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
+					Route mpr = new MultiplePortRoute(owr, fakeReturn);
+					addExpRoute(mpr);
+					addMoneyRoute(mpr);
+				}
+				return true;
 			}
-		}
+		});
 		NavigableMap<Double, ArrayList<Route>>[] allRoutes = new TreeMap[2];
 		allRoutes[EXP_ROUTE] = expRoutes;
 		allRoutes[MONEY_ROUTE] = moneyRoutes;
