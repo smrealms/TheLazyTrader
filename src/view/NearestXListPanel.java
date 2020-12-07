@@ -2,20 +2,16 @@ package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeSelectionModel;
@@ -38,7 +34,7 @@ import javax.swing.JTree;
 
 import utils.gui.JIntegerField;
 
-public class NearestXListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener, TreeSelectionListener, MouseListener, KeyListener
+public class NearestXListPanel extends ListPanelWithRaces implements TreeSelectionListener, MouseListener, KeyListener
 {
 	protected JTree itemsTree;
 	protected JIntegerField sectorBox;

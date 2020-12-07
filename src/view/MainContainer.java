@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import settings.Settings;
 import settings.VersionUtil;
 import utils.swing.CloseTabListener;
 import utils.swing.DnDTabbedPane;
@@ -49,7 +48,7 @@ public class MainContainer extends JFrame implements ChangeListener, FileLocateL
 	{
 		this.add(jtp);
 	}
-	
+
 	protected boolean checkForUniverseFile()
 	{
 		if(FileLocate.getUniverseParser() == null)

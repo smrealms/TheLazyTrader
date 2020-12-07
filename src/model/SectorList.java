@@ -17,23 +17,23 @@ import java.util.Vector;
  * roughly constant time, and iteration is roughly linear time, so it is nice
  * and fast, with less overhead than a LinkedList.
  * <p>
- * 
+ *
  * Each list has a capacity, and as the array reaches that capacity it is
  * automatically transferred to a larger array. You also have access to
  * ensureCapacity and trimToSize to control the backing array's size, avoiding
  * reallocation or wasted memory.
  * <p>
- * 
+ *
  * SectorList is not synchronized, so if you need multi-threaded access,
  * consider using:<br>
  * <code>List l = Collections.synchronizedList(new SectorList(...));</code>
  * <p>
- * 
+ *
  * The iterators are <i>fail-fast</i>, meaning that any structural
  * modification, except for <code>remove()</code> called on the iterator
  * itself, cause the iterator to throw a {@link ConcurrentModificationException}
  * rather than exhibit non-deterministic behavior.
- * 
+ *
  * @author Jon A. Zeppieri
  * @author Bryce McKinlay
  * @author Eric Blake (ebb9@email.byu.edu)
@@ -46,7 +46,7 @@ import java.util.Vector;
  * @see AbstractList
  * @status updated to 1.4
  */
-public class SectorList extends AbstractList<Sector> implements List<Sector>, RandomAccess, Cloneable
+public class SectorList extends AbstractList<Sector> implements RandomAccess, Cloneable
 {
 
 	/**
@@ -56,14 +56,14 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * The number of elements in this list.
-	 * 
+	 *
 	 * @serial the list size
 	 */
 	private int size;
 
 	/**
 	 * The maximum number of elements allowed in this list.
-	 * 
+	 *
 	 * @serial the list size
 	 */
 	private final int MAX_SIZE;
@@ -75,7 +75,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Construct a new ArrayList with the supplied initial capacity.
-	 * 
+	 *
 	 * @param capacity
 	 *            initial capacity of this ArrayList
 	 * @throws IllegalArgumentException
@@ -92,7 +92,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Construct a new ArrayList with the supplied initial capacity.
-	 * 
+	 *
 	 * @param capacity
 	 *            initial capacity of this SectorList
 	 * @param max
@@ -121,7 +121,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Construct a new ArrayList from a Sector Array (16).
-	 * 
+	 *
 	 * @param c
 	 *            Sector array to start with.
 	 * @throws IllegalArgumentException
@@ -138,7 +138,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Construct a new ArrayList from a Sector Array (16).
-	 * 
+	 *
 	 * @param c
 	 *            Sector array to start with.
 	 * @param max
@@ -159,7 +159,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * Construct a new ArrayList, and initialize it with the elements in the
 	 * supplied Collection. The initial capacity is 110% of the Collection's
 	 * size.
-	 * 
+	 *
 	 * @param c
 	 *            the collection whose elements will initialize this list
 	 * @throws NullPointerException
@@ -194,7 +194,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * explictly that "this method increases its capacity to minCap", while the
 	 * JDK 1.3 online docs specify that the list will grow to at least the size
 	 * specified.
-	 * 
+	 *
 	 * @param minCapacity
 	 *            the minimum guaranteed capacity
 	 */
@@ -215,7 +215,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Returns the number of elements in this list.
-	 * 
+	 *
 	 * @return the list size
 	 */
 	public int size()
@@ -225,7 +225,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Returns the maximum number of elements allowed in this list.
-	 * 
+	 *
 	 * @return the list size
 	 */
 	public int maxSize()
@@ -235,7 +235,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Checks if the list is empty.
-	 * 
+	 *
 	 * @return true if there are no elements
 	 */
 	public boolean isEmpty()
@@ -245,7 +245,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Returns true iff element is in this ArrayList.
-	 * 
+	 *
 	 * @param e
 	 *            the element whose inclusion in the List is being tested
 	 * @return true if the list contains e
@@ -258,7 +258,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Returns the lowest index at which element appears in this List, or -1 if
 	 * it does not appear.
-	 * 
+	 *
 	 * @param e
 	 *            the element whose inclusion in the List is being tested
 	 * @return the index where e was found
@@ -274,7 +274,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Returns the highest index at which element appears in this List, or -1 if
 	 * it does not appear.
-	 * 
+	 *
 	 * @param e
 	 *            the element whose inclusion in the List is being tested
 	 * @return the index where e was found
@@ -289,7 +289,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Creates a shallow copy of this ArrayList (elements are not cloned).
-	 * 
+	 *
 	 * @return the cloned object
 	 */
 	public SectorList clone()
@@ -310,7 +310,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Returns an Sector array containing all of the elements in this ArrayList.
 	 * The array is independent of this list.
-	 * 
+	 *
 	 * @return an array representation of this list
 	 */
 	public Sector[] toArray()
@@ -322,7 +322,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Retrieves the element at the user-supplied index.
-	 * 
+	 *
 	 * @param index
 	 *            the index of the element we are fetching
 	 * @throws IndexOutOfBoundsException
@@ -336,7 +336,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Gets the last elements.
-	 * 
+	 *
 	 * @param elements
 	 *            The number of elements from the end to get
 	 * @return the Sectors found
@@ -352,7 +352,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Retrieves the first element.
-	 * 
+	 *
 	 * @return The first Sector in the list.
 	 */
 	public Sector getFirst()
@@ -362,7 +362,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Retrieves the last element.
-	 * 
+	 *
 	 * @return The last Sector in the list.
 	 */
 	public Sector get()
@@ -373,7 +373,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Sets the element at the specified index. The new element, e, can be an
 	 * Sector object only.
-	 * 
+	 *
 	 * @param index
 	 *            the index at which the element is being set
 	 * @param e
@@ -393,7 +393,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Appends the supplied element to the end of this list. The element, e, can
 	 * be a Sector object.
-	 * 
+	 *
 	 * @param e
 	 *            the element to be appended to this list
 	 * @return true, the add will always succeed
@@ -413,7 +413,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * Adds the supplied element at the specified index, shifting all elements
 	 * currently at that index or higher one to the right. The element, e, can
 	 * be a Sector object only.
-	 * 
+	 *
 	 * @param index
 	 *            the index at which the element is being added
 	 * @param e
@@ -437,7 +437,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Removes the element at the user-supplied index.
-	 * 
+	 *
 	 * @param index
 	 *            the index of the element to be removed
 	 * @return the removed Sector
@@ -458,7 +458,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Removes the last element.
-	 * 
+	 *
 	 * @return the removed Sectors
 	 */
 	public Sector removeLast()
@@ -472,7 +472,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Removes the last elements.
-	 * 
+	 *
 	 * @param elements
 	 *            The number of elements from the end to remove
 	 * @return the removed Sectors
@@ -511,7 +511,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * Add each element in the supplied SectorList to this List. It is undefined
 	 * what happens if you modify the list while this is taking place; for
 	 * example, if the collection contains this list.
-	 * 
+	 *
 	 * @param c
 	 *            a Collection containing elements to be added to this List
 	 * @return true if the list was modified, in other words c is not empty
@@ -526,7 +526,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Add all elements in the supplied SectorList, inserting them beginning at
 	 * the specified index.
-	 * 
+	 *
 	 * @param index
 	 *            the index at which the elements will be inserted
 	 * @param c
@@ -557,7 +557,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	/**
 	 * Removes all elements in the half-open interval [fromIndex, toIndex). Does
 	 * nothing when toIndex is equal to fromIndex.
-	 * 
+	 *
 	 * @param fromIndex
 	 *            the first index which will be removed
 	 * @param toIndex
@@ -580,7 +580,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Checks that the index is in the range of possible elements (inclusive).
-	 * 
+	 *
 	 * @param index
 	 *            the index to check
 	 * @throws IndexOutOfBoundsException
@@ -597,7 +597,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 
 	/**
 	 * Checks that the index is in the range of existing elements (exclusive).
-	 * 
+	 *
 	 * @param index
 	 *            the index to check
 	 * @throws IndexOutOfBoundsException
@@ -616,7 +616,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * Remove from this list all elements contained in the given collection.
 	 * This is not public, due to Sun's API, but this performs in linear time
 	 * while the default behavior of AbstractList would be quadratic.
-	 * 
+	 *
 	 * @param c
 	 *            the collection to filter out
 	 * @return true if this list changed
@@ -646,7 +646,7 @@ public class SectorList extends AbstractList<Sector> implements List<Sector>, Ra
 	 * collection. This is not public, due to Sun's API, but this performs in
 	 * linear time while the default behavior of AbstractList would be
 	 * quadratic.
-	 * 
+	 *
 	 * @param c
 	 *            the collection to filter by
 	 * @return true if this vector changed
