@@ -1,7 +1,6 @@
 package model;
 
 import gnu.trove.list.array.TIntArrayList;
-import java.util.ArrayList;
 
 import settings.Settings;
 
@@ -107,7 +106,7 @@ public class Distance implements Comparable<Distance>
 		this.incrementDistance();
 		this.path.add(nextSector);
 	}
-	
+
 	public void addWarpToPath(int nextSector)
 	{
 		this.incrementNumWarps();

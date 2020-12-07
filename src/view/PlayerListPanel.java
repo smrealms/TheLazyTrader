@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
@@ -10,7 +9,7 @@ import javax.swing.event.TableModelListener;
 import model.Race;
 import model.preferences.PlayerPreferences;
 
-public class PlayerListPanel extends ListPanel implements ActionListener, TableModelListener
+public class PlayerListPanel extends ListPanel implements TableModelListener
 {
 
 	public PlayerListPanel(MainContainer _parent)

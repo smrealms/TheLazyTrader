@@ -3,14 +3,13 @@ package view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 
-public abstract class ListPanel extends TheLazyTraderPanel implements ActionListener
+public abstract class ListPanel extends TheLazyTraderPanel
 {
 	protected JTable list;
 	protected MyTableRowSorter<MyTableModel> sorter;

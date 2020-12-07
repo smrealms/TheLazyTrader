@@ -1,15 +1,12 @@
 package view;
 
-import java.awt.event.ActionListener;
 import java.util.Map;
-
-import javax.swing.event.TableModelListener;
 
 import model.Race;
 import model.Weapon;
 import model.ship.Restriction;
 
-public class WeaponListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener
+public class WeaponListPanel extends ListPanelWithRaces
 {
 
 	public WeaponListPanel(MainContainer _parent)

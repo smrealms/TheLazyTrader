@@ -1,14 +1,11 @@
 package view;
 
-import java.awt.event.ActionListener;
 import java.util.Map;
-
-import javax.swing.event.TableModelListener;
 
 import model.ship.Ship;
 import model.ship.ShipEquipment;
 
-public class ShipListPanel extends ListPanelWithRaces implements ActionListener, TableModelListener
+public class ShipListPanel extends ListPanelWithRaces
 {
 
 	public ShipListPanel(MainContainer _parent)
