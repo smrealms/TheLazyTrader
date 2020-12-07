@@ -64,7 +64,7 @@
                         ${project.artifactId}.${project.version}.map
                     </mappingFileName>
                     <libs>
-                        ${java.home}/lib/rt.jar
+                        ${java.home}/jmods
                     </libs>
                     <proguardInclude>
                         ${project.basedir}/ObfusConfig.pro
