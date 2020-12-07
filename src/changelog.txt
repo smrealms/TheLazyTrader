@@ -1,3 +1,4 @@
+v1.3.9
 BugFix: Fixed generating routes with max ports set to 1
 DataUpdate: Updated the money formula to match SMR as of 2020-12-07
 
