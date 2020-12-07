@@ -89,24 +89,20 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 
 	@Override
 	public double getMoneyMultiplierSum() {
-		// TODO sellDi stuff and check accuracy of formula
-		double buyRelFactor = 1;
+		double buyRelFactor = 3;
+		double buySupplyFactor = 2;
 		double sellRelFactor = 1;
+		double sellSupplyFactor = 1;
 		if (RoutePreferences.useRelationsFactor()) {
 			int relations = Math.min(PlayerPreferences.getRelationsForRace(this.buyPortRace), Settings.MAX_MONEY_RELATIONS);
-			buyRelFactor = (relations + 350) / 8415.0;
+			buyRelFactor = 1.2 + 1.8 * (relations / 1000);
 
 			relations = Math.min(PlayerPreferences.getRelationsForRace(this.sellPortRace), Settings.MAX_MONEY_RELATIONS);
-			sellRelFactor = (2 - (relations + 50)) / 850.0 * ((relations + 350)/57840);
+			sellRelFactor = 3 - 2 * (relations / 1000);
 		}
 		int goodValue = Good.getValue(this.goodId);
-		double buyPrice = goodValue * 0.6 * Math.pow(this.buyDi + .5, 1.8) * buyRelFactor;
-		double sellPrice = goodValue * 0.7 * Math.pow(this.sellDi, 1.84) * sellRelFactor /*
-																						* * (1 +
-																						* (10 -
-																						* $port_lvl) /
-																						* 50)
-																						*/;
+		double buyPrice = 0.088 * goodValue * Math.pow(this.buyDi, 1.3) * buyRelFactor * buySupplyFactor;
+		double sellPrice = 0.03 * goodValue * Math.pow(this.sellDi, 1.3) * sellRelFactor * sellSupplyFactor;
 		return buyPrice - sellPrice;
 	}
 
@@ -134,7 +130,7 @@ public class OneWayRoute extends Route implements Comparable<OneWayRoute> {
 			return 1;
 		return -1;
 	}
-	
+
 	@Override
 	public boolean containsPort(int sectorID)
 	{
