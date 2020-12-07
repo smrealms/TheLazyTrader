@@ -5,6 +5,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import settings.Settings;
+import settings.VersionUtil;
 import utils.swing.CloseTabListener;
 import utils.swing.DnDTabbedPane;
 
@@ -22,7 +23,7 @@ public class MainContainer extends JFrame implements ChangeListener, FileLocateL
 	{
 		super();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("The Lazy Trader " + Settings.VERSION);
+		setTitle( "The Lazy Trader " + VersionUtil.getVersion() );
 
 		initComponents();
 		addComponents();

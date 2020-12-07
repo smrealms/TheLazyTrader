@@ -1,3 +1,10 @@
 /dist/
 /build/
 /nbproject/private
+
+# IntelliJ Project Files
+/.idea/
+*.iml
+
+# Maven Artifact Directory
+/target/

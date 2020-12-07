@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Dimension;
+import settings.VersionUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -181,7 +182,9 @@ public abstract class TheLazyTraderPanel extends JPanel implements ActionListene
 		{
 			if (this.aboutFrame == null)
 			{
-				this.aboutFrame = new AboutFrame(Settings.ABOUT);
+				final String version = VersionUtil.getVersion();
+				final String about = String.format( Settings.ABOUT, version );
+				this.aboutFrame = new AboutFrame(about);
 				this.aboutFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 			}
 			this.aboutFrame.setVisible(true);
