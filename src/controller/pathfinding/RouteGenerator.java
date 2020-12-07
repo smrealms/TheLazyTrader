@@ -40,6 +40,12 @@ public class RouteGenerator
 	static int totalTasks;
 	private static int tasksCompleted;
 
+	private static void initialize() {
+		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
+		expRoutes = new TreeMap<Double, ArrayList<Route>>();
+		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
+	}
+
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateMultiPortRoutes(int maxNumPorts, Sector[] sectors, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, TIntObjectMap<TIntObjectMap<Distance>> distances, int routesForPort, int numberOfRoutes) throws InterruptedException
 	{
 		return findMultiPortRoutes(maxNumPorts, findOneWayRoutes(sectors, distances, routesForPort, goods, races), numberOfRoutes);
@@ -48,9 +54,7 @@ public class RouteGenerator
 	private static NavigableMap<Double, ArrayList<Route>>[] findMultiPortRoutes(final int maxNumPorts, final TIntObjectMap<OneWayRoute[]> routeLists, int numberOfRoutes) throws InterruptedException
 	{
 		trimToBestXRoutes = numberOfRoutes;
-		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
-		expRoutes = new TreeMap<Double, ArrayList<Route>>();
-		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
+		RouteGenerator.initialize();
 		final Collection<Callable<Object>> runs = new ArrayList<Callable<Object>>();
 		totalTasks = 0;
 		routeLists.forEachEntry(new TIntObjectProcedure<OneWayRoute[]>() {
@@ -89,7 +93,7 @@ public class RouteGenerator
 
 	/**
 	 * Works by pass by reference so will update higher levels, hacky but works.
-	 * 
+	 *
 	 * @param startSectorId
 	 * @param forwardRoutes
 	 * @param routeLists
@@ -111,7 +115,7 @@ public class RouteGenerator
 
 	/**
 	 * Works by pass by reference so will update higher levels, hacky but works.
-	 * 
+	 *
 	 * @param startSectorId
 	 * @param routeToContinue
 	 * @param forwardRoutes
@@ -204,9 +208,7 @@ public class RouteGenerator
 	synchronized public static NavigableMap<Double, ArrayList<Route>>[] generateOneWayRoutes(Sector[] sectors, TIntObjectMap<TIntObjectMap<Distance>> distances, Map<Integer, Boolean> goods, Map<Integer, Boolean> races, int routesForPort)
 	{
 		TIntObjectMap<OneWayRoute[]> sectorRoutes = findOneWayRoutes(sectors, distances, routesForPort, goods, races);
-		dontAddWorseThan = new double[]{ Double.MIN_VALUE, Double.MIN_VALUE };
-		expRoutes = new TreeMap<Double, ArrayList<Route>>();
-		moneyRoutes = new TreeMap<Double, ArrayList<Route>>();
+		RouteGenerator.initialize();
 		for (OneWayRoute[] routes : (OneWayRoute[][]) sectorRoutes.values()) {
 			for(OneWayRoute owr : routes) {
 				Route fakeReturn = new OneWayRoute(owr.getBuySectorId(), owr.getSellSectorId(), owr.getBuyPortRace(), owr.getSellPortRace(), 0, 0, owr.getDistance(), Good.NOTHING);
