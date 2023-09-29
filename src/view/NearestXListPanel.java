@@ -154,7 +154,7 @@ public class NearestXListPanel extends ListPanelWithRaces implements TreeSelecti
 		gbl.setConstraints(jsp, c);
 		add(jsp);
 		// Second row
-		c.ipady = 18;
+		c.ipady = 32;
 		c.weighty = 1;
 
 		JPanel sectorsPanel = new JPanel();
@@ -164,7 +164,9 @@ public class NearestXListPanel extends ListPanelWithRaces implements TreeSelecti
 		jsp = new JScrollPane(sectorsPanel);
 		gbl.setConstraints(jsp, c);
 		add(jsp);
+
 		// Third row
+		c.ipady = 18;
 		c.weighty = 500;
 		jsp = new JScrollPane(this.itemsTree);
 		gbl.setConstraints(jsp, c);

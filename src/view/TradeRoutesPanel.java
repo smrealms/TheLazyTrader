@@ -156,11 +156,13 @@ public class TradeRoutesPanel extends TheLazyTraderPanel implements TableModelLi
 
 
 			// After Last
+			c.ipady = 44;
 			jsp = new JScrollPane(jpOptions);
 			gbl.setConstraints(jsp, c);
 			add(jsp);
 		}
 
+		c.ipady = 36;
 		jbActionButtons = new JButton[4];
 		jbActionButtons[0] = new JButton("Generate Exp");
 		jbActionButtons[0].setMnemonic('E');

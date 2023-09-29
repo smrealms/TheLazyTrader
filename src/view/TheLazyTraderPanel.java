@@ -50,7 +50,7 @@ public abstract class TheLazyTraderPanel extends JPanel implements ActionListene
 	protected JPanel createLabelJComponentPair(String label, JComponent jc, int width) {
 		JPanel jp = new JPanel();
 		jp.add(new JLabel(label));
-		jc.setPreferredSize(new Dimension(width, 20));
+		jc.setPreferredSize(new Dimension(width, 28));
 		jp.add(jc);
 		return jp;
 	}
